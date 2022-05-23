@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  web:
+    container_name: heroex-web
+    build: ./backend
+    volumes:
+      - ./backend/:/app/
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - $PORT:$PORT
+
+  db:
+    image: postgres
+    container_name: heroex-db
+    volumes:
+      - ./data/:/var/lib/postgresql
+    env_file:
+      - .env
+    ports:
+      - $POSTGRES_PORT:$POSTGRES_PORT
