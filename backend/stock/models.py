@@ -28,3 +28,11 @@ class FootballerWeeksData(Model):
     footballer = ForeignKey(to='Footballer', on_delete=CASCADE)
     perfomance = PositiveIntegerField(null=False)
     hix = DecimalField(max_digits=10, decimal_places=2, null=False)
+
+    @property
+    def buy_price(self):
+        return self.hix
+    
+    @property
+    def sell_price(self):
+        return float('%.2f' % (float(self.hix) * 0.95))
