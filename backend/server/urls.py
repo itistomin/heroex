@@ -4,7 +4,8 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 
 api_urlpatterns = [
-    path('token/', include('authentication.urls')),s
+    path('token/', include('authentication.urls')),
+    path('user/', include('userprofile.urls')),
 ]
 
 
