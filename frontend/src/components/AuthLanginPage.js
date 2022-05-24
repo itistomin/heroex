@@ -23,7 +23,7 @@ const AuthLandingPage = () => {
 
                 <div className="col-12 col-md-6 middle-alignment">
                     <div className="text-center">
-                        <p className="">Login to Your waller</p>
+                        <p className="text-end m-auto w-75">Login to Your waller</p>
                         
                         <form onSubmit={formik.handleSubmit}>
                             <div class="form-group">
@@ -48,6 +48,9 @@ const AuthLandingPage = () => {
                                 <button type="submit" class="btn btn-success">Login</button>
                             </div>
                         </form>
+                        <div className="text-end w-75 m-auto mt-5">
+                            <p className="helper-text">Forgot your password?<br /> Email here: team@hero-dao.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
