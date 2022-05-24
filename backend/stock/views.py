@@ -1,11 +1,12 @@
-from pkg_resources import require
+import decimal
+
+from django.db import transaction
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
-from drf_spectacular.utils import extend_schema, OpenApiParameter
+from drf_spectacular.utils import extend_schema
 
 from authentication.models import  UserFootballer
 from stock.models import (
-    Footballer,
     FootballerWeeksData,
     GameWeek
 )
@@ -63,15 +64,16 @@ class UserTokenBuyView(APIView):
         if footballer.buy_price * data['tokens'] > user.balance or data['tokens'] < 1:
             return Response({'detail': 'Not enough balance'}, 422)
         
-        # in future wrap in transaction
         user_footballer, _ = UserFootballer.objects.get_or_create(
             footballer=footballer.footballer, 
             user=user
         )
         user_footballer.amount += data['tokens']
-        user_footballer.save()
         user.balance -= data['tokens'] * footballer.buy_price
-        user.save()
+
+        with transaction.atomic():
+            user_footballer.save()
+            user.save()
 
         return Response({'detail': 'ok'}, 201)
 
@@ -82,5 +84,36 @@ class UserTokenSellView(APIView):
 
     @extend_schema(request=BuyAndSellSerializer)
     def post(self, request):
+        user = request.user
+        raw_data = BuyAndSellSerializer(data=request.data)
+        if not raw_data.is_valid():
+            return Response({'detail': 'Invalid payload'}, 422)
+        
+        data = raw_data.data
+
+        footballer_data = FootballerWeeksData.objects.filter(
+            footballer__name=data['footballer'],
+            week=user.week or GameWeek.objects.get(number=0)
+        ).first()
+        if not footballer_data:
+            return Response({'detail': 'This footballer does not exist.'}, 404)
+        
+        user_footballer = UserFootballer.objects.filter(
+            footballer=footballer_data.footballer,
+            user=user
+        ).first()
+        if not user_footballer:
+            return Response({'detail': 'You don\'t have this footballer'}, 404)
+        
+        if user_footballer.amount < data['tokens']:
+            return Response({'detail': 'You don\'t have this amount of tokens.'}, 422)
+
+        user_footballer.amount -= data['tokens']
+        user.balance += decimal.Decimal(footballer_data.sell_price * data['tokens'])
+
+        with transaction.atomic():
+            user_footballer.save()
+            user.save()
+        
         return Response({'detail': 'ok'}, 201)
 

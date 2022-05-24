@@ -4,6 +4,7 @@ Using Django 4.0.4.
 from datetime import timedelta
 from os import getenv
 from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

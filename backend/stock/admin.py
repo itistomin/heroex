@@ -15,5 +15,5 @@ class FootballerAdmin(admin.ModelAdmin):
 
 @admin.register(FootballerWeeksData)
 class FootballerWeeksDataAdmin(admin.ModelAdmin):
-    list_display = ('week', 'footballer', 'perfomance', 'hix',)
+    list_display = ('week', 'footballer', 'perfomance', 'buy_price', 'sell_price',)
     list_filter = ('week', 'footballer',)
