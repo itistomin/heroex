@@ -5,6 +5,7 @@ from django.db.models import (
     ForeignKey,
     Model,
     PositiveIntegerField,
+    SET_NULL,
 )
 
 
@@ -15,9 +16,25 @@ class GameWeek(Model):
         return f'Week {self.number}'
 
 
+class FootballerTeam(Model):
+    name = CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class FootballerPosition(Model):
+    name = CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
 class Footballer(Model):
     name = CharField(max_length=100)
-    start_price = DecimalField(max_digits=10, decimal_places=2, null=False)
+    team = ForeignKey(to=FootballerTeam, on_delete=SET_NULL, null=True)
+    position = ForeignKey(to=FootballerPosition, on_delete=SET_NULL, null=True)
+    price_dynamic = DecimalField(max_digits=10, decimal_places=2, null=True)
 
     def __str__(self):
         return self.name
