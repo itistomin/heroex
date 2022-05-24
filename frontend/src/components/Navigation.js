@@ -11,28 +11,28 @@ const Navigation = () => {
     
     
     return (
-        <ul class="nav nav-pills nav-fill">
-            <li class="nav-item">
+        <ul className="nav nav-pills nav-fill">
+            <li className="nav-item">
                 <Link className={`nav-link custom-link ${location == '/market' ? 'custom-link-active' : ''}`}  to="/market">
-                    <i class="fa-solid fa-cart-shopping px-2"></i>
+                    <i className="fa-solid fa-cart-shopping px-2"></i>
                     Markets
                 </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                 <Link className={`nav-link custom-link ${location == '/points' ? 'custom-link-active' : ''}`} to="/points">
-                    <i class="fa-solid fa-star px-2"></i>
+                    <i className="fa-solid fa-star px-2"></i>
                     Match points
                 </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                 <Link className={`nav-link custom-link disabled ${location == '/gameweek' ? 'custom-link-active' : ''}`} to="#">
-                    <i class="fa-solid fa-calendar px-2"></i>
+                    <i className="fa-solid fa-calendar px-2"></i>
                     Game weeks
                 </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                 <Link className={`nav-link custom-link ${location == '/portfolio' ? 'custom-link-active' : ''}`} to="/portfolio">
-                    <i class="fa-solid fa-suitcase px-2"></i>
+                    <i className="fa-solid fa-suitcase px-2"></i>
                     Portfolio
                 </Link>
             </li>

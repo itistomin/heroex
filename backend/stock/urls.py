@@ -2,6 +2,7 @@ from  django.urls import path, include
 
 from stock.views import (
     FootballersView,
+    TopOfWeekView,
     UserTokenView,
     UserTokenBuyView,
     UserTokenSellView,
@@ -10,6 +11,7 @@ from stock.views import (
 
 stock_urlpatterns = [
     path('', FootballersView.as_view(), name='footballers'),
+    path('topweek/', TopOfWeekView.as_view(), name='top_of_week')
 ]
 
 

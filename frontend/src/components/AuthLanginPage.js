@@ -26,9 +26,9 @@ const AuthLandingPage = () => {
                         <p className="text-end m-auto w-75">Login to Your waller</p>
                         
                         <form onSubmit={formik.handleSubmit}>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input 
-                                    class="form-control w-75 m-auto my-3"
+                                    className="form-control w-75 m-auto my-3"
                                     name="email" 
                                     type="email" 
                                     onChange={formik.handleChange} 
@@ -36,7 +36,7 @@ const AuthLandingPage = () => {
                                     placeholder="Email"
                                 />
                                 <input 
-                                    class="form-control w-75 m-auto my-3"
+                                    className="form-control w-75 m-auto my-3"
                                     name="password" 
                                     type="password" 
                                     onChange={formik.handleChange} 
@@ -44,8 +44,8 @@ const AuthLandingPage = () => {
                                     placeholder="Password"
                                 />
                             </div>
-                            <div class="w-75 m-auto text-end">
-                                <button type="submit" class="btn btn-success">Login</button>
+                            <div className="w-75 m-auto text-end">
+                                <button type="submit" className="btn btn-success">Login</button>
                             </div>
                         </form>
                         <div className="text-end w-75 m-auto mt-5">

@@ -12,7 +12,8 @@ from stock.models import (
 )
 from stock.serializers import (
     BuyAndSellSerializer,
-    MarketFootballerSerializer
+    MarketFootballerSerializer,
+    TopWeekSerializer,
 )
 
 
@@ -117,3 +118,15 @@ class UserTokenSellView(APIView):
         
         return Response({'detail': 'ok'}, 201)
 
+
+@extend_schema(tags=STOCK_TAGS)
+class TopOfWeekView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        week = request.user.week
+        if not week:
+            return Response([], 200)
+        
+        top_week = FootballerWeeksData.objects.filter(week=week).order_by('perfomance')[:3]
+        return Response(TopWeekSerializer(top_week, many=True).data, 200)

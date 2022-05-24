@@ -30,3 +30,7 @@ body {
 .table-row:hover {
     background-color: #000010;
 }
+
+.cell-top-week-width {
+    width: 30px !important;
+}

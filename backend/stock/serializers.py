@@ -47,3 +47,11 @@ class MarketFootballerSerializer(ModelSerializer):
 class BuyAndSellSerializer(Serializer):
     footballer = CharField()
     tokens = IntegerField()
+
+
+class TopWeekSerializer(ModelSerializer):
+    footballer = FootballerSerializer()
+
+    class Meta:
+        model  = FootballerWeeksData
+        fields = ('footballer', 'perfomance',)

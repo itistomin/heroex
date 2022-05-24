@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { MARKET_URL } from '../constants';
 import { AuthContext } from '../context/AuthContext';
 import GameWeeks from './GameWeeks';
+import TopWeek from "./TopWeek";
 
 
 const Market = () => {
@@ -30,7 +31,7 @@ const Market = () => {
                     </thead>
                     <tbody>
                         {footballers.map((item, index) => (
-                            <tr className="table-row">
+                            <tr className="table-row" key={`${index}-row`}>
                                 <td>{index + 1}</td>
                                 <td>{item.footballer.name}</td>
                                 <td>{item.footballer.team.name}</td>
@@ -40,12 +41,12 @@ const Market = () => {
                                 <td className="text-end"><button className="btn btn-primary">SELL {item.sell_price.toFixed(2)}</button></td>
                             </tr>
                         ))}
-                        
                     </tbody>
                 </table>
             </div>
             <div className="col-12 col-lg-4">
                 <GameWeeks />
+                <TopWeek />
             </div>
         </div>
     )
