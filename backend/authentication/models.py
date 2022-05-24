@@ -30,4 +30,7 @@ class User(AbstractUser):
 class UserFootballer(Model):
     user = ForeignKey(to=User, on_delete=CASCADE)
     footballer = ForeignKey(to=Footballer, on_delete=CASCADE)
-    amount = PositiveIntegerField(null=False)
+    amount = PositiveIntegerField(null=True, default=0)
+
+    class Meta:
+        unique_together = ('user', 'footballer',)

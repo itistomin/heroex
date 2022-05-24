@@ -1,4 +1,9 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import (
+    CharField,
+    IntegerField,
+    ModelSerializer,
+    Serializer,
+)
 
 from stock.models import Footballer, FootballerWeeksData
 
@@ -16,3 +21,8 @@ class MarketFootballerSerializer(ModelSerializer):
     class Meta:
         model = FootballerWeeksData
         fields = ('footballer', 'buy_price', 'sell_price',)
+
+
+class BuyAndSellSerializer(Serializer):
+    footballer = CharField()
+    tokens = IntegerField()

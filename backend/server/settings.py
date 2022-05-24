@@ -1,7 +1,7 @@
 """
 Using Django 4.0.4.
 """
-
+from datetime import timedelta
 from os import getenv
 from pathlib import Path
 
@@ -139,4 +139,9 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'HeroEx MVP crypto wallet demo',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
