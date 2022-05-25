@@ -6,3 +6,6 @@ export const USER_INFO_URL = () => '/user/details/';
 export const MARKET_URL = () => '/stock/';
 export const TOP_OF_WEEK_URL = () => '/stock/topweek/'
 export const PORTFOLIO_URL = () => '/stock/user/'
+
+export const RESET_WEEK_URL = () => '/weeks/reset/'
+export const NEXT_WEEK_URL = () => '/weeks/next/'

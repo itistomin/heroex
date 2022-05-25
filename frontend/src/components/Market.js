@@ -10,9 +10,11 @@ const Market = () => {
     const { apiInstance } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
 
-    useEffect(() => {
+    const updateAll = () => {
         apiInstance.get(MARKET_URL()).then((response) => setFootballers(response.data));
-    }, [])
+    }
+
+    useEffect(updateAll, [])
 
     return (
         <div className="row mt-4">
@@ -45,7 +47,7 @@ const Market = () => {
                 </table>
             </div>
             <div className="col-12 col-lg-3">
-                <GameWeeks />
+                <GameWeeks callable={updateAll} />
                 <TopWeek />
             </div>
         </div>

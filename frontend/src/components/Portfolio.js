@@ -11,7 +11,7 @@ const Portfolio = () => {
     const [footballers, setFootballers] = useState([]);
     const [reward, setTopWeekReward] = useState([]);
 
-    useEffect(() => {
+    const updateAll = () => {
         apiInstance.get(PORTFOLIO_URL()).then((response) => setFootballers(response.data));
         apiInstance.get(TOP_OF_WEEK_URL()).then((response) => {
             const data = {};
@@ -21,7 +21,9 @@ const Portfolio = () => {
             })
             setTopWeekReward(data);
         });
-    }, [])
+    }
+
+    useEffect(updateAll, [])
 
     const accumulateTokens = (accumulator, item) => accumulator + item.amount;
     const accumulateReward = (accumulator, item) => accumulator + item.amount * (reward[item.footballer.name] || 0);
@@ -80,7 +82,7 @@ const Portfolio = () => {
                 </table>
             </div>
             <div className="col-12 col-lg-3">
-                <GameWeeks />
+                <GameWeeks callable={updateAll} />
                 <TopWeek />
             </div>
         </div>

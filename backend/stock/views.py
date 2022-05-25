@@ -19,8 +19,8 @@ from stock.serializers import (
 )
 
 
-USER_TOKENS_TAGS = ['User tokens']
 STOCK_TAGS = ['Market']
+USER_TOKENS_TAGS = STOCK_TAGS
 PORTFOLIO_TAGS = ['Portfolio']
 
 
