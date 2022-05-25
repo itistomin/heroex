@@ -1,13 +1,14 @@
 import decimal
 
 from django.db import transaction
-from django.db.models import F, OuterRef, Subquery
+from django.db.models import F, OuterRef, Subquery, Sum
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 from drf_spectacular.utils import extend_schema
 
 from authentication.models import  UserFootballer
 from stock.models import (
+    Footballer,
     FootballerWeeksData,
     GameWeek
 )
@@ -21,7 +22,7 @@ from stock.serializers import (
 
 STOCK_TAGS = ['Market']
 USER_TOKENS_TAGS = STOCK_TAGS
-PORTFOLIO_TAGS = ['Portfolio']
+PORTFOLIO_TAGS = STOCK_TAGS
 
 
 def create_user_portfolio(user):
@@ -159,3 +160,26 @@ class TopOfWeekView(APIView):
         
         top_week = get_top_week(week)
         return Response(TopWeekSerializer(top_week, many=True).data, 200)
+
+
+@extend_schema(tags=STOCK_TAGS)
+class MatchPointsView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        user = request.user
+        week = user.week or GameWeek.objects.get(number=0)
+        previous_week = GameWeek.objects.filter(number=week.number-1).first() or week
+
+        # TODO fix bottleneck, thats a huge query
+        data = {}
+        for footballer in Footballer.objects.all():
+            current_week_data = FootballerWeeksData.objects.filter(week=week, footballer=footballer).first()
+            data[footballer.name] = {
+                'previous_score': FootballerWeeksData.objects.filter(week=previous_week, footballer=footballer).first().perfomance,
+                'current_score': current_week_data.perfomance,
+                'total_score': FootballerWeeksData.objects.filter(week__number__lte=week.number, footballer=footballer).aggregate(total=Sum('perfomance'))['total'],
+                'buy_price': current_week_data.buy_price,
+                'sell_price': current_week_data.sell_price,
+            }
+        return Response(data, 200)
