@@ -10,10 +10,12 @@ const Portfolio = () => {
     const { apiInstance } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [reward, setTopWeekReward] = useState([]);
+    const [topWeek, setTopWeek] = useState([]);
 
     const updateAll = () => {
         apiInstance.get(PORTFOLIO_URL()).then((response) => setFootballers(response.data));
         apiInstance.get(TOP_OF_WEEK_URL()).then((response) => {
+            setTopWeek(response.data);
             const data = {};
             const MAX_INDEX = 0.5;
             response.data.forEach((item, index) => {
@@ -83,7 +85,7 @@ const Portfolio = () => {
             </div>
             <div className="col-12 col-lg-3">
                 <GameWeeks callable={updateAll} />
-                <TopWeek />
+                <TopWeek topWeek={topWeek}  />
             </div>
         </div>
     )

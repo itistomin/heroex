@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { MARKET_URL } from '../constants';
+import { MARKET_URL, TOP_OF_WEEK_URL } from '../constants';
 import { AuthContext } from '../context/AuthContext';
 import GameWeeks from './GameWeeks';
 import TopWeek from "./TopWeek";
@@ -9,9 +9,11 @@ import TopWeek from "./TopWeek";
 const Market = () => {
     const { apiInstance } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
+    const [topWeek, setTopWeek] = useState([]);
 
     const updateAll = () => {
         apiInstance.get(MARKET_URL()).then((response) => setFootballers(response.data));
+        apiInstance.get(TOP_OF_WEEK_URL()).then((response) => setTopWeek(response.data));
     }
 
     useEffect(updateAll, [])
@@ -48,7 +50,7 @@ const Market = () => {
             </div>
             <div className="col-12 col-lg-3">
                 <GameWeeks callable={updateAll} />
-                <TopWeek />
+                <TopWeek topWeek={topWeek} />
             </div>
         </div>
     )
