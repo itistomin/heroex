@@ -17,15 +17,17 @@ const TopWeek = () => {
             <h3>Top of the week</h3>  
             <img src="/cup.png" />
             <table className="table text-white borderless">
-            {
-                topWeek.map((item, index) => (
-                    <tr  key={`${index}-top-row`}>
-                        <td>{index + 1}</td>
-                        <td>{item.footballer.name}</td>
-                        <td className="cell-top-week-width">{item.perfomance}</td>
-                    </tr>    
-                ))
-            }
+                <tbody>
+                {
+                    topWeek.map((item, index) => (
+                        <tr  key={`${index}-top-row`}>
+                            <td>{index + 1}</td>
+                            <td>{item.footballer.name}</td>
+                            <td className="cell-top-week-width">{item.perfomance}</td>
+                        </tr>    
+                    ))
+                }
+            </tbody>
         </table>
         </div>
     )

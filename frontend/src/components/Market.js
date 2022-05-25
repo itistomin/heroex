@@ -16,7 +16,7 @@ const Market = () => {
 
     return (
         <div className="row mt-4">
-            <div className="col-12 col-lg-8">
+            <div className="col-12 col-lg-9">
                 <table className="table table-sm text-white">
                     <thead>
                         <tr>
@@ -44,7 +44,7 @@ const Market = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="col-12 col-lg-4">
+            <div className="col-12 col-lg-3">
                 <GameWeeks />
                 <TopWeek />
             </div>

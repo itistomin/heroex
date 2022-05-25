@@ -1,10 +1,13 @@
+from decimal import Decimal
 from rest_framework.serializers import (
     CharField,
+    DecimalField,
     IntegerField,
     ModelSerializer,
     Serializer,
 )
 
+from authentication.models import UserFootballer
 from stock.models import (
     Footballer, 
     FootballerPosition, 
@@ -55,3 +58,14 @@ class TopWeekSerializer(ModelSerializer):
     class Meta:
         model  = FootballerWeeksData
         fields = ('footballer', 'perfomance',)
+
+
+class PortfolioSerializer(ModelSerializer):
+    footballer = FootballerSerializer()
+    start_price = DecimalField(max_digits=10, decimal_places=2)
+    buy_price = DecimalField(max_digits=10, decimal_places=2)
+    sell_price = DecimalField(max_digits=10, decimal_places=2)
+
+    class Meta:
+        model = UserFootballer
+        fields = ('footballer', 'amount', 'buy_price', 'sell_price', 'start_price',)

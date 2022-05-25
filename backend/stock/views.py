@@ -1,6 +1,7 @@
 import decimal
 
 from django.db import transaction
+from django.db.models import F, OuterRef, Subquery
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 from drf_spectacular.utils import extend_schema
@@ -13,6 +14,7 @@ from stock.models import (
 from stock.serializers import (
     BuyAndSellSerializer,
     MarketFootballerSerializer,
+    PortfolioSerializer,
     TopWeekSerializer,
 )
 
@@ -20,6 +22,15 @@ from stock.serializers import (
 USER_TOKENS_TAGS = ['User tokens']
 STOCK_TAGS = ['Market']
 PORTFOLIO_TAGS = ['Portfolio']
+
+
+def create_user_portfolio(user):
+    user_footballers = user.footballers.all()
+    return user_footballers
+
+
+def get_top_week(week):
+    return FootballerWeeksData.objects.filter(week=week).order_by('-perfomance')[:3]
 
 
 @extend_schema(tags=STOCK_TAGS)
@@ -38,7 +49,25 @@ class UserTokenView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        return Response({'detail': 'ok'}, 200)
+        user = request.user
+        footballers = FootballerWeeksData.objects.filter(week=user.week or GameWeek.objects.get(number=0))
+        week_zero_footballers = FootballerWeeksData.objects.filter(week=GameWeek.objects.get(number=0))
+        portfolio = (
+            UserFootballer.objects.filter(amount__gt=0)
+            .filter(user=user)
+            .annotate(
+                buy_price=Subquery(
+                    footballers.filter(footballer__id=OuterRef('footballer__id')).values('hix')
+                )
+            )
+            .annotate(sell_price=F('buy_price') * decimal.Decimal(0.95))
+            .annotate(start_price=Subquery(
+                week_zero_footballers.filter(footballer__id=OuterRef('footballer__id')).values('hix')
+                )
+            )
+        )
+
+        return Response(PortfolioSerializer(portfolio, many=True).data, 200)
 
 
 @extend_schema(tags=USER_TOKENS_TAGS)
@@ -128,5 +157,5 @@ class TopOfWeekView(APIView):
         if not week:
             return Response([], 200)
         
-        top_week = FootballerWeeksData.objects.filter(week=week).order_by('perfomance')[:3]
+        top_week = get_top_week(week)
         return Response(TopWeekSerializer(top_week, many=True).data, 200)

@@ -26,6 +26,9 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
+    def __str__(self):
+        return self.username or self.email
+
 
 class UserFootballer(Model):
     user = ForeignKey(to=User, on_delete=CASCADE)
@@ -34,3 +37,6 @@ class UserFootballer(Model):
 
     class Meta:
         unique_together = ('user', 'footballer',)
+
+    def __str__(self):
+        return f'{self.user} {self.footballer} {self.amount}'
