@@ -7,6 +7,7 @@ api_urlpatterns = [
     path('token/', include('authentication.urls')),
     path('user/', include('userprofile.urls')),
     path('stock/', include('stock.urls')),
+    path('weeks/', include('gameweek.urls')),
 ]
 
 
