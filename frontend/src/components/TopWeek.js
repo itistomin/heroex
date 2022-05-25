@@ -5,10 +5,11 @@ import { AuthContext } from "../context/AuthContext";
 
 
 const TopWeek = () => {
-    const { apiInstance } = useContext(AuthContext);
+    const { apiInstance, user } = useContext(AuthContext);
     const [topWeek, setTopWeek] = useState([]);
 
     useEffect(() => {
+        if (!user?.week?.number) return;
         apiInstance.get(TOP_OF_WEEK_URL()).then((response) => setTopWeek(response.data));
     }, [])
 
@@ -18,6 +19,7 @@ const TopWeek = () => {
             <img src="/cup.png" />
             <table className="table text-white borderless">
                 <tbody>
+                    {!user?.week?.number ? <tr><td colSpan={3}>Start a game and see the top footballers</td></tr> : ''}
                 {
                     topWeek.map((item, index) => (
                         <tr  key={`${index}-top-row`}>

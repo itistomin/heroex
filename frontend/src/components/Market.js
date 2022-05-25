@@ -37,7 +37,7 @@ const Market = () => {
                                 <td>{item.footballer.team.name}</td>
                                 <td>{item.footballer.position.name.toUpperCase()}</td>
                                 <td className={item.footballer.price_dynamic > 0 ? 'text-warning' : 'text-danger'}>{item.footballer.price_dynamic}</td>
-                                <td className="text-end"><button className="btn btn-success">BUY {item.buy_price}</button></td>
+                                <td className="text-end"><button className="btn btn-success">BUY {item.buy_price.toFixed(2)}</button></td>
                                 <td className="text-end"><button className="btn btn-primary">SELL {item.sell_price.toFixed(2)}</button></td>
                             </tr>
                         ))}
