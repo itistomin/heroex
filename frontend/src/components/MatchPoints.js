@@ -45,7 +45,7 @@ const MatchPoints = () => {
                                 <td>{footballers[key].previous_score}</td>
                                 <td>{footballers[key].current_score}</td>
                                 <td className="text-end"><button className="btn btn-success" onClick={() => openModal({ operation: 'buy', name: key, price: footballers[key].buy_price, closeModal: openModal })}>BUY {footballers[key].buy_price.toFixed(2)}</button></td>
-                                <td className="text-end"><button className="btn btn-primary" onClick={() => openModal({ operation: 'buy', name: key, price: footballers[key].sell_price, closeModal: openModal })}>SELL {footballers[key].sell_price.toFixed(2)}</button></td>
+                                <td className="text-end"><button className="btn btn-primary" onClick={() => openModal({ operation: 'sell', name: key, price: footballers[key].sell_price, closeModal: openModal })}>SELL {footballers[key].sell_price.toFixed(2)}</button></td>
                             </tr>
                         ))}
                     </tbody>

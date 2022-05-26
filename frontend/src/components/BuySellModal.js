@@ -38,7 +38,7 @@ const BuySellModal = ({operation, name, price, closeModal}) => {
                         <div className="col-6 my-2">{user?.balance} $HIX</div>
                         
                         <div className="col-6 my-2">Current price:</div>
-                        <div className="col-6 my-2">{price.toFixed(2)} $HIX / token</div>
+                        <div className="col-6 my-2">{price} $HIX / token</div>
 
                         {operation === 'sell' && (
                             <>
@@ -63,7 +63,7 @@ const BuySellModal = ({operation, name, price, closeModal}) => {
                         </div>
 
                         <div className="col-6 my-2">Total cost:</div>
-                        <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} $HIX</div>
+                        <div className="col-6 my-2">{(formik.values.tokens * price)} $HIX</div>
 
                         <div className="col-12 d-flex justify-content-center my-2">
                             <button type="submit" className={`btn btn-success mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`}>Confirm</button>
