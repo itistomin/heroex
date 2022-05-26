@@ -7,15 +7,15 @@ import { buySellValidation } from '../validators';
 import { searchUserFootballer } from '../helpers/searchUserFootballer';
 
 
-const BuySellModal = ({operation, name, price, closeModal}) => {
-    const { user, apiInstance } = useContext(AuthContext);
+const BuySellModal = ({operation, name, price, closeModal, callable}) => {
+    const { user, apiInstance, getUserData } = useContext(AuthContext);
     
     const formik = useFormik({
         initialValues: {footballer: name, tokens: 1},
         validationSchema: buySellValidation,
         onSubmit: (values) => {
             const url = operation === 'buy' ? BUY_TOKENS_URL() : SELL_TOKENS_URL();
-            apiInstance.post(url, values).then(closeModal)
+            apiInstance.post(url, values).then(() => {closeModal(); callable(); getUserData();})
         }
     });
     const title = operation.charAt(0).toUpperCase() + operation.slice(1);

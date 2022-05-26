@@ -18,6 +18,25 @@ const MatchPoints = () => {
         apiInstance.get(TOP_OF_WEEK_URL()).then((response) => setTopWeek(response.data));
     }
 
+    const transaction = {
+        closeModal: openModal,
+        callable: updateAll,
+    };
+    const processBuy = ({name, price}) => {
+        openModal({
+            ...transaction,
+            operation: 'buy',
+            name, price,
+        })
+    }
+    const processSell = ({name, price}) => {
+        openModal({
+            ...transaction,
+            operation: 'sell',
+            name, price,
+        })
+    }
+
     useEffect(updateAll, [])
 
     return (
@@ -44,8 +63,8 @@ const MatchPoints = () => {
                                 <td>{footballers[key].total_score}</td>
                                 <td>{footballers[key].previous_score}</td>
                                 <td>{footballers[key].current_score}</td>
-                                <td className="text-end"><button className="btn btn-success" onClick={() => openModal({ operation: 'buy', name: key, price: footballers[key].buy_price, closeModal: openModal })}>BUY {footballers[key].buy_price.toFixed(2)}</button></td>
-                                <td className="text-end"><button className="btn btn-primary" onClick={() => openModal({ operation: 'sell', name: key, price: footballers[key].sell_price, closeModal: openModal })}>SELL {footballers[key].sell_price.toFixed(2)}</button></td>
+                                <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({ name: key, price: footballers[key].buy_price })}>BUY {footballers[key].buy_price.toFixed(2)}</button></td>
+                                <td className="text-end"><button className="btn btn-primary" onClick={() => processSell({ name: key, price: footballers[key].sell_price })}>SELL {footballers[key].sell_price.toFixed(2)}</button></td>
                             </tr>
                         ))}
                     </tbody>

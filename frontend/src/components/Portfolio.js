@@ -27,6 +27,25 @@ const Portfolio = () => {
         });
     }
 
+    const transaction = {
+        closeModal: openModal,
+        callable: updateAll,
+    };
+    const processBuy = ({name, price}) => {
+        openModal({
+            ...transaction,
+            operation: 'buy',
+            name, price,
+        })
+    }
+    const processSell = ({name, price}) => {
+        openModal({
+            ...transaction,
+            operation: 'sell',
+            name, price,
+        })
+    }
+
     useEffect(updateAll, [])
 
     const accumulateTokens = (accumulator, item) => accumulator + item.amount;
@@ -68,8 +87,8 @@ const Portfolio = () => {
                                 <td>{(item.buy_price * item.amount).toFixed(2)}</td>
                                 <td>{(item.sell_price * item.amount).toFixed(2)}</td>
                                 <td>{((item.buy_price * item.amount).toFixed(2) - (item.sell_price * item.amount).toFixed(2)).toFixed(2)}</td>
-                                <td className="text-end"><button className="btn btn-success" onClick={() => openModal({operation: 'buy', name: item.footballer.name, price: item.buy_price, closeModal: openModal})}>BUY {item.buy_price}</button></td>
-                                <td className="text-end"><button className="btn btn-primary" onClick={() => openModal({operation: 'sell', name: item.footballer.name, price: item.sell_price, closeModal: openModal})}>SELL {item.sell_price}</button></td>
+                                <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({ name: item.footballer.name, price: item.buy_price })}>BUY {item.buy_price}</button></td>
+                                <td className="text-end"><button className="btn btn-primary" onClick={() => processSell({ name: item.footballer.name, price: item.sell_price })}>SELL {item.sell_price}</button></td>
                             </tr>
                         ))}
                         <tr>
