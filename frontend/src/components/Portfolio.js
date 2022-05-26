@@ -4,6 +4,7 @@ import { PORTFOLIO_URL, TOP_OF_WEEK_URL } from '../constants';
 import { AuthContext } from '../context/AuthContext';
 import GameWeeks from './GameWeeks';
 import TopWeek from "./TopWeek";
+import BuySellModal from "./BuySellModal";
 
 
 const Portfolio = () => {
@@ -11,6 +12,7 @@ const Portfolio = () => {
     const [footballers, setFootballers] = useState([]);
     const [reward, setTopWeekReward] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
+    const [modalData, openModal] = useState([]);
 
     const updateAll = () => {
         apiInstance.get(PORTFOLIO_URL()).then((response) => setFootballers(response.data));
@@ -35,6 +37,7 @@ const Portfolio = () => {
 
     return (
         <div className="row mt-4">
+            {modalData?.operation && <BuySellModal {...modalData} />}
             <div className="col-12 col-lg-9">
                 <table className="table table-sm text-white">
                     <thead>
@@ -65,8 +68,8 @@ const Portfolio = () => {
                                 <td>{(item.buy_price * item.amount).toFixed(2)}</td>
                                 <td>{(item.sell_price * item.amount).toFixed(2)}</td>
                                 <td>{((item.buy_price * item.amount).toFixed(2) - (item.sell_price * item.amount).toFixed(2)).toFixed(2)}</td>
-                                <td className="text-end"><button className="btn btn-success">BUY {item.buy_price}</button></td>
-                                <td className="text-end"><button className="btn btn-primary">SELL {item.sell_price}</button></td>
+                                <td className="text-end"><button className="btn btn-success" onClick={() => openModal({operation: 'buy', name: item.footballer.name, price: item.buy_price, closeModal: openModal})}>BUY {item.buy_price}</button></td>
+                                <td className="text-end"><button className="btn btn-primary" onClick={() => openModal({operation: 'sell', name: item.footballer.name, price: item.sell_price, closeModal: openModal})}>SELL {item.sell_price}</button></td>
                             </tr>
                         ))}
                         <tr>

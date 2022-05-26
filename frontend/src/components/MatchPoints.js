@@ -4,12 +4,14 @@ import { MATCH_POINTS_URL, TOP_OF_WEEK_URL } from '../constants';
 import { AuthContext } from '../context/AuthContext';
 import GameWeeks from './GameWeeks';
 import TopWeek from "./TopWeek";
+import BuySellModal from "./BuySellModal";
 
 
 const MatchPoints = () => {
     const { apiInstance } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
+    const [modalData, openModal] = useState([]);
 
     const updateAll = () => {
         apiInstance.get(MATCH_POINTS_URL()).then((response) => setFootballers(response.data));
@@ -20,6 +22,7 @@ const MatchPoints = () => {
 
     return (
         <div className="row mt-4">
+            {modalData?.operation && <BuySellModal {...modalData} />}
             <div className="col-12 col-lg-9">
                 <table className="table table-sm text-white">
                     <thead>
@@ -41,8 +44,8 @@ const MatchPoints = () => {
                                 <td>{footballers[key].total_score}</td>
                                 <td>{footballers[key].previous_score}</td>
                                 <td>{footballers[key].current_score}</td>
-                                <td className="text-end"><button className="btn btn-success">BUY {footballers[key].buy_price.toFixed(2)}</button></td>
-                                <td className="text-end"><button className="btn btn-primary">SELL {footballers[key].sell_price.toFixed(2)}</button></td>
+                                <td className="text-end"><button className="btn btn-success" onClick={() => openModal({ operation: 'buy', name: key, price: footballers[key].buy_price, closeModal: openModal })}>BUY {footballers[key].buy_price.toFixed(2)}</button></td>
+                                <td className="text-end"><button className="btn btn-primary" onClick={() => openModal({ operation: 'buy', name: key, price: footballers[key].sell_price, closeModal: openModal })}>SELL {footballers[key].sell_price.toFixed(2)}</button></td>
                             </tr>
                         ))}
                     </tbody>
