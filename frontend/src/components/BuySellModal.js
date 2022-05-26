@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import { AuthContext } from '../context/AuthContext';
 import { BUY_TOKENS_URL, SELL_TOKENS_URL } from '../constants';
 import { buySellValidation } from '../validators';
+import { searchUserFootballer } from '../helpers/searchUserFootballer';
 
 
 const BuySellModal = ({operation, name, price, closeModal}) => {
@@ -17,8 +18,14 @@ const BuySellModal = ({operation, name, price, closeModal}) => {
             apiInstance.post(url, values).then(closeModal)
         }
     });
-
     const title = operation.charAt(0).toUpperCase() + operation.slice(1);
+    const userFootballerTokens = searchUserFootballer(user.footballers, name);
+    
+    const notEnoughtTokens = operation === 'sell' && userFootballerTokens < formik.values.tokens ;
+    const notEnoughtBallance = operation === 'buy' &&  user?.balance < formik.values.tokens * price;
+    const formikErrors = Object.keys(formik.errors).length;
+
+    const purchaseButtonDisabled = notEnoughtTokens || notEnoughtBallance || formikErrors;
 
     return (
         <div className="transaction-background">
@@ -32,8 +39,15 @@ const BuySellModal = ({operation, name, price, closeModal}) => {
                         
                         <div className="col-6 my-2">Current price:</div>
                         <div className="col-6 my-2">{price.toFixed(2)} $HIX / token</div>
+
+                        {operation === 'sell' && (
+                            <>
+                                <div className="col-6 my-2">Your tokens:</div>
+                                <div className="col-6 my-2">{userFootballerTokens} token</div>
+                            </>
+                        )}
                         
-                        <div className="col-6 my-2">Tokens to purchase:</div>
+                        <div className="col-6 my-2">Tokens to {operation === 'buy' ? 'purchase:' : 'sell:'}</div>
                         <div className="col-6 my-2">
                             <input
                                 type="number"
@@ -43,15 +57,16 @@ const BuySellModal = ({operation, name, price, closeModal}) => {
                                 value={formik.values.tokens}
                                 placeholder="Amount of tokens"
                             />
-                            { user?.balance < formik.values.tokens * price && <small className="text-warning">Not enought money</small>}
-                            {  formik.errors && <small className="text-warning">{formik.errors.tokens}</small>}
+                            { notEnoughtBallance&& <small className="text-warning">Not enought money</small>}
+                            { notEnoughtTokens &&  <small className="text-warning">{userFootballerTokens === 0 ? 'You have nothing to sell' : 'Incorrect amount of tokens'}</small>}
+                            {  !!formikErrors && <small className="text-warning">{formik.errors.tokens}</small>}
                         </div>
 
                         <div className="col-6 my-2">Total cost:</div>
                         <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} $HIX</div>
 
                         <div className="col-12 d-flex justify-content-center my-2">
-                            <button type="submit" className={`btn btn-success mx-2 ${ user?.balance < formik.values.tokens * price || formik.errors.tokens ? 'disabled' : '' }`}>Confirm</button>
+                            <button type="submit" className={`btn btn-success mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`}>Confirm</button>
                             <button type="button" className="btn btn-danger mx-2" onClick={closeModal}>Cancel</button>
                         </div>
                     </div>
