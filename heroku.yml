@@ -1,7 +1,7 @@
 build:
   docker:
-    web: ./backend/Dockerfile
-    ui: ./frontend/Dockerfile
+    backend: ./backend/Dockerfile
+    web: ./frontend/Dockerfile
 run:
-  web: ./backend/entrpoint.sh
-  ui: ./frontend/entrypoint.sg
+  backend: ./backend/entrpoint.sh
+  web: ./frontend/entrypoint.sh
