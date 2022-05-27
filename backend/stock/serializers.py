@@ -62,10 +62,9 @@ class TopWeekSerializer(ModelSerializer):
 
 class PortfolioSerializer(ModelSerializer):
     footballer = FootballerSerializer()
-    start_price = DecimalField(max_digits=10, decimal_places=2)
     buy_price = DecimalField(max_digits=10, decimal_places=2)
     sell_price = DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         model = UserFootballer
-        fields = ('footballer', 'amount', 'buy_price', 'sell_price', 'start_price',)
+        fields = ('footballer', 'amount', 'buy_price', 'sell_price', 'trade_price',)

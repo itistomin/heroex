@@ -52,7 +52,6 @@ class UserTokenView(APIView):
     def get(self, request):
         user = request.user
         footballers = FootballerWeeksData.objects.filter(week=user.week or GameWeek.objects.get(number=0))
-        week_zero_footballers = FootballerWeeksData.objects.filter(week=GameWeek.objects.get(number=0))
         portfolio = (
             UserFootballer.objects.filter(amount__gt=0)
             .filter(user=user)
@@ -62,10 +61,6 @@ class UserTokenView(APIView):
                 )
             )
             .annotate(sell_price=F('buy_price') * decimal.Decimal(0.95))
-            .annotate(start_price=Subquery(
-                week_zero_footballers.filter(footballer__id=OuterRef('footballer__id')).values('hix')
-                )
-            )
         )
 
         return Response(PortfolioSerializer(portfolio, many=True).data, 200)
@@ -95,11 +90,15 @@ class UserTokenBuyView(APIView):
         if footballer.buy_price * data['tokens'] > user.balance or data['tokens'] < 1:
             return Response({'detail': 'Not enough balance'}, 422)
         
-        user_footballer, _ = UserFootballer.objects.get_or_create(
+        user_footballer, created = UserFootballer.objects.get_or_create(
             footballer=footballer.footballer, 
             user=user
         )
         user_footballer.amount += data['tokens']
+        user_footballer.trade_price += footballer.buy_price
+        if not created:
+            user_footballer.trade_price /= 2
+
         user.balance -= data['tokens'] * footballer.buy_price
 
         with transaction.atomic():

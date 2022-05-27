@@ -34,6 +34,7 @@ class UserFootballer(Model):
     user = ForeignKey(to=User, on_delete=CASCADE)
     footballer = ForeignKey(to=Footballer, on_delete=CASCADE)
     amount = PositiveIntegerField(null=True, default=0)
+    trade_price = DecimalField(max_digits=10, decimal_places=2, null=True, default=0)
 
     class Meta:
         unique_together = ('user', 'footballer',)

@@ -82,7 +82,7 @@ const Portfolio = () => {
                                 <td>{item.footballer.name}</td>
                                 <td>{item.amount}</td>
                                 <td>{item.amount * (reward[item.footballer.name] || 0)}</td>
-                                <td>{item.start_price}</td>
+                                <td>{item.trade_price}</td>
                                 <td>{item.buy_price}</td>
                                 <td>{(item.buy_price * item.amount).toFixed(2)}</td>
                                 <td>{(item.sell_price * item.amount).toFixed(2)}</td>
