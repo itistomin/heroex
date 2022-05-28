@@ -16,11 +16,13 @@ WORKDIR /app/frontend
 
 COPY ./frontend/package.json ./frontend/package-lock.json /app/frontend/
 RUN npm i
-RUN npm run build
 
 # Add the rest of the code
 COPY . /app/
 COPY ./backend/entrypoint-prod.sh /app/entrypoint-prod.sh
+
+WORKDIR /app/frontend
+RUN npm run build
 
 WORKDIR /app/backend
 
