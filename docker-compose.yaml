@@ -1,24 +1,11 @@
 version: '3.7'
 
 services:
-  ui:
-    container_name: heroex-ui
-    build: ./frontend
-    volumes:
-      - ./frontend/:/app/
-    depends_on:
-      - web
-    env_file:
-      - .env
-    ports:
-      - 3000:3000
-
-
-  web:
-    container_name: heroex-web
-    build: ./backend
-    volumes:
-      - ./backend/:/app/
+  backend:
+    container_name: backend
+    build: 
+      dockerfile: ./Dockerfile.dev
+      context: .
     depends_on:
       - db
     env_file:

@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
   const apiInstance = axios.create({
     baseURL: 'http://localhost:3000',
-    proxy: 'http://heroex-web:8000/api',  
+    proxy: 'http://backend:8000/api',  
     headers: {
       'Authorization':  `Bearer ${accessToken}`,
       'Content-Type': 'multipart/form-data'
