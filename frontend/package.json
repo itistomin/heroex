@@ -17,7 +17,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "HOST=0.0.0.0 PORT=3000 react-scripts start",
+    "start": "HOST=0.0.0.0 PORT=$PORT react-scripts start",
     "build": "react-scripts build"
   },
   "eslintConfig": {

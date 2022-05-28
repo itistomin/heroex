@@ -28,7 +28,7 @@ services:
     env_file:
       - .env
     ports:
-      - $PORT:$PORT
+      - 8000:8000
 
   db:
     image: postgres
