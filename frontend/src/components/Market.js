@@ -63,8 +63,8 @@ const Market = () => {
                                 <td>{item.footballer.team.name}</td>
                                 <td>{item.footballer.position.name.toUpperCase()}</td>
                                 <td className={item.footballer.price_dynamic > 0 ? 'text-warning' : 'text-danger'}>{item.footballer.price_dynamic}</td>
-                                <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({name: item.footballer.name, price: item.buy_price})}>BUY {item.buy_price.toFixed(2)}</button></td>
                                 <td className="text-end"><button className="btn btn-primary" onClick={() => processSell({name: item.footballer.name, price: item.sell_price})}>SELL {item.sell_price.toFixed(2)}</button></td>
+                                <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({name: item.footballer.name, price: item.buy_price})}>BUY {item.buy_price.toFixed(2)}</button></td>
                             </tr>
                         ))}
                     </tbody>

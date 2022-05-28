@@ -64,7 +64,9 @@ class PortfolioSerializer(ModelSerializer):
     footballer = FootballerSerializer()
     buy_price = DecimalField(max_digits=10, decimal_places=2)
     sell_price = DecimalField(max_digits=10, decimal_places=2)
+    pnl = DecimalField(max_digits=10, decimal_places=2)
+    value = DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         model = UserFootballer
-        fields = ('footballer', 'amount', 'buy_price', 'sell_price', 'trade_price',)
+        fields = ('footballer', 'amount', 'reward', 'buy_price', 'sell_price',  'cost', 'value', 'pnl', 'trade_price',)

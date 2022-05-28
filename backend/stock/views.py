@@ -61,6 +61,7 @@ class UserTokenView(APIView):
                 )
             )
             .annotate(sell_price=F('buy_price') * decimal.Decimal(0.95))
+            .annotate(value=F('buy_price') * F('amount'))
         )
 
         return Response(PortfolioSerializer(portfolio, many=True).data, 200)

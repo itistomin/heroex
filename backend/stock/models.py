@@ -30,16 +30,6 @@ class FootballerPosition(Model):
         return self.name
 
 
-class Footballer(Model):
-    name = CharField(max_length=100)
-    team = ForeignKey(to=FootballerTeam, on_delete=SET_NULL, null=True)
-    position = ForeignKey(to=FootballerPosition, on_delete=SET_NULL, null=True)
-    price_dynamic = DecimalField(max_digits=10, decimal_places=2, null=True)
-
-    def __str__(self):
-        return self.name
-
-
 class FootballerWeeksData(Model):
     week = ForeignKey(to='GameWeek', on_delete=CASCADE)
     footballer = ForeignKey(to='Footballer', on_delete=CASCADE)
@@ -53,3 +43,20 @@ class FootballerWeeksData(Model):
     @property
     def sell_price(self):
         return float('%.2f' % (float(self.hix) * 0.95))
+
+
+class Footballer(Model):
+    name = CharField(max_length=100)
+    team = ForeignKey(to=FootballerTeam, on_delete=SET_NULL, null=True)
+    position = ForeignKey(to=FootballerPosition, on_delete=SET_NULL, null=True)
+    price_dynamic = DecimalField(max_digits=10, decimal_places=2, null=True)
+
+    def reward_index(self, week):
+        top_three = FootballerWeeksData.objects.filter(week=week).order_by('-perfomance')[:3]
+        for index, footballer_data in enumerate(top_three):
+            if footballer_data.footballer == self:
+                return 0.5 - (index % 10)
+        return 0
+
+    def __str__(self):
+        return self.name

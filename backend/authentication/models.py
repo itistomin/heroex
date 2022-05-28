@@ -12,7 +12,7 @@ from django.db.models import (
     SET_NULL
 )
 
-from stock.models import Footballer, GameWeek
+from stock.models import Footballer, GameWeek, FootballerWeeksData
 
 
 class User(AbstractUser):
@@ -38,6 +38,18 @@ class UserFootballer(Model):
 
     class Meta:
         unique_together = ('user', 'footballer',)
+
+    @property
+    def reward(self):
+        return self.footballer.reward_index(self.user.week) * self.amount
+
+    @property
+    def pnl(self):
+        return self.value - self.cost
+
+    @property
+    def cost(self):
+        return self.trade_price * self.amount
 
     def __str__(self):
         return f'{self.user} {self.footballer} {self.amount}'

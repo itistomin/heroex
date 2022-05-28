@@ -53,7 +53,6 @@ const Portfolio = () => {
     const accumulateCost = (accumulator, item) => accumulator + item.buy_price * item.amount;
     const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
     const accumulatePNL = (accumulator, item) => accumulator + item.buy_price * item.amount - item.sell_price * item.amount;
-
     return (
         <div className="row mt-4">
             {modalData?.operation && <BuySellModal {...modalData} />}
@@ -62,16 +61,20 @@ const Portfolio = () => {
                     <thead>
                         <tr>
                             <th scope="col">Rank</th>
+                            <th scope="col">Thai Fighter</th>
+
                             <th scope="col">Name</th>
                             <th scope="col">Tokens</th>
                             <th scope="col">Rewards</th>
+
                             <th scope="col">Trade price</th>
-                            <th scope="col">Start price</th>
+                            <th scope="col">Current price</th>
+                            
                             <th scope="col">Cost</th>
                             <th scope="col">Value</th>
-                            <th scope="col">PnL</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
+                            <th scope="col">P/L</th>
+                            
+                            <th scope="col" colSpan={2}>Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,21 +82,24 @@ const Portfolio = () => {
                         {footballers.map((item, index) => (
                             <tr className="table-row" key={`${index}-row`}>
                                 <td>{index + 1}</td>
+                                <td>?</td>
+
                                 <td>{item.footballer.name}</td>
                                 <td>{item.amount}</td>
-                                <td>{item.amount * (reward[item.footballer.name] || 0)}</td>
+                                <td>{item.reward}</td>
+
                                 <td>{item.trade_price}</td>
                                 <td>{item.buy_price}</td>
-                                <td>{(item.buy_price * item.amount).toFixed(2)}</td>
-                                <td>{(item.sell_price * item.amount).toFixed(2)}</td>
-                                <td>{((item.buy_price * item.amount).toFixed(2) - (item.sell_price * item.amount).toFixed(2)).toFixed(2)}</td>
-                                <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({ name: item.footballer.name, price: item.buy_price })}>BUY {item.buy_price}</button></td>
+
+                                <td>{item.cost}</td>
+                                <td>{item.value}</td>
+                                <td>{item.pnl}</td>
                                 <td className="text-end"><button className="btn btn-primary" onClick={() => processSell({ name: item.footballer.name, price: item.sell_price })}>SELL {item.sell_price}</button></td>
+                                <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({ name: item.footballer.name, price: item.buy_price })}>BUY {item.buy_price}</button></td>
                             </tr>
                         ))}
                         <tr>
-                            <td></td>
-                            <td>TOTAL</td>
+                            <td colSpan={3}>TOTAL</td>
                             <td>{footballers.reduce(accumulateTokens, 0)}</td>
                             <td>{footballers.reduce(accumulateReward, 0)} $HIX</td>
                             <td colSpan={2}></td>
