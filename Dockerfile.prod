@@ -1,0 +1,33 @@
+FROM python:3.7
+
+# Install curl, node, & yarn
+RUN apt-get install -y curl \
+    && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && apt-get install -y nodejs \
+    && curl -o- -L https://yarnpkg.com/install.sh | bash
+
+WORKDIR /app/backend
+
+# Install Python dependencies
+RUN pip install poetry
+
+# Install JS dependencies
+WORKDIR /app/frontend
+
+COPY ./frontend/package.json ./frontend/package-lock.json /app/frontend/
+RUN npm i
+RUN npm build
+
+# Add the rest of the code
+COPY . /app/
+COPY ./backend/entrypoint-prod.sh /app/entrypoint-prod.sh
+
+WORKDIR /app
+
+RUN DJANGO_SETTINGS_MODULE=backend.settings.prod \
+    poetry run python backend/manage.py collectstatic --noinput
+
+EXPOSE $PORT
+
+RUN ["chmod", "+x", "/app/entrypoint-prod.sh"]
+ENTRYPOINT ["/app/entrypoint-prod.sh"]
