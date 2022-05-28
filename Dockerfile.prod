@@ -23,8 +23,20 @@ COPY ./backend/entrypoint-prod.sh /app/entrypoint-prod.sh
 WORKDIR /app/frontend
 RUN npm run build
 
+# Have to move all static files other than index.html to root/
+# for whitenoise middleware
+WORKDIR /app/frontend/build
+
+RUN mkdir root && mv *.ico *.js *.json root
+
+# Collect static files
+RUN mkdir /app/backend/staticfiles
+
+
 WORKDIR /app/backend
 RUN poetry install
+
+
 
 RUN DJANGO_SETTINGS_MODULE=server.prod_settings \
     poetry run python manage.py collectstatic --noinput
