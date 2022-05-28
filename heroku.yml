@@ -1,5 +1,3 @@
 build:
   docker:
     web: Dockerfile.prod
-run:
-  web: poetry run python backend/manage.py runserver 0.0.0.0:$PORT
