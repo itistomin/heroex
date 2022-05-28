@@ -2,8 +2,10 @@ version: '3.7'
 
 services:
   ui:
-    container_name: heroex-ui
-    build: ./frontend
+    container_name: ui
+    build:
+      dockerfile: Dockerfile.ui
+      context: ./frontend/
     volumes:
       - ./frontend/:/app/
     depends_on:
@@ -15,8 +17,10 @@ services:
 
 
   web:
-    container_name: heroex-web
-    build: ./backend
+    container_name: web
+    build: 
+      dockerfile: Dockerfile.web
+      context: ./backend/
     volumes:
       - ./backend/:/app/
     depends_on:

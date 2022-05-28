@@ -1,7 +1,0 @@
-build:
-  docker:
-    backend: ./backend/Dockerfile
-    web: ./frontend/Dockerfile
-run:
-  backend: ./backend/entrpoint.sh
-  web: ./frontend/entrypoint.sh
