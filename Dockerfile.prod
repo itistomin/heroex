@@ -26,7 +26,7 @@ RUN npm run build
 WORKDIR /app/backend
 RUN poetry install
 
-RUN DJANGO_SETTINGS_MODULE=server.prod_settings.py \
+RUN DJANGO_SETTINGS_MODULE=server.prod_settings \
     poetry run python manage.py collectstatic --noinput
 
 EXPOSE $PORT
