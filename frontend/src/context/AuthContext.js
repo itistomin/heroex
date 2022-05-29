@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(Boolean(accessToken));
 
   const apiInstance = axios.create({
-    baseURL: 'http://0.0.0.0:8000',
     proxy: '/api',
     headers: {
       'Authorization':  `Bearer ${accessToken}`,
