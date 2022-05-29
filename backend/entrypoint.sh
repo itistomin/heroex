@@ -2,6 +2,10 @@
 
 echo ""
 echo "Apply migrations"
+poetry install
+
+echo ""
+echo "Apply migrations"
 poetry run python manage.py migrate
 
 echo ""
