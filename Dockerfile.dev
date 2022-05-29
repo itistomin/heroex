@@ -11,11 +11,12 @@ COPY ./frontend ./frontend
 
 WORKDIR /app/frontend/
 RUN npm i
-RUN BUILD_PATH='../server/templates' npm run build
+RUN npm run build
 WORKDIR /app/
+RUN cp ./frontend/dist/main.js ./authentication/static/js
+
 RUN pip install poetry 
-RUN poetry export -o requirements.txt
-RUN pip install -r requirements.txt
+RUN poetry install
 
 RUN mkdir staticfiles
 

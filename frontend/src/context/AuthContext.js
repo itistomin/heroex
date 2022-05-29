@@ -18,8 +18,8 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(Boolean(accessToken));
 
   const apiInstance = axios.create({
-    baseURL: 'http://localhost:3000',
-    proxy: 'http://backend:8000/api',  
+    baseURL: 'http://0.0.0.0:8000',
+    proxy: '/api',
     headers: {
       'Authorization':  `Bearer ${accessToken}`,
       'Content-Type': 'multipart/form-data'
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
     saveRefresh(refresh);
   }
 
-  const login = (data) => axios.post(ACCESS_TOKEN_URL(), data).then(updateTokens);
+  const login = (data) => apiInstance.post(ACCESS_TOKEN_URL(), data).then(updateTokens);
 
   const logout = () => {
     window.localStorage.setItem(TOKEN_NAME, null);
