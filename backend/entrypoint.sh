@@ -1,10 +1,6 @@
 #!/bin/bash
 
 echo ""
-echo "Dependencies install"
-poetry install
-
-echo ""
 echo "Apply migrations"
 poetry run python manage.py migrate
 

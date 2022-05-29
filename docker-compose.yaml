@@ -1,28 +1,11 @@
 version: '3.7'
 
 services:
-  ui:
-    container_name: ui
-    build:
-      dockerfile: Dockerfile.ui
-      context: ./frontend/
-    volumes:
-      - ./frontend/:/app/
-    depends_on:
-      - web
-    env_file:
-      - .env
-    ports:
-      - 3000:3000
-
-
-  web:
-    container_name: web
+  backend:
+    container_name: backend
     build: 
-      dockerfile: Dockerfile.web
-      context: ./backend/
-    volumes:
-      - ./backend/:/app/
+      dockerfile: ./Dockerfile.dev
+      context: .
     depends_on:
       - db
     env_file:
