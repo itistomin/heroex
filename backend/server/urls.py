@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 
@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', include(docs_urlpatterns)),
     path('api/', include(api_urlpatterns)),
-    path('', TemplateView.as_view(template_name='index.html'))
+    re_path('*', TemplateView.as_view(template_name='index.html')),
 ]
