@@ -50,9 +50,9 @@ const Portfolio = () => {
 
     const accumulateTokens = (accumulator, item) => accumulator + item.amount;
     const accumulateReward = (accumulator, item) => accumulator + item.amount * (reward[item.name] || 0);
-    const accumulateCost = (accumulator, item) => accumulator + item.buy_price * item.amount;
+    const accumulateCost = (accumulator, item) => accumulator + item.cost;
     const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
-    const accumulatePNL = (accumulator, item) => accumulator + item.buy_price * item.amount - item.sell_price * item.amount;
+    const accumulatePNL = (accumulator, item) => accumulator + item.pnl;
     
     return (
         <div className="row mt-4">

@@ -48,7 +48,10 @@ class UserTokenView(APIView):
 
     def get(self, request):
         user = request.user
-        footballers = FootballerWeeksData.objects.filter(week=user.week or GameWeek.objects.get(number=0))
+
+        week = week=user.week or GameWeek.objects.get(number=0)
+        footballers = FootballerWeeksData.objects.filter(week=week)
+        data = list(FootballerWeeksData.objects.filter(week=week).order_by('-perfomance').values_list('footballer', flat=True)[:3])
 
         portfolio = []
         trade_data = UserTradeLog.objects.filter(user=user)
@@ -66,13 +69,15 @@ class UserTokenView(APIView):
             portfolio.append({
                 'name': footballer_data.footballer.name,
                 'amount': footballer_data.amount,
+                'reward': (5 - data.index(footballer_data.footballer.id)) / 10 if footballer_data.footballer.id in data else 0,
                 'trade_price': average_buy_price,
-                'cost': average_buy_price * average_amount,
+                'cost': average_amount * average_buy_price,
                 'value': average_amount * footballer_price.sell_price,
                 'buy_price': footballer_price.buy_price,
                 'sell_price': footballer_price.sell_price,
                 'pnl': float(average_buy_price * average_amount) - average_amount * float(footballer_price.sell_price),
             })
+
         return Response(portfolio, 200)
 
 
