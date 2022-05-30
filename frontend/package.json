@@ -17,7 +17,8 @@
   },
   "scripts": {
     "start": "HOST=0.0.0.0 PORT=$PORT react-scripts start",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "eslintConfig": {
     "extends": [

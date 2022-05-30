@@ -1,0 +1,2142 @@
+[
+    {
+        "model": "stock.gameweek",
+        "pk": 1,
+        "fields": {
+            "number": 1
+        }
+    },
+    {
+        "model": "stock.gameweek",
+        "pk": 2,
+        "fields": {
+            "number": 2
+        }
+    },
+    {
+        "model": "stock.gameweek",
+        "pk": 3,
+        "fields": {
+            "number": 3
+        }
+    },
+    {
+        "model": "stock.gameweek",
+        "pk": 4,
+        "fields": {
+            "number": 4
+        }
+    },
+    {
+        "model": "stock.gameweek",
+        "pk": 5,
+        "fields": {
+            "number": 5
+        }
+    },
+    {
+        "model": "stock.gameweek",
+        "pk": 6,
+        "fields": {
+            "number": 6
+        }
+    },
+    {
+        "model": "stock.gameweek",
+        "pk": 7,
+        "fields": {
+            "number": 7
+        }
+    },
+    {
+        "model": "stock.gameweek",
+        "pk": 8,
+        "fields": {
+            "number": 8
+        }
+    },
+    {
+        "model": "stock.gameweek",
+        "pk": 9,
+        "fields": {
+            "number": 0
+        }
+    },
+    {
+        "model": "stock.footballerteam",
+        "pk": 1,
+        "fields": {
+            "name": "Paris St Germain"
+        }
+    },
+    {
+        "model": "stock.footballerteam",
+        "pk": 2,
+        "fields": {
+            "name": "Manchester United"
+        }
+    },
+    {
+        "model": "stock.footballerteam",
+        "pk": 3,
+        "fields": {
+            "name": "Manchester City"
+        }
+    },
+    {
+        "model": "stock.footballerteam",
+        "pk": 4,
+        "fields": {
+            "name": "Tottenham Hotspur"
+        }
+    },
+    {
+        "model": "stock.footballerteam",
+        "pk": 5,
+        "fields": {
+            "name": "Borussia Dortmund"
+        }
+    },
+    {
+        "model": "stock.footballerteam",
+        "pk": 6,
+        "fields": {
+            "name": "Bayern Munich"
+        }
+    },
+    {
+        "model": "stock.footballerteam",
+        "pk": 7,
+        "fields": {
+            "name": "Liverpool FC"
+        }
+    },
+    {
+        "model": "stock.footballerteam",
+        "pk": 8,
+        "fields": {
+            "name": "Chelsea FC"
+        }
+    },
+    {
+        "model": "stock.footballerposition",
+        "pk": 1,
+        "fields": {
+            "name": "fwd"
+        }
+    },
+    {
+        "model": "stock.footballerposition",
+        "pk": 2,
+        "fields": {
+            "name": "mid"
+        }
+    },
+    {
+        "model": "stock.footballerposition",
+        "pk": 3,
+        "fields": {
+            "name": "def"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 3,
+        "fields": {
+            "week": 1,
+            "footballer": 1,
+            "perfomance": 2253,
+            "hix": "25.96"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 4,
+        "fields": {
+            "week": 2,
+            "footballer": 1,
+            "perfomance": 3300,
+            "hix": "29.33"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 5,
+        "fields": {
+            "week": 3,
+            "footballer": 1,
+            "perfomance": 2748,
+            "hix": "26.98"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 6,
+        "fields": {
+            "week": 4,
+            "footballer": 1,
+            "perfomance": 2790,
+            "hix": "30.49"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 7,
+        "fields": {
+            "week": 5,
+            "footballer": 1,
+            "perfomance": 2277,
+            "hix": "28.05"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 8,
+        "fields": {
+            "week": 6,
+            "footballer": 1,
+            "perfomance": 2153,
+            "hix": "26.37"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 9,
+        "fields": {
+            "week": 7,
+            "footballer": 1,
+            "perfomance": 4327,
+            "hix": "28.48"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 10,
+        "fields": {
+            "week": 8,
+            "footballer": 1,
+            "perfomance": 4416,
+            "hix": "31.04"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 11,
+        "fields": {
+            "week": 1,
+            "footballer": 2,
+            "perfomance": 3976,
+            "hix": "24.92"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 12,
+        "fields": {
+            "week": 2,
+            "footballer": 2,
+            "perfomance": 3154,
+            "hix": "23.93"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 13,
+        "fields": {
+            "week": 3,
+            "footballer": 2,
+            "perfomance": 2876,
+            "hix": "22.01"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 14,
+        "fields": {
+            "week": 4,
+            "footballer": 2,
+            "perfomance": 2670,
+            "hix": "19.59"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 15,
+        "fields": {
+            "week": 5,
+            "footballer": 2,
+            "perfomance": 3526,
+            "hix": "22.33"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 16,
+        "fields": {
+            "week": 6,
+            "footballer": 2,
+            "perfomance": 2838,
+            "hix": "20.99"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 17,
+        "fields": {
+            "week": 7,
+            "footballer": 2,
+            "perfomance": 3172,
+            "hix": "22.67"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 18,
+        "fields": {
+            "week": 8,
+            "footballer": 2,
+            "perfomance": 3499,
+            "hix": "24.71"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 19,
+        "fields": {
+            "week": 1,
+            "footballer": 3,
+            "perfomance": 3289,
+            "hix": "24.14"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 20,
+        "fields": {
+            "week": 2,
+            "footballer": 3,
+            "perfomance": 2511,
+            "hix": "23.18"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 21,
+        "fields": {
+            "week": 3,
+            "footballer": 3,
+            "perfomance": 1701,
+            "hix": "21.32"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 22,
+        "fields": {
+            "week": 4,
+            "footballer": 3,
+            "perfomance": 1164,
+            "hix": "18.98"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 23,
+        "fields": {
+            "week": 5,
+            "footballer": 3,
+            "perfomance": 4897,
+            "hix": "21.64"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 24,
+        "fields": {
+            "week": 6,
+            "footballer": 3,
+            "perfomance": 3310,
+            "hix": "20.34"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 25,
+        "fields": {
+            "week": 7,
+            "footballer": 3,
+            "perfomance": 3014,
+            "hix": "19.52"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 26,
+        "fields": {
+            "week": 8,
+            "footballer": 3,
+            "perfomance": 2269,
+            "hix": "18.74"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 27,
+        "fields": {
+            "week": 1,
+            "footballer": 4,
+            "perfomance": 2036,
+            "hix": "23.81"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 28,
+        "fields": {
+            "week": 2,
+            "footballer": 4,
+            "perfomance": 2119,
+            "hix": "26.90"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 29,
+        "fields": {
+            "week": 3,
+            "footballer": 4,
+            "perfomance": 4032,
+            "hix": "29.06"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 30,
+        "fields": {
+            "week": 4,
+            "footballer": 4,
+            "perfomance": 4937,
+            "hix": "32.83"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 31,
+        "fields": {
+            "week": 5,
+            "footballer": 4,
+            "perfomance": 1824,
+            "hix": "30.21"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 32,
+        "fields": {
+            "week": 6,
+            "footballer": 4,
+            "perfomance": 2655,
+            "hix": "32.62"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 33,
+        "fields": {
+            "week": 7,
+            "footballer": 4,
+            "perfomance": 1449,
+            "hix": "31.32"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 34,
+        "fields": {
+            "week": 8,
+            "footballer": 4,
+            "perfomance": 3718,
+            "hix": "34.14"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 35,
+        "fields": {
+            "week": 1,
+            "footballer": 5,
+            "perfomance": 2286,
+            "hix": "18.61"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 36,
+        "fields": {
+            "week": 2,
+            "footballer": 5,
+            "perfomance": 2922,
+            "hix": "21.03"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 37,
+        "fields": {
+            "week": 3,
+            "footballer": 5,
+            "perfomance": 3395,
+            "hix": "22.72"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 38,
+        "fields": {
+            "week": 4,
+            "footballer": 5,
+            "perfomance": 2777,
+            "hix": "20.22"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 39,
+        "fields": {
+            "week": 5,
+            "footballer": 5,
+            "perfomance": 3524,
+            "hix": "23.05"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 40,
+        "fields": {
+            "week": 6,
+            "footballer": 5,
+            "perfomance": 2782,
+            "hix": "21.67"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 41,
+        "fields": {
+            "week": 7,
+            "footballer": 5,
+            "perfomance": 2219,
+            "hix": "20.80"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 42,
+        "fields": {
+            "week": 8,
+            "footballer": 5,
+            "perfomance": 4415,
+            "hix": "22.67"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 43,
+        "fields": {
+            "week": 1,
+            "footballer": 6,
+            "perfomance": 4384,
+            "hix": "22.88"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 44,
+        "fields": {
+            "week": 2,
+            "footballer": 6,
+            "perfomance": 4356,
+            "hix": "21.97"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 45,
+        "fields": {
+            "week": 3,
+            "footballer": 6,
+            "perfomance": 2062,
+            "hix": "20.21"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 46,
+        "fields": {
+            "week": 4,
+            "footballer": 6,
+            "perfomance": 1959,
+            "hix": "17.99"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 47,
+        "fields": {
+            "week": 5,
+            "footballer": 6,
+            "perfomance": 2690,
+            "hix": "20.51"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 48,
+        "fields": {
+            "week": 6,
+            "footballer": 6,
+            "perfomance": 3077,
+            "hix": "22.15"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 49,
+        "fields": {
+            "week": 7,
+            "footballer": 6,
+            "perfomance": 2974,
+            "hix": "21.26"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 50,
+        "fields": {
+            "week": 8,
+            "footballer": 6,
+            "perfomance": 4111,
+            "hix": "23.17"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 51,
+        "fields": {
+            "week": 1,
+            "footballer": 7,
+            "perfomance": 2669,
+            "hix": "18.23"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 52,
+        "fields": {
+            "week": 2,
+            "footballer": 7,
+            "perfomance": 2526,
+            "hix": "17.50"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 53,
+        "fields": {
+            "week": 3,
+            "footballer": 7,
+            "perfomance": 1535,
+            "hix": "16.10"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 54,
+        "fields": {
+            "week": 4,
+            "footballer": 7,
+            "perfomance": 4365,
+            "hix": "18.19"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 55,
+        "fields": {
+            "week": 5,
+            "footballer": 7,
+            "perfomance": 2900,
+            "hix": "16.74"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 56,
+        "fields": {
+            "week": 6,
+            "footballer": 7,
+            "perfomance": 3241,
+            "hix": "18.08"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 57,
+        "fields": {
+            "week": 7,
+            "footballer": 7,
+            "perfomance": 2834,
+            "hix": "17.35"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 58,
+        "fields": {
+            "week": 8,
+            "footballer": 7,
+            "perfomance": 2309,
+            "hix": "16.66"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 59,
+        "fields": {
+            "week": 1,
+            "footballer": 8,
+            "perfomance": 3724,
+            "hix": "22.62"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 60,
+        "fields": {
+            "week": 2,
+            "footballer": 8,
+            "perfomance": 3637,
+            "hix": "21.72"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 61,
+        "fields": {
+            "week": 3,
+            "footballer": 8,
+            "perfomance": 1333,
+            "hix": "19.98"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 62,
+        "fields": {
+            "week": 4,
+            "footballer": 8,
+            "perfomance": 3446,
+            "hix": "22.58"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 63,
+        "fields": {
+            "week": 5,
+            "footballer": 8,
+            "perfomance": 1887,
+            "hix": "20.77"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 64,
+        "fields": {
+            "week": 6,
+            "footballer": 8,
+            "perfomance": 4241,
+            "hix": "22.43"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 65,
+        "fields": {
+            "week": 7,
+            "footballer": 8,
+            "perfomance": 2476,
+            "hix": "21.53"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 66,
+        "fields": {
+            "week": 8,
+            "footballer": 8,
+            "perfomance": 2888,
+            "hix": "23.47"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 67,
+        "fields": {
+            "week": 1,
+            "footballer": 9,
+            "perfomance": 2557,
+            "hix": "21.86"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 68,
+        "fields": {
+            "week": 2,
+            "footballer": 9,
+            "perfomance": 1327,
+            "hix": "20.99"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 69,
+        "fields": {
+            "week": 3,
+            "footballer": 9,
+            "perfomance": 2456,
+            "hix": "22.67"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 70,
+        "fields": {
+            "week": 4,
+            "footballer": 9,
+            "perfomance": 2981,
+            "hix": "25.62"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 71,
+        "fields": {
+            "week": 5,
+            "footballer": 9,
+            "perfomance": 2123,
+            "hix": "23.57"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 72,
+        "fields": {
+            "week": 6,
+            "footballer": 9,
+            "perfomance": 1688,
+            "hix": "22.15"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 73,
+        "fields": {
+            "week": 7,
+            "footballer": 9,
+            "perfomance": 2081,
+            "hix": "23.92"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 74,
+        "fields": {
+            "week": 8,
+            "footballer": 9,
+            "perfomance": 2761,
+            "hix": "26.08"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 75,
+        "fields": {
+            "week": 1,
+            "footballer": 10,
+            "perfomance": 2907,
+            "hix": "21.61"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 76,
+        "fields": {
+            "week": 2,
+            "footballer": 10,
+            "perfomance": 2713,
+            "hix": "20.75"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 77,
+        "fields": {
+            "week": 3,
+            "footballer": 10,
+            "perfomance": 3684,
+            "hix": "22.41"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 78,
+        "fields": {
+            "week": 4,
+            "footballer": 10,
+            "perfomance": 4240,
+            "hix": "25.32"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 79,
+        "fields": {
+            "week": 5,
+            "footballer": 10,
+            "perfomance": 2176,
+            "hix": "23.29"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 80,
+        "fields": {
+            "week": 6,
+            "footballer": 10,
+            "perfomance": 2589,
+            "hix": "25.16"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 81,
+        "fields": {
+            "week": 7,
+            "footballer": 10,
+            "perfomance": 3729,
+            "hix": "27.17"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 82,
+        "fields": {
+            "week": 8,
+            "footballer": 10,
+            "perfomance": 3193,
+            "hix": "26.08"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 83,
+        "fields": {
+            "week": 1,
+            "footballer": 11,
+            "perfomance": 1758,
+            "hix": "17.15"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 84,
+        "fields": {
+            "week": 2,
+            "footballer": 11,
+            "perfomance": 3762,
+            "hix": "19.37"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 85,
+        "fields": {
+            "week": 3,
+            "footballer": 11,
+            "perfomance": 2452,
+            "hix": "17.82"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 86,
+        "fields": {
+            "week": 4,
+            "footballer": 11,
+            "perfomance": 3799,
+            "hix": "20.14"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 87,
+        "fields": {
+            "week": 5,
+            "footballer": 11,
+            "perfomance": 2308,
+            "hix": "18.53"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 88,
+        "fields": {
+            "week": 6,
+            "footballer": 11,
+            "perfomance": 2344,
+            "hix": "20.01"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 89,
+        "fields": {
+            "week": 7,
+            "footballer": 11,
+            "perfomance": 2620,
+            "hix": "21.61"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 90,
+        "fields": {
+            "week": 8,
+            "footballer": 11,
+            "perfomance": 4386,
+            "hix": "23.56"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 91,
+        "fields": {
+            "week": 1,
+            "footballer": 12,
+            "perfomance": 1513,
+            "hix": "17.00"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 92,
+        "fields": {
+            "week": 2,
+            "footballer": 12,
+            "perfomance": 3849,
+            "hix": "19.21"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 93,
+        "fields": {
+            "week": 3,
+            "footballer": 12,
+            "perfomance": 2911,
+            "hix": "17.67"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 94,
+        "fields": {
+            "week": 4,
+            "footballer": 12,
+            "perfomance": 3183,
+            "hix": "19.97"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 95,
+        "fields": {
+            "week": 5,
+            "footballer": 12,
+            "perfomance": 2076,
+            "hix": "18.37"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 96,
+        "fields": {
+            "week": 6,
+            "footballer": 12,
+            "perfomance": 3129,
+            "hix": "19.84"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 97,
+        "fields": {
+            "week": 7,
+            "footballer": 12,
+            "perfomance": 3567,
+            "hix": "21.43"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 98,
+        "fields": {
+            "week": 8,
+            "footballer": 12,
+            "perfomance": 2746,
+            "hix": "20.58"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 99,
+        "fields": {
+            "week": 1,
+            "footballer": 13,
+            "perfomance": 3825,
+            "hix": "21.00"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 100,
+        "fields": {
+            "week": 2,
+            "footballer": 13,
+            "perfomance": 1644,
+            "hix": "20.16"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 101,
+        "fields": {
+            "week": 3,
+            "footballer": 13,
+            "perfomance": 2650,
+            "hix": "21.77"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 102,
+        "fields": {
+            "week": 4,
+            "footballer": 13,
+            "perfomance": 4052,
+            "hix": "24.60"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 103,
+        "fields": {
+            "week": 5,
+            "footballer": 13,
+            "perfomance": 1074,
+            "hix": "22.64"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 104,
+        "fields": {
+            "week": 6,
+            "footballer": 13,
+            "perfomance": 3236,
+            "hix": "24.45"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 105,
+        "fields": {
+            "week": 7,
+            "footballer": 13,
+            "perfomance": 2119,
+            "hix": "23.47"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 106,
+        "fields": {
+            "week": 8,
+            "footballer": 13,
+            "perfomance": 2407,
+            "hix": "25.58"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 107,
+        "fields": {
+            "week": 1,
+            "footballer": 14,
+            "perfomance": 3578,
+            "hix": "20.81"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 108,
+        "fields": {
+            "week": 2,
+            "footballer": 14,
+            "perfomance": 2568,
+            "hix": "19.98"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 109,
+        "fields": {
+            "week": 3,
+            "footballer": 14,
+            "perfomance": 1563,
+            "hix": "18.38"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 110,
+        "fields": {
+            "week": 4,
+            "footballer": 14,
+            "perfomance": 1076,
+            "hix": "16.36"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 111,
+        "fields": {
+            "week": 5,
+            "footballer": 14,
+            "perfomance": 2905,
+            "hix": "18.65"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 112,
+        "fields": {
+            "week": 6,
+            "footballer": 14,
+            "perfomance": 4292,
+            "hix": "20.14"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 113,
+        "fields": {
+            "week": 7,
+            "footballer": 14,
+            "perfomance": 3744,
+            "hix": "19.33"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 114,
+        "fields": {
+            "week": 8,
+            "footballer": 14,
+            "perfomance": 1771,
+            "hix": "18.56"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 115,
+        "fields": {
+            "week": 1,
+            "footballer": 15,
+            "perfomance": 2191,
+            "hix": "20.35"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 116,
+        "fields": {
+            "week": 2,
+            "footballer": 15,
+            "perfomance": 3430,
+            "hix": "23.00"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 117,
+        "fields": {
+            "week": 3,
+            "footballer": 15,
+            "perfomance": 1887,
+            "hix": "21.16"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 118,
+        "fields": {
+            "week": 4,
+            "footballer": 15,
+            "perfomance": 2027,
+            "hix": "23.91"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 119,
+        "fields": {
+            "week": 5,
+            "footballer": 15,
+            "perfomance": 2288,
+            "hix": "27.26"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 120,
+        "fields": {
+            "week": 6,
+            "footballer": 15,
+            "perfomance": 3925,
+            "hix": "29.44"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 121,
+        "fields": {
+            "week": 7,
+            "footballer": 15,
+            "perfomance": 2827,
+            "hix": "28.26"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 122,
+        "fields": {
+            "week": 8,
+            "footballer": 15,
+            "perfomance": 3906,
+            "hix": "30.80"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 123,
+        "fields": {
+            "week": 1,
+            "footballer": 16,
+            "perfomance": 3576,
+            "hix": "16.13"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 124,
+        "fields": {
+            "week": 2,
+            "footballer": 16,
+            "perfomance": 1816,
+            "hix": "15.48"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 125,
+        "fields": {
+            "week": 3,
+            "footballer": 16,
+            "perfomance": 4402,
+            "hix": "16.72"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 126,
+        "fields": {
+            "week": 4,
+            "footballer": 16,
+            "perfomance": 1389,
+            "hix": "14.88"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 127,
+        "fields": {
+            "week": 5,
+            "footballer": 16,
+            "perfomance": 2665,
+            "hix": "16.97"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 128,
+        "fields": {
+            "week": 6,
+            "footballer": 16,
+            "perfomance": 3479,
+            "hix": "18.32"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 129,
+        "fields": {
+            "week": 7,
+            "footballer": 16,
+            "perfomance": 3270,
+            "hix": "17.59"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 130,
+        "fields": {
+            "week": 8,
+            "footballer": 16,
+            "perfomance": 2574,
+            "hix": "16.89"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 131,
+        "fields": {
+            "week": 1,
+            "footballer": 17,
+            "perfomance": 3203,
+            "hix": "20.00"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 132,
+        "fields": {
+            "week": 2,
+            "footballer": 17,
+            "perfomance": 2698,
+            "hix": "19.20"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 133,
+        "fields": {
+            "week": 3,
+            "footballer": 17,
+            "perfomance": 4329,
+            "hix": "20.74"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 134,
+        "fields": {
+            "week": 4,
+            "footballer": 17,
+            "perfomance": 2474,
+            "hix": "18.46"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 135,
+        "fields": {
+            "week": 5,
+            "footballer": 17,
+            "perfomance": 2396,
+            "hix": "16.98"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 136,
+        "fields": {
+            "week": 6,
+            "footballer": 17,
+            "perfomance": 1745,
+            "hix": "15.96"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 137,
+        "fields": {
+            "week": 7,
+            "footballer": 17,
+            "perfomance": 2774,
+            "hix": "17.24"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 138,
+        "fields": {
+            "week": 8,
+            "footballer": 17,
+            "perfomance": 4449,
+            "hix": "18.79"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 139,
+        "fields": {
+            "week": 1,
+            "footballer": 18,
+            "perfomance": 3748,
+            "hix": "19.54"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 140,
+        "fields": {
+            "week": 2,
+            "footballer": 18,
+            "perfomance": 1760,
+            "hix": "18.75"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 141,
+        "fields": {
+            "week": 3,
+            "footballer": 18,
+            "perfomance": 3556,
+            "hix": "20.25"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 142,
+        "fields": {
+            "week": 4,
+            "footballer": 18,
+            "perfomance": 4279,
+            "hix": "22.89"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 143,
+        "fields": {
+            "week": 5,
+            "footballer": 18,
+            "perfomance": 1667,
+            "hix": "21.06"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 144,
+        "fields": {
+            "week": 6,
+            "footballer": 18,
+            "perfomance": 1393,
+            "hix": "19.79"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 145,
+        "fields": {
+            "week": 7,
+            "footballer": 18,
+            "perfomance": 3869,
+            "hix": "21.38"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 146,
+        "fields": {
+            "week": 8,
+            "footballer": 18,
+            "perfomance": 2633,
+            "hix": "20.52"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 147,
+        "fields": {
+            "week": 1,
+            "footballer": 19,
+            "perfomance": 2416,
+            "hix": "19.37"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 148,
+        "fields": {
+            "week": 2,
+            "footballer": 19,
+            "perfomance": 3096,
+            "hix": "21.89"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 149,
+        "fields": {
+            "week": 3,
+            "footballer": 19,
+            "perfomance": 4472,
+            "hix": "23.64"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 150,
+        "fields": {
+            "week": 4,
+            "footballer": 19,
+            "perfomance": 1940,
+            "hix": "21.04"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 151,
+        "fields": {
+            "week": 5,
+            "footballer": 19,
+            "perfomance": 4079,
+            "hix": "23.98"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 152,
+        "fields": {
+            "week": 6,
+            "footballer": 19,
+            "perfomance": 2911,
+            "hix": "22.54"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 153,
+        "fields": {
+            "week": 7,
+            "footballer": 19,
+            "perfomance": 1585,
+            "hix": "21.64"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 154,
+        "fields": {
+            "week": 8,
+            "footballer": 19,
+            "perfomance": 2164,
+            "hix": "23.59"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 155,
+        "fields": {
+            "week": 1,
+            "footballer": 20,
+            "perfomance": 3886,
+            "hix": "19.12"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 156,
+        "fields": {
+            "week": 2,
+            "footballer": 20,
+            "perfomance": 2651,
+            "hix": "18.35"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 157,
+        "fields": {
+            "week": 3,
+            "footballer": 20,
+            "perfomance": 2314,
+            "hix": "16.88"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 158,
+        "fields": {
+            "week": 4,
+            "footballer": 20,
+            "perfomance": 2403,
+            "hix": "19.08"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 159,
+        "fields": {
+            "week": 5,
+            "footballer": 20,
+            "perfomance": 4120,
+            "hix": "21.75"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 160,
+        "fields": {
+            "week": 6,
+            "footballer": 20,
+            "perfomance": 3929,
+            "hix": "20.44"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 161,
+        "fields": {
+            "week": 7,
+            "footballer": 20,
+            "perfomance": 2058,
+            "hix": "19.63"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 162,
+        "fields": {
+            "week": 8,
+            "footballer": 20,
+            "perfomance": 1634,
+            "hix": "18.84"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 163,
+        "fields": {
+            "week": 9,
+            "footballer": 1,
+            "perfomance": 2153,
+            "hix": "21.63"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 164,
+        "fields": {
+            "week": 9,
+            "footballer": 2,
+            "perfomance": 2838,
+            "hix": "20.77"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 165,
+        "fields": {
+            "week": 9,
+            "footballer": 3,
+            "perfomance": 3310,
+            "hix": "20.12"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 166,
+        "fields": {
+            "week": 9,
+            "footballer": 4,
+            "perfomance": 2655,
+            "hix": "19.84"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 167,
+        "fields": {
+            "week": 9,
+            "footballer": 5,
+            "perfomance": 2782,
+            "hix": "19.39"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 168,
+        "fields": {
+            "week": 9,
+            "footballer": 6,
+            "perfomance": 3077,
+            "hix": "19.07"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 169,
+        "fields": {
+            "week": 9,
+            "footballer": 7,
+            "perfomance": 3241,
+            "hix": "18.99"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 170,
+        "fields": {
+            "week": 9,
+            "footballer": 8,
+            "perfomance": 4241,
+            "hix": "18.85"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 171,
+        "fields": {
+            "week": 9,
+            "footballer": 9,
+            "perfomance": 1688,
+            "hix": "18.22"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 172,
+        "fields": {
+            "week": 9,
+            "footballer": 10,
+            "perfomance": 2589,
+            "hix": "18.01"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 173,
+        "fields": {
+            "week": 9,
+            "footballer": 11,
+            "perfomance": 2344,
+            "hix": "17.86"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 174,
+        "fields": {
+            "week": 9,
+            "footballer": 12,
+            "perfomance": 3129,
+            "hix": "17.71"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 175,
+        "fields": {
+            "week": 9,
+            "footballer": 13,
+            "perfomance": 3236,
+            "hix": "17.50"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 176,
+        "fields": {
+            "week": 9,
+            "footballer": 14,
+            "perfomance": 4292,
+            "hix": "17.34"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 177,
+        "fields": {
+            "week": 9,
+            "footballer": 15,
+            "perfomance": 3925,
+            "hix": "16.96"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 178,
+        "fields": {
+            "week": 9,
+            "footballer": 16,
+            "perfomance": 3479,
+            "hix": "16.80"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 179,
+        "fields": {
+            "week": 9,
+            "footballer": 17,
+            "perfomance": 1745,
+            "hix": "16.67"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 180,
+        "fields": {
+            "week": 9,
+            "footballer": 18,
+            "perfomance": 1393,
+            "hix": "16.28"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 181,
+        "fields": {
+            "week": 9,
+            "footballer": 19,
+            "perfomance": 2911,
+            "hix": "16.14"
+        }
+    },
+    {
+        "model": "stock.footballerweeksdata",
+        "pk": 182,
+        "fields": {
+            "week": 9,
+            "footballer": 20,
+            "perfomance": 3929,
+            "hix": "15.93"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 1,
+        "fields": {
+            "name": "Kylian Mbappé",
+            "team": 1,
+            "position": 1,
+            "price_dynamic": "3.37"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 2,
+        "fields": {
+            "name": "Lionel Messi",
+            "team": 1,
+            "position": 1,
+            "price_dynamic": "-1.00"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 3,
+        "fields": {
+            "name": "Cristiano Ronaldo",
+            "team": 2,
+            "position": 2,
+            "price_dynamic": "-0.97"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 4,
+        "fields": {
+            "name": "Neymar",
+            "team": 1,
+            "position": 2,
+            "price_dynamic": "3.10"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 5,
+        "fields": {
+            "name": "Kevin De Bruyne",
+            "team": 3,
+            "position": 2,
+            "price_dynamic": "2.42"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 6,
+        "fields": {
+            "name": "Bruno Fernandes",
+            "team": 2,
+            "position": 2,
+            "price_dynamic": "-0.92"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 7,
+        "fields": {
+            "name": "Paul Pogba",
+            "team": 2,
+            "position": 2,
+            "price_dynamic": "-0.73"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 8,
+        "fields": {
+            "name": "Jack Grealish",
+            "team": 3,
+            "position": 2,
+            "price_dynamic": "-0.90"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 9,
+        "fields": {
+            "name": "Harry Kane",
+            "team": 4,
+            "position": 1,
+            "price_dynamic": "-0.87"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 10,
+        "fields": {
+            "name": "Jadon Sancho",
+            "team": 2,
+            "position": 1,
+            "price_dynamic": "-0.86"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 11,
+        "fields": {
+            "name": "Erling Haaland",
+            "team": 5,
+            "position": 1,
+            "price_dynamic": "2.23"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 12,
+        "fields": {
+            "name": "Joshua Kimmich",
+            "team": 6,
+            "position": 2,
+            "price_dynamic": "2.21"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 13,
+        "fields": {
+            "name": "Raheem Sterling",
+            "team": 3,
+            "position": 2,
+            "price_dynamic": "-0.84"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 14,
+        "fields": {
+            "name": "Marcus Rashford",
+            "team": 2,
+            "position": 2,
+            "price_dynamic": "-0.83"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 15,
+        "fields": {
+            "name": "Trent Alexander-Arnold",
+            "team": 7,
+            "position": 3,
+            "price_dynamic": "2.65"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 16,
+        "fields": {
+            "name": "Heung-min Son",
+            "team": 4,
+            "position": 1,
+            "price_dynamic": "-0.65"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 17,
+        "fields": {
+            "name": "Phil Foden",
+            "team": 3,
+            "position": 2,
+            "price_dynamic": "-0.80"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 18,
+        "fields": {
+            "name": "Mohamed Salah",
+            "team": 7,
+            "position": 1,
+            "price_dynamic": "-0.78"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 19,
+        "fields": {
+            "name": "Mason Mount",
+            "team": 8,
+            "position": 2,
+            "price_dynamic": "2.52"
+        }
+    },
+    {
+        "model": "stock.footballer",
+        "pk": 20,
+        "fields": {
+            "name": "Sadio Mané",
+            "team": 7,
+            "position": 1,
+            "price_dynamic": "-0.76"
+        }
+    }
+]

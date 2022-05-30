@@ -6,6 +6,9 @@ services:
     build: 
       dockerfile: ./Dockerfile.dev
       context: .
+    volumes:
+      - ./backend:/app
+      - ./frontend/dist/main.js:/app/authentication/static/js/main.js
     depends_on:
       - db
     env_file:
