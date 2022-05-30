@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(Boolean(accessToken));
 
   const apiInstance = axios.create({
-    proxy: '/api',
     headers: {
       'Authorization':  `Bearer ${accessToken}`,
       'Content-Type': 'multipart/form-data'
