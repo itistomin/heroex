@@ -21,7 +21,7 @@ const Portfolio = () => {
             const data = {};
             const MAX_INDEX = 0.5;
             response.data.forEach((item, index) => {
-                data[item.footballer.name] = MAX_INDEX - (index / 10);
+                data[item.name] = MAX_INDEX - (index / 10);
             })
             setTopWeekReward(data);
         });
@@ -49,10 +49,11 @@ const Portfolio = () => {
     useEffect(updateAll, [])
 
     const accumulateTokens = (accumulator, item) => accumulator + item.amount;
-    const accumulateReward = (accumulator, item) => accumulator + item.amount * (reward[item.footballer.name] || 0);
+    const accumulateReward = (accumulator, item) => accumulator + item.amount * (reward[item.name] || 0);
     const accumulateCost = (accumulator, item) => accumulator + item.buy_price * item.amount;
     const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
     const accumulatePNL = (accumulator, item) => accumulator + item.buy_price * item.amount - item.sell_price * item.amount;
+    
     return (
         <div className="row mt-4">
             {modalData?.operation && <BuySellModal {...modalData} />}
@@ -84,7 +85,7 @@ const Portfolio = () => {
                                 <td>{index + 1}</td>
                                 <td>?</td>
 
-                                <td>{item.footballer.name}</td>
+                                <td>{item.name}</td>
                                 <td>{item.amount}</td>
                                 <td>{item.reward}</td>
 
@@ -94,8 +95,8 @@ const Portfolio = () => {
                                 <td>{item.cost}</td>
                                 <td>{item.value}</td>
                                 <td>{item.pnl}</td>
-                                <td className="text-end"><button className="btn btn-primary" onClick={() => processSell({ name: item.footballer.name, price: item.sell_price })}>SELL {item.sell_price}</button></td>
-                                <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({ name: item.footballer.name, price: item.buy_price })}>BUY {item.buy_price}</button></td>
+                                <td className="text-end"><button className="btn btn-primary" onClick={() => processSell({ name: item.name, price: item.sell_price })}>SELL {item.sell_price}</button></td>
+                                <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>BUY {item.buy_price}</button></td>
                             </tr>
                         ))}
                         <tr>

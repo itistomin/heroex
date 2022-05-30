@@ -65,8 +65,8 @@ class UserTokenView(APIView):
             footballer_price = footballers.get(footballer=footballer_data.footballer)
             portfolio.append({
                 'name': footballer_data.footballer.name,
-                'tokens': footballer_data.amount,
-                'average_buy_price': average_buy_price,
+                'amount': footballer_data.amount,
+                'trade_price': average_buy_price,
                 'cost': average_buy_price * average_amount,
                 'value': average_amount * footballer_price.sell_price,
                 'buy_price': footballer_price.buy_price,
