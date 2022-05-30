@@ -1,48 +1,28 @@
-FROM python:3.7
+FROM python:3.8
 
-# Install curl, node, & yarn
 RUN apt-get install -y curl \
-    && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs
 
-WORKDIR /app/backend
+WORKDIR /app/
 
-# Install Python dependencies
-RUN pip install poetry
+COPY ./backend /app/
+COPY ./frontend ./frontend
 
-# Install JS dependencies
-WORKDIR /app/frontend
-
-COPY ./frontend/package.json ./frontend/package-lock.json /app/frontend/
+WORKDIR /app/frontend/
 RUN npm i
-
-# Add the rest of the code
-COPY . /app/
-COPY ./backend/entrypoint-prod.sh /app/entrypoint-prod.sh
-
-WORKDIR /app/frontend
 RUN npm run build
+WORKDIR /app/
+RUN cp ./frontend/dist/main.js ./authentication/static/js
 
-# Have to move all static files other than index.html to root/
-# for whitenoise middleware
-WORKDIR /app/frontend/build
-
-RUN mkdir root 
-RUN mv *.ico *.js *.json root
-
-# Collect static files
-RUN mkdir /app/backend/staticfiles
-
-
-WORKDIR /app/backend
+RUN pip install poetry 
 RUN poetry install
 
-
-
-RUN DJANGO_SETTINGS_MODULE=server.prod_settings \
-    poetry run python manage.py collectstatic --noinput
+RUN mkdir staticfiles
 
 EXPOSE $PORT
 
-RUN ["chmod", "+x", "/app/entrypoint-prod.sh"]
-ENTRYPOINT ["/app/entrypoint-prod.sh"]
+WORKDIR /app/
+
+RUN chmod +x ./entrypoint.sh
+ENTRYPOINT ./entrypoint.sh

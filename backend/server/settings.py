@@ -5,6 +5,7 @@ import os
 from datetime import timedelta
 from os import getenv
 from pathlib import Path
+import decimal
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -144,3 +145,5 @@ SIMPLE_JWT = {
 }
 
 CSRF_TRUSTED_ORIGINS = getenv('CSRF_TRUSTED_ORIGINS', '').split(' ')
+
+SELL_PRICE_MULTIPLIER = decimal.Decimal(0.99)

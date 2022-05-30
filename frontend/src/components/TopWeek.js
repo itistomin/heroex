@@ -13,9 +13,7 @@ const TopWeek = ({ topWeek }) => {
             <img src="/cup.png" />
             <table className="table text-white borderless">
                 <tbody>
-                    {!user?.week?.number 
-                    ? <tr><td colSpan={3}>Start a game and see the top footballers</td></tr> 
-                    :
+                    {
                     topWeek.map((item, index) => (
                         <tr  key={`${index}-top-row`}>
                             <td>{index + 1}</td>

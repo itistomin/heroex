@@ -2,6 +2,7 @@ import decimal
 
 from django.db import transaction
 from django.db.models import F, OuterRef, Subquery, Sum
+from django.conf import settings
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 from drf_spectacular.utils import extend_schema
@@ -28,10 +29,6 @@ PORTFOLIO_TAGS = STOCK_TAGS
 def create_user_portfolio(user):
     user_footballers = user.footballers.all()
     return user_footballers
-
-
-def get_top_week(week):
-    return FootballerWeeksData.objects.filter(week=week).order_by('-perfomance')[:3]
 
 
 @extend_schema(tags=STOCK_TAGS)
@@ -86,11 +83,11 @@ class UserTokenBuyView(APIView):
 
         if not footballer:
             return Response({'detail': 'This footballer does not exist.'}, 404)
-        
+
         user = request.user
         if footballer.buy_price * data['tokens'] > user.balance or data['tokens'] < 1:
             return Response({'detail': 'Not enough balance'}, 422)
-        
+
         user_footballer, created = UserFootballer.objects.get_or_create(
             footballer=footballer.footballer, 
             user=user
@@ -105,7 +102,9 @@ class UserTokenBuyView(APIView):
         with transaction.atomic():
             user_footballer.save()
             user.save()
-
+        
+        user_footballer.trade_price = user.footballers.aggregate(total_price=Sum('hix') / user.footballers.count())['total_price']
+        user_footballer.save()
         return Response({'detail': 'ok'}, 201)
 
 
@@ -154,12 +153,9 @@ class TopOfWeekView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        week = request.user.week
-        if not week:
-            return Response([], 200)
-        
-        top_week = get_top_week(week)
-        return Response(TopWeekSerializer(top_week, many=True).data, 200)
+        week = request.user.week or GameWeek.objects.get(number=0)
+        data = FootballerWeeksData.objects.filter(week=week).order_by('-perfomance')[:3]
+        return Response(TopWeekSerializer(data, many=True).data, 200)
 
 
 @extend_schema(tags=STOCK_TAGS)

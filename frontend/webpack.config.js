@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   watchOptions: {
-    aggregateTimeout: 2000,
+    aggregateTimeout: 1000,
   },
   entry: path.join(__dirname, "src", "index.js"),
   output: {

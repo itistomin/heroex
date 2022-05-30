@@ -7,6 +7,8 @@ from django.db.models import (
     PositiveIntegerField,
     SET_NULL,
 )
+from django.conf import settings
+
 
 
 class GameWeek(Model):
@@ -42,7 +44,7 @@ class FootballerWeeksData(Model):
     
     @property
     def sell_price(self):
-        return float('%.2f' % (float(self.hix) * 0.95))
+        return float('%.2f' % (self.hix * settings.SELL_PRICE_MULTIPLIER))
 
 
 class Footballer(Model):
