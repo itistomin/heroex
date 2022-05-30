@@ -53,3 +53,15 @@ class UserFootballer(Model):
 
     def __str__(self):
         return f'{self.user} {self.footballer} {self.amount}'
+
+
+class UserTradeLog(Model):
+    user = ForeignKey(to=User, on_delete=CASCADE)
+    footballer = ForeignKey(to=Footballer, on_delete=CASCADE)
+    week = ForeignKey(to=GameWeek, on_delete=CASCADE)
+
+    amount = PositiveIntegerField(default=0)
+    buy_price = DecimalField(max_digits=10, decimal_places=2, null=True, default=0)
+
+    class Meta:
+        unique_together = ('user', 'footballer', 'week')

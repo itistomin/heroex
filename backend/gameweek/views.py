@@ -2,7 +2,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 from drf_spectacular.utils import extend_schema
 
-from authentication.models import  UserFootballer
+from authentication.models import  UserFootballer, UserTradeLog
 from stock.models import GameWeek
 
 
@@ -31,6 +31,7 @@ class ResetWeekView(APIView):
         user = request.user
         
         UserFootballer.objects.filter(user=user).delete()
+        UserTradeLog.objects.filter(user=user).delete()
         
         user.week = GameWeek.objects.get(number=0)
         user.balance = 500

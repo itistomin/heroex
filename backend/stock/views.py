@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 from drf_spectacular.utils import extend_schema
 
-from authentication.models import  UserFootballer
+from authentication.models import  UserFootballer, UserTradeLog
 from stock.models import (
     Footballer,
     FootballerWeeksData,
@@ -49,19 +49,31 @@ class UserTokenView(APIView):
     def get(self, request):
         user = request.user
         footballers = FootballerWeeksData.objects.filter(week=user.week or GameWeek.objects.get(number=0))
-        portfolio = (
-            UserFootballer.objects.filter(amount__gt=0)
-            .filter(user=user)
-            .annotate(
-                buy_price=Subquery(
-                    footballers.filter(footballer__id=OuterRef('footballer__id')).values('hix')
-                )
-            )
-            .annotate(sell_price=F('buy_price') * decimal.Decimal(0.95))
-            .annotate(value=F('buy_price') * F('amount'))
-        )
 
-        return Response(PortfolioSerializer(portfolio, many=True).data, 200)
+        portfolio = []
+        trade_data = UserTradeLog.objects.filter(user=user)
+        for footballer_data in UserFootballer.objects.filter(amount__gt=0).filter(user=user):
+            trade_logs = trade_data.filter(footballer=footballer_data.footballer)
+            
+            average_sum = 0
+            average_amount = 0
+            for trade in trade_logs:
+                average_sum += trade.buy_price * trade.amount
+                average_amount += trade.amount
+            average_buy_price = average_sum / average_amount
+
+            footballer_price = footballers.get(footballer=footballer_data.footballer)
+            portfolio.append({
+                'name': footballer_data.footballer.name,
+                'tokens': footballer_data.amount,
+                'average_buy_price': average_buy_price,
+                'cost': average_buy_price * average_amount,
+                'value': average_amount * footballer_price.sell_price,
+                'buy_price': footballer_price.buy_price,
+                'sell_price': footballer_price.sell_price,
+                'pnl': float(average_buy_price * average_amount) - average_amount * float(footballer_price.sell_price),
+            })
+        return Response(portfolio, 200)
 
 
 @extend_schema(tags=USER_TOKENS_TAGS)
@@ -93,18 +105,24 @@ class UserTokenBuyView(APIView):
             user=user
         )
         user_footballer.amount += data['tokens']
-        user_footballer.trade_price += footballer.buy_price
-        if not created:
-            user_footballer.trade_price /= 2
 
         user.balance -= data['tokens'] * footballer.buy_price
 
         with transaction.atomic():
             user_footballer.save()
             user.save()
-        
-        user_footballer.trade_price = user.footballers.aggregate(total_price=Sum('hix') / user.footballers.count())['total_price']
-        user_footballer.save()
+
+        logs, created = UserTradeLog.objects.get_or_create(
+            user=user,
+            week=user.week,
+            footballer=user_footballer.footballer,
+            defaults={'amount': data['tokens'], 'buy_price': footballer.buy_price}
+        )
+
+        if not created:
+            logs.amount += data['tokens']
+            logs.save()
+
         return Response({'detail': 'ok'}, 201)
 
 
