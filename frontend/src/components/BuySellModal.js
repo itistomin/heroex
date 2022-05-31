@@ -63,7 +63,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         </div>
 
                         <div className="col-6 my-2">Total cost:</div>
-                        <div className="col-6 my-2">{(formik.values.tokens * price)} $HIX</div>
+                        <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} $HIX</div>
 
                         <div className="col-12 d-flex justify-content-center my-2">
                             <button type="submit" className={`btn btn-success mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`}>Confirm</button>

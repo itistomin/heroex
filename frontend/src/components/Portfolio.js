@@ -87,14 +87,14 @@ const Portfolio = () => {
 
                                 <td>{item.name}</td>
                                 <td>{item.amount}</td>
-                                <td>{item.reward}</td>
+                                <td>{item.reward.toFixed(1)}</td>
 
-                                <td>{item.trade_price}</td>
-                                <td>{item.buy_price}</td>
+                                <td>{item.trade_price.toFixed(2)}</td>
+                                <td>{item.buy_price.toFixed(2)}</td>
 
-                                <td>{item.cost}</td>
-                                <td>{item.value}</td>
-                                <td>{item.pnl}</td>
+                                <td>{item.cost.toFixed(2)}</td>
+                                <td>{item.value.toFixed(2)}</td>
+                                <td>{item.pnl.toFixed(2)}</td>
                                 <td className="text-end"><button className="btn btn-primary" onClick={() => processSell({ name: item.name, price: item.sell_price })}>SELL {item.sell_price}</button></td>
                                 <td className="text-end"><button className="btn btn-success" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>BUY {item.buy_price}</button></td>
                             </tr>

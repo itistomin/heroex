@@ -75,7 +75,7 @@ class UserTokenView(APIView):
                 'value': average_amount * footballer_price.sell_price,
                 'buy_price': footballer_price.buy_price,
                 'sell_price': footballer_price.sell_price,
-                'pnl': float(average_buy_price * average_amount) - average_amount * float(footballer_price.sell_price),
+                'pnl': average_amount * float(footballer_price.sell_price) - float(average_buy_price * average_amount),
             })
 
         return Response(portfolio, 200)
