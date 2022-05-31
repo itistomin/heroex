@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 
 import { AuthContext } from "../context/AuthContext";
@@ -17,11 +18,8 @@ import '../styles/body.css';
 
 
 const App = () => {
-  const { isAuthenticated, logout } = useContext(AuthContext);
-
-  if (!isAuthenticated) {
-    return <AuthLandingPage />
-  }
+  const { isAuthenticated } = useContext(AuthContext);
+  const location = useLocation();
 
   return (
     <div className="container">

@@ -33,11 +33,13 @@ def create_user_portfolio(user):
 
 @extend_schema(tags=STOCK_TAGS)
 class FootballersView(APIView):
-    permission_classes = (IsAuthenticated,)
     
     @extend_schema(responses={200: MarketFootballerSerializer})
     def get(self, request):
-        week = request.user.week or GameWeek.objects.get(number=0)
+        if request.user.is_authenticated:
+            week = request.user.week or GameWeek.objects.get(number=0)
+        else:
+            week = GameWeek.objects.get(number=0)
         footballers_data = FootballerWeeksData.objects.filter(week=week)
         return Response(MarketFootballerSerializer(footballers_data, many=True).data, 200)
 
@@ -173,10 +175,13 @@ class UserTokenSellView(APIView):
 
 @extend_schema(tags=STOCK_TAGS)
 class TopOfWeekView(APIView):
-    permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        week = request.user.week or GameWeek.objects.get(number=0)
+        if request.user.is_authenticated:
+            week = request.user.week or GameWeek.objects.get(number=0)
+        else:
+            week = GameWeek.objects.get(number=0)
+
         data = FootballerWeeksData.objects.filter(week=week).order_by('-perfomance')[:3]
         return Response(TopWeekSerializer(data, many=True).data, 200)
 

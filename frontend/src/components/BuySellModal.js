@@ -8,7 +8,7 @@ import { searchUserFootballer } from '../helpers/searchUserFootballer';
 
 
 const BuySellModal = ({operation, name, price, closeModal, callable}) => {
-    const { user, apiInstance, getUserData } = useContext(AuthContext);
+    const { user, isAuthenticated, apiInstance, getUserData } = useContext(AuthContext);
     
     const formik = useFormik({
         initialValues: {footballer: name, tokens: 1},
@@ -25,7 +25,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
     const notEnoughtBallance = operation === 'buy' &&  user?.balance < formik.values.tokens * price;
     const formikErrors = Object.keys(formik.errors).length;
 
-    const purchaseButtonDisabled = notEnoughtTokens || notEnoughtBallance || formikErrors;
+    const purchaseButtonDisabled = notEnoughtTokens || notEnoughtBallance || formikErrors || !isAuthenticated;
 
     return (
         <div className="transaction-background">
@@ -67,7 +67,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
 
                         <div className="col-12 d-flex justify-content-center my-2">
                             <button type="submit" className={`btn btn-success mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`}>Confirm</button>
-                            <button type="button" className="btn btn-danger mx-2" onClick={closeModal}>Cancel</button>
+                            <button type="button" className={`btn btn-danger mx-2 ${isAuthenticated ? '' : 'disabled'}` }onClick={closeModal}>Cancel</button>
                         </div>
                     </div>
                 </form>
