@@ -7,7 +7,7 @@ import TopWeek from "./TopWeek";
 import BuySellModal from "./BuySellModal";
 
 
-const Market = () => {
+const Market = ({ searchBy }) => {
     const { apiInstance, isAuthenticated } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
@@ -37,6 +37,11 @@ const Market = () => {
         })
     }
 
+    const display = searchBy === '' ? footballers : footballers.filter((item) => (
+        item.footballer.name.toLowerCase().includes(searchBy.toLowerCase()) 
+        || item.footballer.team.name.toLowerCase().includes(searchBy.toLowerCase())
+    ))
+
     useEffect(updateAll, [])
 
     return (
@@ -56,7 +61,7 @@ const Market = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {footballers.map((item, index) => (
+                        {display.map((item, index) => (
                             <tr className="table-row" key={`${index}-row`}>
                                 <td>{index + 1}</td>
                                 <td>{item.footballer.name}</td>
