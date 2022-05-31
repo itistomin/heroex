@@ -49,8 +49,32 @@ body {
     width: 600px;
     padding: 20px;
     margin: 100px auto;
-    background-color: #000030;
+    background-color: #000022;
     color: white;
+}
+
+.buy-border {
+    border: 1px solid #00b050;
+}
+
+.buy-bg {
+    background-color: #00b050;
+}
+
+.buy-color {
+    color: #00b050;
+}
+
+.sell-border {
+    border: 1px solid #a303eb;
+}
+
+.sell-bg {
+    background-color: #a303eb;
+}
+
+.sell-color {
+    color: #a303eb;
 }
 
 .hidden {

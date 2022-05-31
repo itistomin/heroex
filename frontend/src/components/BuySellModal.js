@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 
 import { AuthContext } from '../context/AuthContext';
@@ -8,29 +8,72 @@ import { searchUserFootballer } from '../helpers/searchUserFootballer';
 
 
 const BuySellModal = ({operation, name, price, closeModal, callable}) => {
+    const DONE_TEXT = {sell: 'sold', buy: 'bought'}
+    const TRANSACTION_FLOW = [operation, 'confirm', DONE_TEXT[operation]];
+
     const { user, isAuthenticated, apiInstance, getUserData } = useContext(AuthContext);
-    
+
+    const [step, setTransactionStep] = useState(TRANSACTION_FLOW[0]);
+
     const formik = useFormik({
         initialValues: {footballer: name, tokens: 1},
         validationSchema: buySellValidation,
         onSubmit: (values) => {
             const url = operation === 'buy' ? BUY_TOKENS_URL() : SELL_TOKENS_URL();
-            apiInstance.post(url, values).then(() => {closeModal(); callable(); getUserData();})
+            apiInstance.post(url, values).then(() => {nextTransactionStep})
         }
     });
-    const title = operation.charAt(0).toUpperCase() + operation.slice(1);
     const userFootballerTokens = searchUserFootballer(user.footballers, name);
-    
+
     const notEnoughtTokens = operation === 'sell' && userFootballerTokens < formik.values.tokens ;
     const notEnoughtBallance = operation === 'buy' &&  user?.balance < formik.values.tokens * price;
     const formikErrors = Object.keys(formik.errors).length;
 
     const purchaseButtonDisabled = notEnoughtTokens || notEnoughtBallance || formikErrors || !isAuthenticated;
 
+    const nextTransactionStep = () => {
+        const index = TRANSACTION_FLOW.findIndex((item) => item === step);
+        if (index === 2) {
+            closeModal(); 
+            callable(); 
+            getUserData();
+        } else {
+            setTransactionStep(TRANSACTION_FLOW[index + 1]);
+        }
+    }
+
+    const TokenInfo = step == TRANSACTION_FLOW[0] 
+    ? (
+        <div className="col-6 my-2">
+            <input
+                type="number"
+                name="tokens"
+                className="form-control"
+                onChange={formik.handleChange}
+                value={formik.values.tokens}
+                placeholder="Amount of tokens"
+            />
+            { notEnoughtBallance&& <small className="text-warning">Not enought money</small>}
+            { notEnoughtTokens &&  <small className="text-warning">{userFootballerTokens === 0 ? 'You have nothing to sell' : 'Incorrect amount of tokens'}</small>}
+            {  !!formikErrors && <small className="text-warning">{formik.errors.tokens}</small>}
+        </div>
+    ) : (
+        <div className="col-6 my-2">
+            {formik.values.tokens}
+        </div>
+    )
+
+    const ButtonConfirm = step == TRANSACTION_FLOW[1] ?
+    (
+        <button type="submit" className={`btn purple-bg text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Confirm</button>
+    ) : (
+        <button type="button" className={`btn purple-bg text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Ok</button>
+    );
+
     return (
         <div className="transaction-background">
-            <div className="transaction-block">
-                <h3 className="text-center py-2">{title} <span className="text-success">{name}</span></h3>
+            <div className={`transaction-block ${operation}-border`}>
+                <h3 className={`text-center py-2 w-100 ${operation}-bg`}>{step.toUpperCase()}&nbsp;{name}</h3>
                 <hr />
                 <form onSubmit={formik.handleSubmit} className="container">
                     <div className="row">
@@ -48,26 +91,15 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         )}
                         
                         <div className="col-6 my-2">Tokens to {operation === 'buy' ? 'purchase:' : 'sell:'}</div>
-                        <div className="col-6 my-2">
-                            <input
-                                type="number"
-                                name="tokens"
-                                className="form-control"
-                                onChange={formik.handleChange}
-                                value={formik.values.tokens}
-                                placeholder="Amount of tokens"
-                            />
-                            { notEnoughtBallance&& <small className="text-warning">Not enought money</small>}
-                            { notEnoughtTokens &&  <small className="text-warning">{userFootballerTokens === 0 ? 'You have nothing to sell' : 'Incorrect amount of tokens'}</small>}
-                            {  !!formikErrors && <small className="text-warning">{formik.errors.tokens}</small>}
-                        </div>
+                        {TokenInfo}
 
                         <div className="col-6 my-2">Total cost:</div>
                         <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} $HIX</div>
 
+                        {step === TRANSACTION_FLOW[2] ? <div className="col-12"><h2 className={`${operation}-bg text-white text-center`}>TRANSACTION CONFIRMED</h2></div> : ''}
                         <div className="col-12 d-flex justify-content-center my-2">
-                            <button type="submit" className={`btn btn-success mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`}>Confirm</button>
-                            <button type="button" className={`btn btn-danger mx-2 ${isAuthenticated ? '' : 'disabled'}` }onClick={closeModal}>Cancel</button>
+                           {ButtonConfirm}
+                            {step === TRANSACTION_FLOW[2] ? "" : <button type="button" className={`btn btn-danger mx-2 ${isAuthenticated ? '' : 'disabled'}` }onClick={closeModal}>Cancel</button>}
                         </div>
                     </div>
                 </form>
