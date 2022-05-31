@@ -82,5 +82,29 @@ body {
 .welcome-line {
     padding: 5px 0px;
     margin-top: 20px;
-    background-color: #45a3d7;
+    
+}
+
+.cornflower-blue-bg {
+    background-color: #45a3d7 !important;
+}
+
+.dark-purple-3-bg {
+    background-color: #232f51;
+}
+
+.dark-cornflower-blue-3-bg {
+    background-color: #31538f;
+}
+
+.dark-cornflower-blue-3-border {
+    border: 1px solid #31538f;
+}
+
+.purple-bg {
+    background-color: #a303eb;
+}
+
+.green-11-bg {
+    background-color: #00b050;
 }

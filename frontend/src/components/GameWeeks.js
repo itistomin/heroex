@@ -28,12 +28,12 @@ const GameWeeks = ({callable}) => {
     }
 
     return (
-        <div className="container bg-primary text-white text-center py-3">
+        <div className="container dark-purple-3-bg dark-cornflower-blue-3-border text-white text-center py-3">
             <h3>Lets Get Started!</h3>  
             <p>You have 500 $HIX to spend buying footballers. When you have your players click the button below to play</p>
             <div className="d-flex justify-content-around">
                 <h4>Week { user?.week?.number || 0}</h4>
-                {user?.week?.number !== 8 && <button className="btn btn-success" onClick={goToNextWeek}>Next week <i className="fa-solid fa-angles-right"></i></button>}
+                {user?.week?.number !== 8 && <button className="btn cornflower-blue-bg text-white" onClick={goToNextWeek}>Next week <i className="fa-solid fa-angles-right"></i></button>}
             </div>
             <p>Each time you click it advances the game on one ‘Play Week’. There are 8 Play weeks.</p>
             <p>See if you can maximise your gains over the 8 Play Weeks!</p>

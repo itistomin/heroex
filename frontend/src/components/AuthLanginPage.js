@@ -26,7 +26,7 @@ const AuthLandingPage = () => {
 
     return (
         <div className="auth-block auth-background">
-            <div className="welcome-line text-white text-center w-100">
+            <div className="welcome-line text-white text-center w-100 cornflower-blue-bg">
                 <p className="">Welcome to HeroEx Wallet</p>
             </div>
             <form onSubmit={formik.handleSubmit}>
