@@ -25,6 +25,7 @@ const App = () => {
     <div className="container">
       <Header />
       <Navigation />
+      {!isAuthenticated && <AuthLandingPage />}
       <Routes>
           <Route path="/" element={<Navigate to='/market' />} />
           <Route path="/market" element={<Market />} />
