@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   
   let apiInstance = axios.create({
     headers: {
+      'Authorization': accessToken ? `Bearer ${accessToken}` : null,
       'Content-Type': 'multipart/form-data'
     },
   })
@@ -29,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     setAccessToken(accessToken);
     setRefreshToken(refresh);
     saveRefresh(refresh);
-
+    getUserData();
   }
 
   const login = (data) => apiInstance.post(ACCESS_TOKEN_URL(), data).then(updateTokens);
@@ -60,23 +61,6 @@ export const AuthProvider = ({ children }) => {
     if (!refreshToken && !refreshToken) setIsAuthenticated(false);
   }, [accessToken, refreshToken, isAuthenticated])
 
-  useEffect(() => {
-    if (accessToken) {
-      apiInstance = axios.create({
-        headers: {
-          'Authorization':  `Bearer ${accessToken}`,
-          'Content-Type': 'multipart/form-data'
-        },
-      })
-    } else {
-      apiInstance = axios.create({
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-      })
-    }
-  }, [accessToken])
-  
   const values = {
       accessToken,
       refreshToken,
