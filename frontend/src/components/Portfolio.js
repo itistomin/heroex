@@ -83,7 +83,7 @@ const Portfolio = () => {
                         {footballers.map((item, index) => (
                             <tr className="table-row" key={`${index}-row`}>
                                 <td>{index + 1}</td>
-                                <td>?</td>
+                                <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
 
                                 <td>{item.name}</td>
                                 <td>{item.amount}</td>

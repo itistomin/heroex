@@ -11,7 +11,7 @@ const Header = () => {
         <div className="container text-white py-3 border-bottom">
             <div className="row">
                 <div className="col-12 col-md-6">
-                    <h1>HeroEx</h1>
+                    <h1><img src="/static/img/logo.png" alt="logo" height={"50px"} width={"auto"} /></h1>
                 </div>
                 <div className="col-12 col-md-6 d-flex align-items-center justify-content-end">
                     <a href="#" className="custom-link mx-3">Welcome, {username}</a>
