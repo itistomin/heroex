@@ -16,7 +16,6 @@ from stock.models import (
 from stock.serializers import (
     BuyAndSellSerializer,
     MarketFootballerSerializer,
-    PortfolioSerializer,
     TopWeekSerializer,
 )
 
@@ -29,6 +28,14 @@ PORTFOLIO_TAGS = STOCK_TAGS
 def create_user_portfolio(user):
     user_footballers = user.footballers.all()
     return user_footballers
+
+
+def get_footballer_rank(week):
+    data = {}
+    for index, footballer in enumerate(FootballerWeeksData.objects.filter(week=week).order_by('-hix').values_list('footballer__name', flat=True)):
+        data[footballer] = index + 1
+    
+    return data
 
 
 @extend_schema(tags=STOCK_TAGS)
@@ -54,12 +61,13 @@ class UserTokenView(APIView):
         week = week=user.week or GameWeek.objects.get(number=0)
         footballers = FootballerWeeksData.objects.filter(week=week)
         data = list(FootballerWeeksData.objects.filter(week=week).order_by('-perfomance').values_list('footballer', flat=True)[:3])
+        rank = get_footballer_rank(week)
 
         portfolio = []
         trade_data = UserTradeLog.objects.filter(user=user)
         for footballer_data in UserFootballer.objects.filter(amount__gt=0).filter(user=user):
             trade_logs = trade_data.filter(footballer=footballer_data.footballer)
-            
+
             average_sum = 0
             average_amount = 0
             for trade in trade_logs:
@@ -69,6 +77,7 @@ class UserTokenView(APIView):
 
             footballer_price = footballers.get(footballer=footballer_data.footballer)
             portfolio.append({
+                'rank': rank[footballer_data.footballer.name],
                 'name': footballer_data.footballer.name,
                 'amount': footballer_data.amount,
                 'reward': (5 - data.index(footballer_data.footballer.id)) / 10 if footballer_data.footballer.id in data else 0,
@@ -80,6 +89,7 @@ class UserTokenView(APIView):
                 'pnl': average_amount * float(footballer_price.sell_price) - float(average_buy_price * average_amount),
             })
 
+        portfolio = sorted(portfolio, key=lambda item: item['buy_price'], reverse=True)
         return Response(portfolio, 200)
 
 

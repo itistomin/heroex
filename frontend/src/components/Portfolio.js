@@ -56,7 +56,7 @@ const Portfolio = ({ searchBy }) => {
     const accumulateCost = (accumulator, item) => accumulator + item.cost;
     const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
     const accumulatePNL = (accumulator, item) => accumulator + item.pnl;
-    
+
     return (
         <div className="row mt-4">
             {modalData?.operation && <BuySellModal {...modalData} />}
@@ -85,7 +85,7 @@ const Portfolio = ({ searchBy }) => {
                         {!display.length && <tr className="my-2 text-center"><td colSpan="11" className="py-3">Your portfolio is empty!</td></tr>}
                         {display.map((item, index) => (
                             <tr className="table-row align-middle" key={`${index}-row`}>
-                                <td>{index + 1}</td>
+                                <td>{item.rank}</td>
                                 <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
 
                                 <td>{item.name}</td>
