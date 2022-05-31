@@ -52,22 +52,24 @@ const Market = ({ searchBy }) => {
                     <thead>
                         <tr>
                             <th scope="col">Rank</th>
+                            <th scope="col"></th>
                             <th scope="col">Name</th>
                             <th scope="col">Team</th>
                             <th scope="col">Position</th>
-                            <th scope="col">Dynamic</th>
+                            <th scope="col">7Day</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         {display.map((item, index) => (
-                            <tr className="table-row" key={`${index}-row`}>
+                            <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{index + 1}</td>
+                                <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
                                 <td>{item.footballer.name}</td>
                                 <td>{item.footballer.team.name}</td>
                                 <td>{item.footballer.position.name.toUpperCase()}</td>
-                                <td className={item.footballer.price_dynamic > 0 ? 'text-warning' : 'text-danger'}>{item.footballer.price_dynamic}</td>
+                                <td className={item.footballer.price_dynamic > 0 ? 'dynamic-positive' : 'dynamic-negative'}>{item.footballer.price_dynamic} ({(item.footballer.price_dynamic * 100 / item.buy_price).toFixed(2)} %)</td>
                                 <td className="text-end"><button className={`btn purple-bg text-white ${isAuthenticated ? '' : 'd-none'}`} onClick={() => processSell({name: item.footballer.name, price: item.sell_price})}>SELL {item.sell_price.toFixed(2)}</button></td>
                                 <td className="text-end"><button className={`btn green-11-bg text-white ${isAuthenticated ? '' : 'd-none'}`} onClick={() => processBuy({name: item.footballer.name, price: item.buy_price})}>BUY {item.buy_price.toFixed(2)}</button></td>
                             </tr>

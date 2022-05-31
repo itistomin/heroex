@@ -49,6 +49,7 @@ const MatchPoints = ({searchBy}) => {
                     <thead>
                         <tr>
                             <th scope="col">Rank</th>
+                            <th scope="col"></th>
                             <th scope="col">Name</th>
                             <th scope="col">Total Points</th>
                             <th scope="col">Previous week</th>
@@ -59,8 +60,9 @@ const MatchPoints = ({searchBy}) => {
                     </thead>
                     <tbody>
                         {displayKeys.map((key, index) => (
-                            <tr className="table-row" key={`${index}-row`}>
+                            <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{index + 1}</td>
+                                <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
                                 <td>{key}</td>
                                 <td>{footballers[key].total_score}</td>
                                 <td>{footballers[key].previous_score}</td>

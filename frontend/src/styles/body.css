@@ -132,3 +132,11 @@ body {
 .green-11-bg {
     background-color: #00b050;
 }
+
+.dynamic-positive {
+    color: #00b050;
+}
+
+.dynamic-negative {
+    color: #a303eb;
+}

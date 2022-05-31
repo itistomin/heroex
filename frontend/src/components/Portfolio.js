@@ -65,7 +65,7 @@ const Portfolio = ({ searchBy }) => {
                     <thead>
                         <tr>
                             <th scope="col">Rank</th>
-                            <th scope="col">Thai Fighter</th>
+                            <th scope="col"></th>
 
                             <th scope="col">Name</th>
                             <th scope="col">Tokens</th>
@@ -84,7 +84,7 @@ const Portfolio = ({ searchBy }) => {
                     <tbody>
                         {!display.length && <tr className="my-2 text-center"><td colSpan="11" className="py-3">Your portfolio is empty!</td></tr>}
                         {display.map((item, index) => (
-                            <tr className="table-row" key={`${index}-row`}>
+                            <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{index + 1}</td>
                                 <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
 
@@ -98,8 +98,8 @@ const Portfolio = ({ searchBy }) => {
                                 <td>{item.cost.toFixed(2)}</td>
                                 <td>{item.value.toFixed(2)}</td>
                                 <td>{item.pnl.toFixed(2)}</td>
-                                <td className="text-end"><button className="btn purple-bg text-white" onClick={() => processSell({ name: item.name, price: item.sell_price })}>SELL {item.sell_price}</button></td>
-                                <td className="text-end"><button className="btn green-11-bg text-white" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>BUY {item.buy_price}</button></td>
+                                <td className="text-end"><button className="btn purple-bg text-white" onClick={() => processSell({ name: item.name, price: item.sell_price })}>SELL {item.sell_price.toFixed(2)}</button></td>
+                                <td className="text-end"><button className="btn green-11-bg text-white" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>BUY {item.buy_price.toFixed(2)}</button></td>
                             </tr>
                         ))}
                         <tr>
