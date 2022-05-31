@@ -31,9 +31,16 @@ const Header = ({ setSearchBy }) => {
                     </form>
                 </div>
                 <div className={`col-12 col-md-5 d-flex align-items-center justify-content-end ${!isAuthenticated ? 'd-none' : ''}`}>
-                    <a href="#" className="custom-link mx-3">Welcome, {username}</a>
-                    <p className="m-0">Balance: {user?.balance} $HIX</p>    
-                    <a href="#" className="custom-link mx-3" onClick={logout}>Logout</a>
+                    <div className="row">
+                        <div className="col">
+                            <p className="m-0">Balance: </p>    
+                            <p>{user?.balance} $HIX</p>
+                        </div>
+                        <div className="col">
+                            <a href="#" className="custom-link mx-3">Hi, random</a><img src="https://countryflagsapi.com/svg/826" height={"15px"} width={"auto"} />
+                            <a href="#" className="custom-link mx-3" onClick={logout}>Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
