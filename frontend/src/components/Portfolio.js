@@ -98,8 +98,16 @@ const Portfolio = ({ searchBy }) => {
                                 <td>{item.cost.toFixed(2)}</td>
                                 <td>{item.value.toFixed(2)}</td>
                                 <td>{item.pnl.toFixed(2)}</td>
-                                <td className="text-end"><button className="btn purple-bg text-white" onClick={() => processSell({ name: item.name, price: item.sell_price })}>SELL {item.sell_price.toFixed(2)}</button></td>
-                                <td className="text-end"><button className="btn green-11-bg text-white" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>BUY {item.buy_price.toFixed(2)}</button></td>
+                                <td className="text-end">
+                                    <button className="btn purple-bg text-white" onClick={() => processSell({ name: item.name, price: item.sell_price })}>
+                                        {item.sell_price.toFixed(2)}<br /><small>SELL</small>
+                                    </button>
+                                </td>
+                                <td className="text-end">
+                                    <button className="btn green-11-bg text-white" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>
+                                        {item.buy_price.toFixed(2)}<br /><small>BUY</small>
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                         <tr>

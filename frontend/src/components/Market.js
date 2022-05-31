@@ -70,8 +70,22 @@ const Market = ({ searchBy }) => {
                                 <td>{item.footballer.team.name}</td>
                                 <td>{item.footballer.position.name.toUpperCase()}</td>
                                 <td className={item.footballer.price_dynamic > 0 ? 'dynamic-positive' : 'dynamic-negative'}>{item.footballer.price_dynamic} ({(item.footballer.price_dynamic * 100 / item.buy_price).toFixed(2)} %)</td>
-                                <td className="text-end"><button className={`btn purple-bg text-white ${isAuthenticated ? '' : 'd-none'}`} onClick={() => processSell({name: item.footballer.name, price: item.sell_price})}>SELL {item.sell_price.toFixed(2)}</button></td>
-                                <td className="text-end"><button className={`btn green-11-bg text-white ${isAuthenticated ? '' : 'd-none'}`} onClick={() => processBuy({name: item.footballer.name, price: item.buy_price})}>BUY {item.buy_price.toFixed(2)}</button></td>
+                                <td className="text-end">
+                                    <button 
+                                        className={`btn purple-bg text-white ${isAuthenticated ? '' : 'd-none'}`}
+                                        onClick={() => processSell({name: item.footballer.name, price: item.sell_price})}
+                                    >
+                                            {item.sell_price.toFixed(2)}<br /><small>SELL</small>
+                                        </button>
+                                </td>
+                                <td className="text-end">
+                                    <button
+                                        className={`btn green-11-bg text-white ${isAuthenticated ? '' : 'd-none'}`}
+                                        onClick={() => processBuy({name: item.footballer.name, price: item.buy_price})}
+                                    >
+                                            {item.buy_price.toFixed(2)}<br /><small>BUY</small>
+                                        </button>
+                                    </td>
                             </tr>
                         ))}
                     </tbody>
