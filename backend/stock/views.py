@@ -204,16 +204,20 @@ class MatchPointsView(APIView):
         user = request.user
         week = user.week or GameWeek.objects.get(number=0)
         previous_week = GameWeek.objects.filter(number=week.number-1).first() or week
-
+        rank = get_footballer_rank(week)
         # TODO fix bottleneck, thats a huge query
         data = {}
         for footballer in Footballer.objects.all():
             current_week_data = FootballerWeeksData.objects.filter(week=week, footballer=footballer).first()
             data[footballer.name] = {
+                'rank': rank[current_week_data.footballer.name],
                 'previous_score': FootballerWeeksData.objects.filter(week=previous_week, footballer=footballer).first().perfomance,
                 'current_score': current_week_data.perfomance,
                 'total_score': FootballerWeeksData.objects.filter(week__number__lte=week.number, footballer=footballer).aggregate(total=Sum('perfomance'))['total'],
                 'buy_price': current_week_data.buy_price,
                 'sell_price': current_week_data.sell_price,
             }
+        
+        # data = sorted(data, key=lambda item: item['current_score'], reverse=True)
+        data = {k: v for k, v in sorted(data.items(), key=lambda item: item[1]['current_score'], reverse=True)}
         return Response(data, 200)

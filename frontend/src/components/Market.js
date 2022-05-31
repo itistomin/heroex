@@ -64,7 +64,7 @@ const Market = ({ searchBy }) => {
                     <tbody>
                         {display.map((item, index) => (
                             <tr className="table-row align-middle" key={`${index}-row`}>
-                                <td>{index + 1}</td>
+                                <td>{item.rank}</td>
                                 <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
                                 <td>{item.footballer.name}</td>
                                 <td>{item.footballer.team.name}</td>
