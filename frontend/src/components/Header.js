@@ -37,7 +37,7 @@ const Header = ({ setSearchBy }) => {
                             <p>{user?.balance} $HIX</p>
                         </div>
                         <div className="col">
-                            <a href="#" className="custom-link mx-3">Hi, random</a><img src="https://countryflagsapi.com/svg/826" height={"15px"} width={"auto"} />
+                            <a href="#" className="custom-link mx-3">Hi, Joe</a><img src="https://countryflagsapi.com/svg/826" height={"15px"} width={"auto"} />
                             <a href="#" className="custom-link mx-3" onClick={logout}>Logout</a>
                         </div>
                     </div>
