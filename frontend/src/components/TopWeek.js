@@ -10,7 +10,7 @@ const TopWeek = ({ topWeek }) => {
     return (
         <div className="container bg-primary text-white text-center my-1 py-3">
             <h3>Top of the week</h3>  
-            <img src="/cup.png" />
+            <img src="/static/img/cup.png" />
             <table className="table text-white borderless">
                 <tbody>
                     {
