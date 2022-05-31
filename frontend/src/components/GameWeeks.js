@@ -9,7 +9,6 @@ const GameWeeks = ({callable}) => {
     const { user, apiInstance, getUserData } = useContext(AuthContext);
 
     const resetGameWeek = () => {
-        if (!user?.week?.number) return;
         apiInstance.post(RESET_WEEK_URL()).then(
             () => {
                 callable();
