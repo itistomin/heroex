@@ -47,8 +47,14 @@ class FootballersView(APIView):
             week = request.user.week or GameWeek.objects.get(number=0)
         else:
             week = GameWeek.objects.get(number=0)
-        footballers_data = FootballerWeeksData.objects.filter(week=week)
-        return Response(MarketFootballerSerializer(footballers_data, many=True).data, 200)
+        
+        rank = get_footballer_rank(week)
+        footballers_data = FootballerWeeksData.objects.filter(week=week).order_by('-hix')
+        data = MarketFootballerSerializer(footballers_data, many=True).data
+
+        for footballer in data:
+            footballer['rank'] = rank[footballer.get('footballer').get('name')]
+        return Response(data, 200)
 
 
 @extend_schema(tags=PORTFOLIO_TAGS)
