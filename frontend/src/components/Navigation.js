@@ -1,15 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from "react-router-dom";
+import { PORTFOLIO_URL } from '../constants';
+import { AuthContext } from '../context/AuthContext';
 
 const Navigation = () => {
     const historyLocation = useLocation();
     const [location, updateLocation] = useState(document.location.pathname);
-    
+    const [footballers, setFootballers] = useState([]);
+    const { apiInstance, isAuthenticated } = useContext(AuthContext);
+
+    const updateAll = () => {
+        if (!isAuthenticated) return;
+        apiInstance.get(PORTFOLIO_URL()).then((response) => setFootballers(response.data));
+    }
+    const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
+
     useEffect(() => {
         updateLocation(document.location.pathname);
-    }, [historyLocation])
-    
-    
+    }, [historyLocation]);
+
+    useEffect(updateAll, [isAuthenticated]);
+
     return (
         <ul className="nav nav-pills nav-fill">
             <li className="nav-item">
@@ -33,7 +44,7 @@ const Navigation = () => {
             <li className="nav-item">
                 <Link className={`nav-link custom-link ${location == '/portfolio' ? 'custom-link-active' : ''}`} to="/portfolio">
                     <i className="fa-solid fa-suitcase px-2"></i>
-                    Portfolio
+                    Portfolio&nbsp; <span className="dark-cornflower-blue-3-bg light-blue-color">$HIX {footballers.reduce(accumulateValue, 0).toFixed(2)}</span>
                 </Link>
             </li>
         </ul>
