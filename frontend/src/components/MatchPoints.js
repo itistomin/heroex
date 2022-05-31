@@ -8,12 +8,13 @@ import BuySellModal from "./BuySellModal";
 
 
 const MatchPoints = ({searchBy}) => {
-    const { apiInstance } = useContext(AuthContext);
+    const { apiInstance, isAuthenticated } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
     const [modalData, openModal] = useState([]);
 
     const updateAll = () => {
+        if (!isAuthenticated) return;
         apiInstance.get(MATCH_POINTS_URL()).then((response) => setFootballers(response.data));
         apiInstance.get(TOP_OF_WEEK_URL()).then((response) => setTopWeek(response.data));
     }
@@ -37,12 +38,8 @@ const MatchPoints = ({searchBy}) => {
         })
     }
 
-    // const display = searchBy === '' ? footballers : footballers.filter((item) => (
-    //     item.footballer.name.toLowerCase().includes(searchBy.toLowerCase()) 
-    //     || item.footballer.team.name.toLowerCase().includes(searchBy.toLowerCase())
-    // ))
-
-    useEffect(updateAll, [])
+    const displayKeys = searchBy === '' ? Object.keys(footballers) : Object.keys(footballers).filter((key) => key.toLowerCase().includes(searchBy.toLowerCase()));
+    useEffect(updateAll, [isAuthenticated]);
 
     return (
         <div className="row mt-4">
@@ -61,7 +58,7 @@ const MatchPoints = ({searchBy}) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {Object.keys(footballers).map((key, index) => (
+                        {displayKeys.map((key, index) => (
                             <tr className="table-row" key={`${index}-row`}>
                                 <td>{index + 1}</td>
                                 <td>{key}</td>
