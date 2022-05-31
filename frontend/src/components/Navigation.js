@@ -44,7 +44,19 @@ const Navigation = () => {
             <li className="nav-item">
                 <Link className={`nav-link custom-link ${location == '/portfolio' ? 'custom-link-active' : ''}`} to="/portfolio">
                     <i className="fa-solid fa-suitcase px-2"></i>
-                    Portfolio&nbsp; <span className="dark-cornflower-blue-3-bg light-blue-color">$HIX {footballers.reduce(accumulateValue, 0).toFixed(2)}</span>
+                    Portfolio&nbsp; <span className="dark-cornflower-blue-3-bg light-blue-color p-1 rounded">$HIX {footballers.reduce(accumulateValue, 0).toFixed(2)}</span>
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link className={`nav-link custom-link disabled ${location == '/more' ? 'custom-link-active' : ''}`} to="/portfolio">
+                    <i class="fa-solid fa-ellipsis px-2"></i>
+                    More
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link className={`nav-link custom-link disabled ${location == '/fund' ? 'custom-link-active' : ''}`} to="/portfolio">
+                    <i class="fa-solid fa-user px-2"></i>
+                    Fund
                 </Link>
             </li>
         </ul>
