@@ -16,13 +16,9 @@ export const AuthProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState(window.localStorage.getItem(TOKEN_NAME))
   const [isAuthenticated, setIsAuthenticated] = useState(Boolean(accessToken));
-  
-  let apiInstance = axios.create({
-    headers: {
-      'Authorization': accessToken ? `Bearer ${accessToken}` : null,
-      'Content-Type': 'multipart/form-data'
-    },
-  })
+
+  let apiInstance = axios.create({ headers: {'Content-Type': 'multipart/form-data'} });
+  if (accessToken) apiInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
   const saveRefresh = (token) => window.localStorage.setItem(TOKEN_NAME, token);
 
@@ -56,7 +52,18 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (accessToken) getUserData();
+    if (accessToken) {
+      const headers = {'Content-Type': 'multipart/form-data'}
+      
+      let apiInstance = axios.create({ headers });
+    }
+  }, [accessToken])
+
+  useEffect(() => {
+    if (accessToken) {
+      apiInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+      getUserData(); 
+    } 
     if (!accessToken && refreshToken) getNewAccessToken();
     if (!refreshToken && !refreshToken) setIsAuthenticated(false);
   }, [accessToken, refreshToken, isAuthenticated])

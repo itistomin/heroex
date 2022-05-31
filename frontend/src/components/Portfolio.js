@@ -7,8 +7,8 @@ import TopWeek from "./TopWeek";
 import BuySellModal from "./BuySellModal";
 
 
-const Portfolio = () => {
-    const { apiInstance } = useContext(AuthContext);
+const Portfolio = ({ searchBy }) => {
+    const { apiInstance, isAuthenticated } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [reward, setTopWeekReward] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
@@ -45,8 +45,11 @@ const Portfolio = () => {
             name, price,
         })
     }
+    useEffect(updateAll, [isAuthenticated])
 
-    useEffect(updateAll, [])
+    const display = searchBy === '' ? footballers : footballers.filter((item) => (
+        item.name.toLowerCase().includes(searchBy.toLowerCase()) 
+    ))
 
     const accumulateTokens = (accumulator, item) => accumulator + item.amount;
     const accumulateReward = (accumulator, item) => accumulator + item.amount * (reward[item.name] || 0);
@@ -79,8 +82,8 @@ const Portfolio = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {!footballers.length && <tr className="my-2 text-center"><td colSpan="11" className="py-3">Your portfolio is empty!</td></tr>}
-                        {footballers.map((item, index) => (
+                        {!display.length && <tr className="my-2 text-center"><td colSpan="11" className="py-3">Your portfolio is empty!</td></tr>}
+                        {display.map((item, index) => (
                             <tr className="table-row" key={`${index}-row`}>
                                 <td>{index + 1}</td>
                                 <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>

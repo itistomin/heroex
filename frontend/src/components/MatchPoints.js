@@ -7,7 +7,7 @@ import TopWeek from "./TopWeek";
 import BuySellModal from "./BuySellModal";
 
 
-const MatchPoints = () => {
+const MatchPoints = ({searchBy}) => {
     const { apiInstance } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
@@ -36,6 +36,11 @@ const MatchPoints = () => {
             name, price,
         })
     }
+
+    // const display = searchBy === '' ? footballers : footballers.filter((item) => (
+    //     item.footballer.name.toLowerCase().includes(searchBy.toLowerCase()) 
+    //     || item.footballer.team.name.toLowerCase().includes(searchBy.toLowerCase())
+    // ))
 
     useEffect(updateAll, [])
 
