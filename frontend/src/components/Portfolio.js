@@ -55,7 +55,8 @@ const Portfolio = ({ searchBy }) => {
     const accumulateReward = (accumulator, item) => accumulator + item._total_reward;
     const accumulateCost = (accumulator, item) => accumulator + item.cost;
     const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
-    const accumulatePNL = (accumulator, item) => accumulator + item.pnl;
+
+    const totalPnL = footballers.reduce((accumulator, item) => accumulator + item.pnl, 0).toFixed(2)
 
     return (
         <div className="row mt-4">
@@ -117,7 +118,7 @@ const Portfolio = ({ searchBy }) => {
                             <td colSpan={2}></td>
                             <td>{footballers.reduce(accumulateCost, 0).toFixed(2)}</td>
                             <td>{footballers.reduce(accumulateValue, 0).toFixed(2)}</td>
-                            <td>{footballers.reduce(accumulatePNL, 0).toFixed(2)}</td>
+                            <td className={`${totalPnL > 0 ? 'green-11-color' : 'purple-color'}`}>{totalPnL}</td>
                             <td colSpan={2}></td>
                         </tr>
                     </tbody>
