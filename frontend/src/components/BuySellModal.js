@@ -19,6 +19,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
         initialValues: {footballer: name, tokens: 1},
         validationSchema: buySellValidation,
         onSubmit: (values) => {
+            if (step !== TRANSACTION_FLOW[2]) return;
             const url = operation === 'buy' ? BUY_TOKENS_URL() : SELL_TOKENS_URL();
             apiInstance.post(url, values).then(() => {nextTransactionStep})
         }
@@ -53,8 +54,8 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                 value={formik.values.tokens}
                 placeholder="Amount of tokens"
             />
-            { notEnoughtBallance&& <small className="text-warning">Not enought money</small>}
-            { notEnoughtTokens &&  <small className="text-warning">{userFootballerTokens === 0 ? 'You have nothing to sell' : 'Incorrect amount of tokens'}</small>}
+            { notEnoughtBallance&& <small className="text-warning">Insufficient Funds</small>}
+            { notEnoughtTokens &&  <small className="text-warning">{userFootballerTokens === 0 ? 'Insufficient Tokens' : 'Incorrect amount of tokens'}</small>}
             {  !!formikErrors && <small className="text-warning">{formik.errors.tokens}</small>}
         </div>
     ) : (
@@ -65,18 +66,22 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
 
     const ButtonConfirm = step == TRANSACTION_FLOW[1] ?
     (
-        <button type="submit" className={`btn purple-bg text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Confirm</button>
+        <button type="button" className={`btn purple-bg text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Confirm</button>
     ) : (
-        <button type="button" className={`btn purple-bg text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Ok</button>
+        <button type="submit" className={`btn purple-bg text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Ok</button>
     );
 
     return (
         <div className="transaction-background">
             <div className={`transaction-block ${operation}-border`}>
-                <h3 className={`text-center py-2 w-100 ${operation}-bg`}>{step.toUpperCase()}&nbsp;{name}</h3>
+                <h3 className={`text-center py-2 w-100 ${step === operation ? `${operation}-bg` : 'cornflower-blue-bg'}`}>
+                    {step === operation ? `${step.toUpperCase()} NOW` : 'HeroEx Wallet'}
+                </h3>
                 <hr />
                 <form onSubmit={formik.handleSubmit} className="container">
                     <div className="row">
+                        <div className="col-6 my-2 cornflower-blue-color">{step.toUpperCase()} {step === 'confirm' ? operation.toUpperCase() : ''}</div>
+                        <div className="col-6 my-2">{name}</div>
                         <div className="col-6 my-2">Your balance:</div>
                         <div className="col-6 my-2">{user?.balance} $HIX</div>
                         
@@ -96,7 +101,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         <div className="col-6 my-2">Total cost:</div>
                         <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} $HIX</div>
 
-                        {step === TRANSACTION_FLOW[2] ? <div className="col-12"><h2 className={`${operation}-bg text-white text-center`}>TRANSACTION CONFIRMED</h2></div> : ''}
+                        {step === TRANSACTION_FLOW[2] ? <div className="col-12"><h2 className='cornflower-blue-color text-white text-center'>TRANSACTION CONFIRMED</h2></div> : ''}
                         <div className="col-12 d-flex justify-content-center my-2">
                            {ButtonConfirm}
                             {step === TRANSACTION_FLOW[2] ? "" : <button type="button" className={`btn btn-danger mx-2 ${isAuthenticated ? '' : 'disabled'}` }onClick={closeModal}>Cancel</button>}
