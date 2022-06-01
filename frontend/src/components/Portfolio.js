@@ -26,7 +26,7 @@ const Portfolio = ({ searchBy }) => {
             setTopWeekReward(data);
         });
     }
-
+ 
     const transaction = {
         closeModal: openModal,
         callable: updateAll,
