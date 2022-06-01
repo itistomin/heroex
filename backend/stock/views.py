@@ -164,7 +164,9 @@ class UserTokenSellView(APIView):
     @extend_schema(request=BuyAndSellSerializer)
     def post(self, request):
         user = request.user
+        week = user.week or GameWeek.objects.get(number=0)
         raw_data = BuyAndSellSerializer(data=request.data)
+
         if not raw_data.is_valid():
             return Response({'detail': 'Invalid payload'}, 422)
         
@@ -172,7 +174,7 @@ class UserTokenSellView(APIView):
 
         footballer_data = FootballerWeeksData.objects.filter(
             footballer__name=data['footballer'],
-            week=user.week or GameWeek.objects.get(number=0)
+            week=week
         ).first()
         if not footballer_data:
             return Response({'detail': 'This footballer does not exist.'}, 404)
@@ -190,9 +192,13 @@ class UserTokenSellView(APIView):
         user_footballer.amount -= data['tokens']
         user.balance += decimal.Decimal(footballer_data.sell_price * data['tokens'])
 
+        trade_log = UserTradeLog.objects.get(user=user, week=week, footballer=user_footballer.footballer)
+        trade_log.amount -= data['tokens']
+
         with transaction.atomic():
             user_footballer.save()
             user.save()
+            trade_log.save()
         
         return Response({'detail': 'ok'}, 201)
 
