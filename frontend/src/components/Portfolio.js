@@ -99,13 +99,13 @@ const Portfolio = ({ searchBy }) => {
                                 <td>{item.value.toFixed(2)}</td>
                                 <td className={`${item.pnl > 0 ? 'green-11-color' : 'purple-color'}`}>{item.pnl.toFixed(2)}</td>
                                 <td className="text-end">
-                                    <button className="btn purple-bg text-white" onClick={() => processSell({ name: item.name, price: item.sell_price })}>
-                                        {item.sell_price.toFixed(2)}<br /><small>SELL</small>
+                                    <button className="btn purple-bg text-white small-text" onClick={() => processSell({ name: item.name, price: item.sell_price })}>
+                                        {item.sell_price.toFixed(2)}<br />SELL
                                     </button>
                                 </td>
                                 <td className="text-end">
-                                    <button className="btn green-11-bg text-white" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>
-                                        {item.buy_price.toFixed(2)}<br /><small>BUY</small>
+                                    <button className="btn green-11-bg text-white small-text" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>
+                                        {item.buy_price.toFixed(2)}<br />BUY
                                     </button>
                                 </td>
                             </tr>

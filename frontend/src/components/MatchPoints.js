@@ -68,13 +68,13 @@ const MatchPoints = ({searchBy}) => {
                                 <td>{footballers[key].previous_score}</td>
                                 <td>{footballers[key].current_score}</td>
                                 <td className="text-end">
-                                    <button className="btn purple-bg text-white" onClick={() => processSell({ name: key, price: footballers[key].sell_price })}>
-                                        {footballers[key].sell_price.toFixed(2)}<br /><small>SELL</small>
+                                    <button className="btn purple-bg text-white small-text" onClick={() => processSell({ name: key, price: footballers[key].sell_price })}>
+                                        {footballers[key].sell_price.toFixed(2)}<br />SELL
                                     </button>
                                 </td>
                                 <td className="text-end">
-                                    <button className="btn green-11-bg text-white" onClick={() => processBuy({ name: key, price: footballers[key].buy_price })}>
-                                        {footballers[key].buy_price.toFixed(2)}<br /><small>BUY</small>
+                                    <button className="btn green-11-bg text-white small-text" onClick={() => processBuy({ name: key, price: footballers[key].buy_price })}>
+                                        {footballers[key].buy_price.toFixed(2)}<br />BUY
                                     </button>
                                 </td>
                             </tr>

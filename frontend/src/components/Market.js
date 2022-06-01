@@ -72,18 +72,18 @@ const Market = ({ searchBy }) => {
                                 <td className={item.footballer.price_dynamic > 0 ? 'dynamic-positive' : 'dynamic-negative'}>{item.footballer.price_dynamic} ({(item.footballer.price_dynamic * 100 / item.buy_price).toFixed(2)} %)</td>
                                 <td className="text-end">
                                     <button 
-                                        className={`btn purple-bg text-white ${isAuthenticated ? '' : 'd-none'}`}
+                                        className={`btn purple-bg text-white small-text ${isAuthenticated ? '' : 'd-none'}`}
                                         onClick={() => processSell({name: item.footballer.name, price: item.sell_price})}
                                     >
-                                            {item.sell_price.toFixed(2)}<br /><small>SELL</small>
+                                            {item.sell_price.toFixed(2)}<br />SELL
                                         </button>
                                 </td>
                                 <td className="text-end">
                                     <button
-                                        className={`btn green-11-bg text-white ${isAuthenticated ? '' : 'd-none'}`}
+                                        className={`btn green-11-bg text-white small-text ${isAuthenticated ? '' : 'd-none'}`}
                                         onClick={() => processBuy({name: item.footballer.name, price: item.buy_price})}
                                     >
-                                            {item.buy_price.toFixed(2)}<br /><small>BUY</small>
+                                            {item.buy_price.toFixed(2)}<br />BUY
                                         </button>
                                     </td>
                             </tr>

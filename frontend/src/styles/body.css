@@ -156,3 +156,8 @@ body {
 .light-blue-color {
     color: #d8e2f3;
 }
+
+.small-text {
+    line-height: 95%;
+    font-size: 0.9em;
+}
