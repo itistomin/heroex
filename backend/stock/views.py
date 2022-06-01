@@ -231,7 +231,6 @@ class MatchPointsView(APIView):
                 'buy_price': current_week_data.buy_price,
                 'sell_price': current_week_data.sell_price,
             }
-        
-        # data = sorted(data, key=lambda item: item['current_score'], reverse=True)
+
         data = {k: v for k, v in sorted(data.items(), key=lambda item: item[1]['current_score'], reverse=True)}
         return Response(data, 200)

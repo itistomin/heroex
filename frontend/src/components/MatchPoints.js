@@ -61,7 +61,7 @@ const MatchPoints = ({searchBy}) => {
                     <tbody>
                         {displayKeys.map((key, index) => (
                             <tr className="table-row align-middle" key={`${index}-row`}>
-                                <td>{index + 1}</td>
+                                <td>{footballers[key].rank}</td>
                                 <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
                                 <td>{key}</td>
                                 <td>{footballers[key].total_score}</td>
