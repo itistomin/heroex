@@ -10,21 +10,13 @@ import BuySellModal from "./BuySellModal";
 const Portfolio = ({ searchBy }) => {
     const { apiInstance, isAuthenticated } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
-    const [reward, setTopWeekReward] = useState([]);
+    // const [reward, setTopWeekReward] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
     const [modalData, openModal] = useState([]);
 
     const updateAll = () => {
         apiInstance.get(PORTFOLIO_URL()).then((response) => setFootballers(response.data));
-        apiInstance.get(TOP_OF_WEEK_URL()).then((response) => {
-            setTopWeek(response.data);
-            const data = {};
-            const MAX_INDEX = 0.5;
-            response.data.forEach((item, index) => {
-                data[item.name] = MAX_INDEX - (index / 10);
-            })
-            setTopWeekReward(data);
-        });
+        apiInstance.get(TOP_OF_WEEK_URL()).then((response) => setTopWeek(response.data));
     }
  
     const transaction = {
