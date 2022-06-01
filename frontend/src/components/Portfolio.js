@@ -52,11 +52,11 @@ const Portfolio = ({ searchBy }) => {
     ))
 
     const accumulateTokens = (accumulator, item) => accumulator + item.amount;
-    const accumulateReward = (accumulator, item) => accumulator + item._total_reward;
     const accumulateCost = (accumulator, item) => accumulator + item.cost;
     const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
 
     const totalPnL = footballers.reduce((accumulator, item) => accumulator + item.pnl, 0).toFixed(2)
+    const totalReward = footballers.reduce((accumulator, item) => accumulator + item._total_reward, 0).toFixed(2)
 
     return (
         <div className="row mt-4">
@@ -91,7 +91,7 @@ const Portfolio = ({ searchBy }) => {
 
                                 <td>{item.name}</td>
                                 <td>{item.amount}</td>
-                                <td>{item.reward.toFixed(1)}</td>
+                                <td>{item.reward.toFixed(2)}</td>
 
                                 <td>{item.trade_price.toFixed(2)}</td>
                                 <td>{item.buy_price.toFixed(2)}</td>
@@ -114,7 +114,7 @@ const Portfolio = ({ searchBy }) => {
                         <tr>
                             <td colSpan={3}>TOTAL</td>
                             <td>{footballers.reduce(accumulateTokens, 0)}</td>
-                            <td>{footballers.reduce(accumulateReward, 0)} HIX</td>
+                            <td>{totalReward} HIX</td>
                             <td colSpan={2}></td>
                             <td>{footballers.reduce(accumulateCost, 0).toFixed(2)}</td>
                             <td>{footballers.reduce(accumulateValue, 0).toFixed(2)}</td>

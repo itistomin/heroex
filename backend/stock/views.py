@@ -42,6 +42,13 @@ def get_footballer_reward(week, footballer):
     data = list(FootballerWeeksData.objects.filter(week=week).order_by('-perfomance').values_list('footballer', flat=True)[:3])
     return  (5 - data.index(footballer.id)) / 10 if footballer.id in data else 0
 
+def get_user_reward(user, footballer):
+    
+    return sum([
+        get_footballer_reward(week, footballer) * log.amount
+        for log in UserTradeLog.objects.filter(user=user, footballer=footballer)
+        for week in GameWeek.objects.filter(number__gte=log.week.number, number__lte=user.week.number)
+    ])
 
 @extend_schema(tags=STOCK_TAGS)
 class FootballersView(APIView):
@@ -81,11 +88,9 @@ class UserTokenView(APIView):
 
             average_sum = 0
             average_amount = 0
-            reward = 0
             for trade in trade_logs:
                 average_sum += trade.buy_price * trade.amount
                 average_amount += trade.amount
-                reward += trade.reward * trade.amount
             average_buy_price = average_sum / average_amount
 
             footballer_price = footballers.get(footballer=footballer_data.footballer)
@@ -93,8 +98,8 @@ class UserTokenView(APIView):
                 'rank': rank[footballer_data.footballer.name],
                 'name': footballer_data.footballer.name,
                 'amount': footballer_data.amount,
-                'reward': (5 - data.index(footballer_data.footballer.id)) / 10 if footballer_data.footballer.id in data else 0,
-                '_total_reward': reward,
+                'reward': ((5 - data.index(footballer_data.footballer.id)) / 10 if footballer_data.footballer.id in data else 0) * footballer_data.amount,
+                '_total_reward': get_user_reward(user, footballer_data.footballer),
                 'trade_price': average_buy_price,
                 'cost': average_amount * average_buy_price,
                 'value': average_amount * footballer_price.sell_price,
@@ -192,7 +197,7 @@ class UserTokenSellView(APIView):
         user_footballer.amount -= data['tokens']
         user.balance += decimal.Decimal(footballer_data.sell_price * data['tokens'])
 
-        trade_log = UserTradeLog.objects.get(user=user, week=week, footballer=user_footballer.footballer)
+        trade_log = UserTradeLog.objects.filter(user=user, footballer=user_footballer.footballer).order_by('week__number').last()
         trade_log.amount -= data['tokens']
 
         with transaction.atomic():
