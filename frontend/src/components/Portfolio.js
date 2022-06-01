@@ -97,7 +97,7 @@ const Portfolio = ({ searchBy }) => {
 
                                 <td>{item.cost.toFixed(2)}</td>
                                 <td>{item.value.toFixed(2)}</td>
-                                <td>{item.pnl.toFixed(2)}</td>
+                                <td className={`${item.pnl > 0 ? 'green-11-color' : 'purple-color'}`}>{item.pnl.toFixed(2)}</td>
                                 <td className="text-end">
                                     <button className="btn purple-bg text-white" onClick={() => processSell({ name: item.name, price: item.sell_price })}>
                                         {item.sell_price.toFixed(2)}<br /><small>SELL</small>
