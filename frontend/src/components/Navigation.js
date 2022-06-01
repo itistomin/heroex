@@ -45,7 +45,7 @@ const Navigation = () => {
             <li className="nav-item">
                 <Link className={`nav-link custom-link ${location == '/portfolio' ? 'custom-link-active' : ''}`} to="/portfolio">
                     <i className="fa-solid fa-suitcase px-2"></i>
-                    Portfolio&nbsp; <span className="dark-cornflower-blue-3-bg light-blue-color p-1 rounded">$HIX {footballers.reduce(accumulateValue, 0).toFixed(2)}</span>
+                    Portfolio&nbsp; <span className="dark-cornflower-blue-3-bg light-blue-color p-1 rounded">HIX {footballers.reduce(accumulateValue, 0).toFixed(2)}</span>
                 </Link>
             </li>
             <li className="nav-item"  data-toggle="tooltip" data-placement="bottom" title="Links to Academy, Blogs, forum and other ">

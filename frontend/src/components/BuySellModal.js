@@ -83,10 +83,10 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         <div className="col-6 my-2 cornflower-blue-color">{step.toUpperCase()} {step === 'confirm' ? operation.toUpperCase() : ''}</div>
                         <div className="col-6 my-2">{name}</div>
                         <div className="col-6 my-2">Your balance:</div>
-                        <div className="col-6 my-2">{user?.balance} $HIX</div>
+                        <div className="col-6 my-2">{user?.balance} HIX</div>
                         
                         <div className="col-6 my-2">Current price:</div>
-                        <div className="col-6 my-2">{price} $HIX / token</div>
+                        <div className="col-6 my-2">{price} HIX / token</div>
 
                         {operation === 'sell' && (
                             <>
@@ -99,7 +99,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         {TokenInfo}
 
                         <div className="col-6 my-2">Total cost:</div>
-                        <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} $HIX</div>
+                        <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} HIX</div>
 
                         {step === TRANSACTION_FLOW[2] ? <div className="col-12"><h2 className='cornflower-blue-color text-white text-center'>TRANSACTION CONFIRMED</h2></div> : ''}
                         <div className="col-12 d-flex justify-content-center my-2">

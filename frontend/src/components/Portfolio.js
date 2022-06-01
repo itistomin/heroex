@@ -113,7 +113,7 @@ const Portfolio = ({ searchBy }) => {
                         <tr>
                             <td colSpan={3}>TOTAL</td>
                             <td>{footballers.reduce(accumulateTokens, 0)}</td>
-                            <td>{footballers.reduce(accumulateReward, 0)} $HIX</td>
+                            <td>{footballers.reduce(accumulateReward, 0)} HIX</td>
                             <td colSpan={2}></td>
                             <td>{footballers.reduce(accumulateCost, 0).toFixed(2)}</td>
                             <td>{footballers.reduce(accumulateValue, 0).toFixed(2)}</td>
