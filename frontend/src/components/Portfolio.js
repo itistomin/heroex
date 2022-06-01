@@ -64,7 +64,7 @@ const Portfolio = ({ searchBy }) => {
                 <table className="table table-sm text-white">
                     <thead>
                         <tr>
-                            <th scope="col">Rank</th>
+                            <th scope="col">Price<br />rank</th>
                             <th scope="col"></th>
 
                             <th scope="col">Name</th>
