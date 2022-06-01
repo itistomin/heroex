@@ -85,7 +85,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         <div className="col-6 my-2">Your balance:</div>
                         <div className="col-6 my-2">{user?.balance} HIX</div>
                         
-                        <div className="col-6 my-2">Current price:</div>
+                        <div className="col-6 my-2">Buy price:</div>
                         <div className="col-6 my-2">{price} HIX / token</div>
 
                         {operation === 'sell' && (

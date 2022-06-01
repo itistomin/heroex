@@ -73,7 +73,7 @@ const Portfolio = ({ searchBy }) => {
                             <th scope="col">Rewards</th>
 
                             <th scope="col">Trade price</th>
-                            <th scope="col">Current price</th>
+                            <th scope="col">Buy price</th>
                             
                             <th scope="col">Cost</th>
                             <th scope="col">Value</th>
