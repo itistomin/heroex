@@ -62,6 +62,7 @@ class UserTradeLog(Model):
 
     amount = PositiveIntegerField(default=0)
     buy_price = DecimalField(max_digits=10, decimal_places=2, null=True, default=0)
+    reward = DecimalField(max_digits=10, decimal_places=2, null=True, default=0)
 
     class Meta:
         unique_together = ('user', 'footballer', 'week')

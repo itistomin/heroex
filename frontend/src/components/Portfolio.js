@@ -52,7 +52,7 @@ const Portfolio = ({ searchBy }) => {
     ))
 
     const accumulateTokens = (accumulator, item) => accumulator + item.amount;
-    const accumulateReward = (accumulator, item) => accumulator + item.amount * (reward[item.name] || 0);
+    const accumulateReward = (accumulator, item) => accumulator + item._total_reward;
     const accumulateCost = (accumulator, item) => accumulator + item.cost;
     const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
     const accumulatePNL = (accumulator, item) => accumulator + item.pnl;

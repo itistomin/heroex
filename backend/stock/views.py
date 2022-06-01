@@ -38,6 +38,11 @@ def get_footballer_rank(week):
     return data
 
 
+def get_footballer_reward(week, footballer):
+    data = list(FootballerWeeksData.objects.filter(week=week).order_by('-perfomance').values_list('footballer', flat=True)[:3])
+    return  (5 - data.index(footballer.id)) / 10 if footballer.id in data else 0
+
+
 @extend_schema(tags=STOCK_TAGS)
 class FootballersView(APIView):
     
@@ -76,9 +81,11 @@ class UserTokenView(APIView):
 
             average_sum = 0
             average_amount = 0
+            reward = 0
             for trade in trade_logs:
                 average_sum += trade.buy_price * trade.amount
                 average_amount += trade.amount
+                reward += trade.reward * trade.amount
             average_buy_price = average_sum / average_amount
 
             footballer_price = footballers.get(footballer=footballer_data.footballer)
@@ -87,6 +94,7 @@ class UserTokenView(APIView):
                 'name': footballer_data.footballer.name,
                 'amount': footballer_data.amount,
                 'reward': (5 - data.index(footballer_data.footballer.id)) / 10 if footballer_data.footballer.id in data else 0,
+                '_total_reward': reward,
                 'trade_price': average_buy_price,
                 'cost': average_amount * average_buy_price,
                 'value': average_amount * footballer_price.sell_price,
@@ -139,7 +147,7 @@ class UserTokenBuyView(APIView):
             user=user,
             week=user.week,
             footballer=user_footballer.footballer,
-            defaults={'amount': data['tokens'], 'buy_price': footballer.buy_price}
+            defaults={'amount': data['tokens'], 'buy_price': footballer.buy_price, 'reward': get_footballer_reward(user.week, footballer.footballer) }
         )
 
         if not created:

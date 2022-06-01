@@ -15,4 +15,4 @@ class UserFootballerAdmin(admin.ModelAdmin):
 
 @admin.register(UserTradeLog)
 class UserTradeLogAdmin(admin.ModelAdmin):
-    list_display = ('user', 'footballer', 'week', 'amount', 'buy_price')
+    list_display = ('user', 'footballer', 'week', 'amount', 'buy_price', 'reward',)

@@ -20,6 +20,7 @@ const Navigation = () => {
     }, [historyLocation]);
 
     useEffect(updateAll, [isAuthenticated]);
+    useEffect(updateAll, []);
 
     return (
         <ul className="nav nav-pills nav-fill">
