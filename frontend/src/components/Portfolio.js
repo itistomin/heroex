@@ -98,7 +98,7 @@ const Portfolio = ({ searchBy }) => {
 
                                 <td>{item.cost.toFixed(2)}</td>
                                 <td>{item.value.toFixed(2)}</td>
-                                <td className={`${item.pnl > 0 ? 'green-11-color' : 'purple-color'}`}>{item.pnl.toFixed(2)}</td>
+                                <td className={`px-3 ${item.pnl > 0 ? 'green-11-color' : 'purple-color'}`}>{item.pnl.toFixed(2)}</td>
                                 <td className="text-end">
                                     <button className="btn purple-bg text-white small-text" onClick={() => processSell({ name: item.name, price: item.sell_price })}>
                                         {item.sell_price.toFixed(2)}<br />SELL
@@ -118,7 +118,7 @@ const Portfolio = ({ searchBy }) => {
                             <td colSpan={2}></td>
                             <td>{footballers.reduce(accumulateCost, 0).toFixed(2)}</td>
                             <td>{footballers.reduce(accumulateValue, 0).toFixed(2)}</td>
-                            <td className={`${totalPnL > 0 ? 'green-11-color' : 'purple-color'}`}>{totalPnL}</td>
+                            <td className={`px-3 ${totalPnL > 0 ? 'green-11-color' : 'purple-color'}`}>{totalPnL}</td>
                             <td colSpan={2}></td>
                         </tr>
                     </tbody>

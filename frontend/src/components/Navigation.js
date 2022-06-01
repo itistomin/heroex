@@ -23,7 +23,7 @@ const Navigation = () => {
     useEffect(updateAll, []);
 
     return (
-        <ul className="nav nav-pills nav-fill">
+        <ul className="nav nav-pills nav-fill border-blue">
             <li className="nav-item">
                 <Link className={`nav-link custom-link ${location == '/market' ? 'custom-link-active' : ''}`}  to="/market">
                     <i className="fa-solid fa-cart-shopping px-2"></i>

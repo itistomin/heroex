@@ -17,7 +17,7 @@ const Header = ({ setSearchBy }) => {
     }
 
     return (
-        <div className="container text-white py-3 border-bottom">
+        <div className="container text-white py-3">
             <div className="row">
                 <div className="col-12 col-md-3">
                     <h1><img src="/static/img/logo.png" alt="logo" height={"50px"} width={"auto"} /></h1>

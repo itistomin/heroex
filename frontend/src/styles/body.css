@@ -5,22 +5,20 @@ body {
 .custom-link {
     color: white;
     text-decoration: none;
-    border-bottom: 1px solid white;
 }
 
 .custom-link:hover {
-    color: white;
+    color:  #ff7f00;
     text-decoration:  none;
-    border-bottom: 1px solid orange;
 }
 
 .custom-link:focus {
-    color: white;
+    color:  #ff7f00;
     text-decoration:  none;
 }
 
 .custom-link-active {
-    border-bottom: 1px solid orange !important;
+    color:  #ff7f00;
 }
 
 .helper-text {
@@ -160,4 +158,8 @@ body {
 .small-text {
     line-height: 95%;
     font-size: 0.9em;
+}
+
+.border-blue {
+    border-bottom: 2px solid #4fa8d9;
 }
