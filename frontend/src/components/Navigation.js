@@ -36,7 +36,7 @@ const Navigation = () => {
                     Match points
                 </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" data-toggle="tooltip" data-placement="bottom" title="A list of Performance Podium Winners week by week ">
                 <Link className={`nav-link custom-link disabled ${location == '/gameweek' ? 'custom-link-active' : ''}`} to="#">
                     <i className="fa-solid fa-calendar px-2"></i>
                     Game weeks
@@ -48,13 +48,13 @@ const Navigation = () => {
                     Portfolio&nbsp; <span className="dark-cornflower-blue-3-bg light-blue-color p-1 rounded">$HIX {footballers.reduce(accumulateValue, 0).toFixed(2)}</span>
                 </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item"  data-toggle="tooltip" data-placement="bottom" title="Links to Academy, Blogs, forum and other ">
                 <Link className={`nav-link custom-link disabled ${location == '/more' ? 'custom-link-active' : ''}`} to="/portfolio">
                     <i class="fa-solid fa-ellipsis px-2"></i>
                     More
                 </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item"   data-toggle="tooltip" data-placement="bottom" title="This describes how a User can fund his Wallet ">
                 <Link className={`nav-link custom-link disabled dark-cornflower-blue-3-bg text-white bordered ${location == '/fund' ? 'custom-link-active' : ''}`} to="/portfolio">
                     Fund
                 </Link>

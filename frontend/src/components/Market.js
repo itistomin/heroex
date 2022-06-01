@@ -66,7 +66,7 @@ const Market = ({ searchBy }) => {
                             <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{item.rank}</td>
                                 <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
-                                <td>{item.footballer.name}</td>
+                                <td data-toggle="tooltip" data-placement="bottom" title="Links to Player Profile Page with stats, biog, price and performance charts">{item.footballer.name}</td>
                                 <td>{item.footballer.team.name}</td>
                                 <td>{item.footballer.position.name.toUpperCase()}</td>
                                 <td className={item.footballer.price_dynamic > 0 ? 'dynamic-positive' : 'dynamic-negative'}>{item.footballer.price_dynamic} ({(item.footballer.price_dynamic * 100 / item.buy_price).toFixed(2)} %)</td>

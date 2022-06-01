@@ -16,8 +16,6 @@ const Header = ({ setSearchBy }) => {
         setSearchBy(formik.values.search)
     }
 
-    let username = 'Anon';
-    if (isAuthenticated) username = user?.username?.charAt(0)?.toUpperCase() + user?.username?.slice(1);
     return (
         <div className="container text-white py-3 border-bottom">
             <div className="row">
@@ -26,7 +24,7 @@ const Header = ({ setSearchBy }) => {
                 </div>
                 <div class="col-12 col-md-4 d-flex align-items-center">
                     <form onSubmit={formik.handleSubmit} className="d-flex">
-                        <input type="text" name="search" className="form-control" placeholder="Search footballer"value={formik.values.search} onChange={formik.handleChange} />
+                        <input type="text" name="search" className="form-control" placeholder="Search footballer" value={formik.values.search} onChange={formik.handleChange} data-toggle="tooltip" data-placement="bottom" title="Intuitive search of all Players by name or team" />
                         <button class="btn btn-light" onClick={applySearch} ><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
