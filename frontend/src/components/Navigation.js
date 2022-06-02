@@ -45,7 +45,7 @@ const Navigation = () => {
                 </Link>
             </li>
             <li className="nav-item"   data-toggle="tooltip" data-placement="bottom" title="This describes how a User can fund his Wallet ">
-                <Link className={`nav-link custom-link disabled dark-cornflower-blue-3-bg text-white bordered ${location == '/fund' ? 'custom-link-active' : ''}`} to="/portfolio">
+                <Link className={`p-1 nav-link custom-link disabled dark-cornflower-blue-3-bg text-white bordered ${location == '/fund' ? 'custom-link-active' : ''}`} to="/portfolio">
                     Fund
                 </Link>
             </li>
