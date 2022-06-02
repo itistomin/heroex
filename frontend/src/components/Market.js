@@ -49,19 +49,17 @@ const Market = ({ searchBy }) => {
             {modalData?.operation && <BuySellModal {...modalData} />}
             <div className="col-12 col-lg-9">
                 <table className="table table-sm text-white">
-                    <thead>
-                        <tr>
-                            <th scope="col">Price<br />rank</th>
-                            <th scope="col"></th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Team</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">7Day</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
                     <tbody>
+                        <tr>
+                            <td scope="col">Price rank</td>
+                            <td scope="col"></td>
+                            <td scope="col">Name</td>
+                            <td scope="col">Team</td>
+                            <td scope="col">Position</td>
+                            <td scope="col">7Day</td>
+                            <td scope="col"></td>
+                            <td scope="col"></td>
+                        </tr>
                         {display.map((item, index) => (
                             <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{item.rank}</td>

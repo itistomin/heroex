@@ -46,19 +46,17 @@ const MatchPoints = ({searchBy}) => {
             {modalData?.operation && <BuySellModal {...modalData} />}
             <div className="col-12 col-lg-9">
                 <table className="table table-sm text-white">
-                    <thead>
-                        <tr>
-                            <th scope="col">Price<br />rank</th>
-                            <th scope="col"></th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Total Points</th>
-                            <th scope="col">Previous week</th>
-                            <th scope="col">Current week</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
                     <tbody>
+                        <tr>
+                            <td scope="col">Price rank</td>
+                            <td scope="col"></td>
+                            <td scope="col">Name</td>
+                            <td scope="col">Total Points</td>
+                            <td scope="col">Previous week</td>
+                            <td scope="col">Current week</td>
+                            <td scope="col"></td>
+                            <td scope="col"></td>
+                        </tr>
                         {displayKeys.map((key, index) => (
                             <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{footballers[key].rank}</td>

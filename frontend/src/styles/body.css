@@ -2,23 +2,27 @@ body {
     background-color: #000022;
 }
 
+thead, th, tr {
+    border-color: #4fa8d9 !important;
+}
+
 .custom-link {
     color: white;
     text-decoration: none;
 }
 
 .custom-link:hover {
-    color:  #ff7f00;
+    color: #4fa8d9;
     text-decoration:  none;
 }
 
 .custom-link:focus {
-    color:  #ff7f00;
+    color: #4fa8d9;
     text-decoration:  none;
 }
 
 .custom-link-active {
-    color:  #ff7f00;
+    color: #4fa8d9;
 }
 
 .helper-text {

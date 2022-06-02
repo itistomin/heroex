@@ -55,25 +55,23 @@ const Portfolio = ({ searchBy }) => {
             {modalData?.operation && <BuySellModal {...modalData} />}
             <div className="col-12 col-lg-9">
                 <table className="table table-sm text-white">
-                    <thead>
+                    <tbody>
                         <tr>
-                            <th scope="col">Price<br />rank</th>
+                            <td scope="col">Price rank</td>
 
-                            <th scope="col">Name</th>
-                            <th scope="col">Tokens</th>
-                            <th scope="col">Rewards</th>
+                            <td scope="col">Name</td>
+                            <td scope="col">Tokens</td>
+                            <td scope="col">Rewards</td>
 
-                            <th scope="col">Trade price</th>
-                            <th scope="col">Buy price</th>
+                            <td scope="col">Trade price</td>
+                            <td scope="col">Buy price</td>
                             
-                            <th scope="col">Cost</th>
-                            <th scope="col">Value</th>
-                            <th scope="col">P/L</th>
+                            <td scope="col">Cost</td>
+                            <td scope="col">Value</td>
+                            <td scope="col">P/L</td>
                             
                             <th scope="col" colSpan={2}>Price</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         {!display.length && <tr className="my-2 text-center"><td colSpan="11" className="py-3">Your portfolio is empty!</td></tr>}
                         {display.map((item, index) => (
                             <tr className="table-row align-middle" key={`${index}-row`}>
@@ -105,7 +103,7 @@ const Portfolio = ({ searchBy }) => {
                             <td colSpan={3}>TOTAL</td>
                             <td>{footballers.reduce(accumulateTokens, 0)}</td>
                             <td>{totalReward} HIX</td>
-                            <td colSpan={2}></td>
+                            <td colSpan={1}></td>
                             <td>{footballers.reduce(accumulateCost, 0).toFixed(2)}</td>
                             <td>{footballers.reduce(accumulateValue, 0).toFixed(2)}</td>
                             <td className={`px-3 ${totalPnL > 0 ? 'green-11-color' : 'purple-color'}`}>{totalPnL}</td>
