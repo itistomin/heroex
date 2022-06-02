@@ -6,21 +6,11 @@ import { AuthContext } from '../context/AuthContext';
 const Navigation = () => {
     const historyLocation = useLocation();
     const [location, updateLocation] = useState(document.location.pathname);
-    const [footballers, setFootballers] = useState([]);
-    const { apiInstance, isAuthenticated } = useContext(AuthContext);
-
-    const updateAll = () => {
-        if (!isAuthenticated) return;
-        apiInstance.get(PORTFOLIO_URL()).then((response) => setFootballers(response.data));
-    }
-    const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         updateLocation(document.location.pathname);
-    }, [historyLocation]);
-
-    useEffect(updateAll, [isAuthenticated]);
-    useEffect(updateAll, []);
+    }, [historyLocation])
 
     return (
         <ul className="nav nav-pills nav-fill border-blue">
@@ -45,7 +35,7 @@ const Navigation = () => {
             <li className="nav-item">
                 <Link className={`nav-link custom-link ${location == '/portfolio' ? 'custom-link-active' : ''}`} to="/portfolio">
                     <i className="fa-solid fa-suitcase px-2"></i>
-                    Portfolio&nbsp; <span className="dark-cornflower-blue-3-bg light-blue-color p-1 rounded">HIX {footballers.reduce(accumulateValue, 0).toFixed(2)}</span>
+                    Portfolio&nbsp; <span className="dark-cornflower-blue-3-bg light-blue-color p-1 rounded">HIX {(user?.total_portfolio || 0).toFixed(2)}</span>
                 </Link>
             </li>
             <li className="nav-item"  data-toggle="tooltip" data-placement="bottom" title="Links to Academy, Blogs, forum and other ">

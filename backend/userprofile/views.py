@@ -8,6 +8,8 @@ from userprofile.serializers import (
     UserSerializer,
 )
 
+from stock.models import FootballerWeeksData
+
 
 VIEWS_TAG = 'User'
 
@@ -38,7 +40,15 @@ class DetailsUserView(APIView):
         200: UserSerializer,
     })
     def get(self, request):
-        return Response(
-            UserSerializer(instance=request.user).data,
-            200,
-        )    
+        user = request.user
+        total_portfolio = sum([
+            footballer.sell_price * user.userfootballer_set.get(footballer=footballer.footballer).amount
+            for footballer in FootballerWeeksData.objects.filter(week=user.week, footballer__in=user.footballers.all())
+        ])
+
+        data = {
+            **UserSerializer(instance=user).data,
+            'total_portfolio': total_portfolio
+        }
+
+        return Response(data, 200)
