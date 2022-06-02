@@ -58,7 +58,6 @@ const Portfolio = ({ searchBy }) => {
                     <thead>
                         <tr>
                             <th scope="col">Price<br />rank</th>
-                            <th scope="col"></th>
 
                             <th scope="col">Name</th>
                             <th scope="col">Tokens</th>
@@ -79,7 +78,6 @@ const Portfolio = ({ searchBy }) => {
                         {display.map((item, index) => (
                             <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{item.rank}</td>
-                                <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
 
                                 <td>{item.name}</td>
                                 <td>{item.amount}</td>
