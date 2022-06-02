@@ -44,15 +44,16 @@ thead, th, tr {
     left:0;
     width:100%;
     height:100%;
-    background-color: rgba(0, 0, 10, 0.9);
 }
 
 .transaction-block {
     width: 600px;
     padding: 20px;
-    margin: 100px auto;
+    margin: 0px auto;
     background-color: #000022;
     color: white;
+    position: sticky;
+    top: 100px;
 }
 
 .buy-border {
@@ -119,6 +120,10 @@ thead, th, tr {
     color: #45a3d7 !important;
 }
 
+.cornflower-blue-border {
+    border: 1px solid #45a3d7 !important;
+}
+
 .dark-purple-3-bg {
     background-color: #232f51;
 }
@@ -166,4 +171,20 @@ thead, th, tr {
 
 .border-blue {
     border-bottom: 2px solid #4fa8d9;
+}
+
+.buy-bg {
+    background-color: #0bdd6a;
+}
+
+.sell-bg {
+    background-color: #bb2aff;
+}
+
+.buy-bg {
+    border: 1px solid #0bdd6a;
+}
+
+.sell-bg {
+    border: 1px solid #bb2aff;
 }

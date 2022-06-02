@@ -66,15 +66,15 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
 
     const ButtonConfirm = step == TRANSACTION_FLOW[1] ?
     (
-        <button type="button" className={`btn purple-bg text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Confirm</button>
+        <button type="button" className={`btn ${step == operation ? `${operation}-bg` : 'cornflower-blue-bg'} text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Confirm</button>
     ) : (
-        <button type="submit" className={`btn purple-bg text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Ok</button>
+        <button type="submit" className={`btn ${operation === step ? `${operation}-bg` : 'cornflower-blue-bg'} text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Ok</button>
     );
 
     return (
         <div className="transaction-background">
-            <div className={`transaction-block ${operation}-border`}>
-                <h3 className={`text-center py-2 w-100 ${step === operation ? `${operation}-bg` : 'cornflower-blue-bg'}`}>
+            <div className={`transaction-block ${step === operation ? `${operation}-border` : 'cornflower-blue-border'}`}>
+                <h3 className={`text-center py-2 w-100 text-white ${step === operation ? `${operation}-bg` : 'cornflower-blue-bg'}`}>
                     {step === operation ? `${step.toUpperCase()} NOW` : 'HeroEx Wallet'}
                 </h3>
                 <hr />
@@ -85,7 +85,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         <div className="col-6 my-2">Your balance:</div>
                         <div className="col-6 my-2">{user?.balance} HIX</div>
                         
-                        <div className="col-6 my-2">Buy price:</div>
+                        <div className="col-6 my-2">{operation.toUpperCase()} price:</div>
                         <div className="col-6 my-2">{price} HIX / token</div>
 
                         {operation === 'sell' && (
@@ -98,7 +98,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         <div className="col-6 my-2">Tokens to {operation === 'buy' ? 'purchase:' : 'sell:'}</div>
                         {TokenInfo}
 
-                        <div className="col-6 my-2">Total cost:</div>
+                        <div className="col-6 my-2">Total revenue:</div>
                         <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} HIX</div>
 
                         {step === TRANSACTION_FLOW[2] ? <div className="col-12"><h2 className='cornflower-blue-color text-white text-center'>TRANSACTION CONFIRMED</h2></div> : ''}
