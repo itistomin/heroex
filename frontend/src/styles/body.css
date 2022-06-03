@@ -188,3 +188,7 @@ thead, th, tr {
 .sell-bg {
     border: 1px solid #bb2aff;
 }
+
+.bigger-text {
+    font-size:  1.3em;
+}
