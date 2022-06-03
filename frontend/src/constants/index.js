@@ -14,3 +14,5 @@ export const MATCH_POINTS_URL = () => '/api/stock/match/';
 
 export const BUY_TOKENS_URL = () => '/api/stock/user/buy/';
 export const SELL_TOKENS_URL = () => '/api/stock/user/sell/';
+
+export const GAME_WEEK_RESULT_URL = () => '/api/stock/endgame/';
