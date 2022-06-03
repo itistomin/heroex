@@ -45,9 +45,9 @@ const Market = ({ searchBy }) => {
         <div className="row mt-4">
             {modalData?.operation && <BuySellModal {...modalData} />}
             <div className="col-12 col-lg-9">
-                <table className="table table-sm text-white">
+                <table className="table table-sm text-white text-center">
                     <tbody>
-                        <tr>
+                        <tr className="text-center">
                             <td scope="col">Price rank</td>
                             <td scope="col"></td>
                             <td scope="col">Name</td>

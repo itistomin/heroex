@@ -45,7 +45,7 @@ const MatchPoints = ({searchBy}) => {
         <div className="row mt-4">
             {modalData?.operation && <BuySellModal {...modalData} />}
             <div className="col-12 col-lg-9">
-                <table className="table table-sm text-white">
+                <table className="table table-sm text-white text-center">
                     <tbody>
                         <tr>
                             <td scope="col">Price rank</td>
