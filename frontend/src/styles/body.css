@@ -57,23 +57,23 @@ thead, th, tr {
 }
 
 .buy-border {
-    border: 1px solid #0bdd6a;
+    border: 1px solid #00b050;
 }
 
 .buy-bg {
-    background-color: #0bdd6a;
+    background-color: #00b050;
 }
 
 .buy-color {
-    color: #0bdd6a;
+    color: #00b050;
 }
 
 .sell-border {
-    border: 1px solid #bb2aff;
+    border: 1px solid #a303eb;
 }
 
 .sell-bg {
-    background-color: #bb2aff;
+    background-color: #a303eb;
 }
 
 .sell-color {
@@ -137,27 +137,27 @@ thead, th, tr {
 }
 
 .purple-bg {
-    background-color: #bb2aff;
+    background-color: #a303eb;
 }
 
 .green-11-bg {
-    background-color: #0bdd6a;
+    background-color: #00b050;
 }
 
 .green-11-color {
-    color: #0bdd6a;
+    color: #00b050;
 }
 
 .purple-color {
-    color: #bb2aff;
+    color: #a303eb;
 }
 
 .dynamic-positive {
-    color: #0bdd6a;
+    color: #00b050;
 }
 
 .dynamic-negative {
-    color: #bb2aff;
+    color: #a303eb;
 }
 
 .light-blue-color {
