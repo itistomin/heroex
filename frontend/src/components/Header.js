@@ -31,6 +31,10 @@ const Header = ({ setSearchBy }) => {
                 <div className={`col-12 col-md-5 d-flex align-items-center justify-content-end ${!isAuthenticated ? 'd-none' : ''}`}>
                     <div className="row">
                         <div className="col">
+                            <p className="m-0">HIX Price: </p>
+                            <p>1 $HIX = 1 $ USDC</p>
+                        </div>
+                        <div className="col">
                             <p className="m-0">Balance: </p>    
                             <p>{user?.balance} HIX</p>
                         </div>
