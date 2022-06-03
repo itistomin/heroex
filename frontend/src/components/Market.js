@@ -37,10 +37,7 @@ const Market = ({ searchBy }) => {
         })
     }
 
-    const display = searchBy === '' ? footballers : footballers.filter((item) => (
-        item.footballer.name.toLowerCase().includes(searchBy.toLowerCase()) 
-        || item.footballer.team.name.toLowerCase().includes(searchBy.toLowerCase())
-    ))
+    const display = footballers;
 
     useEffect(updateAll, [])
 

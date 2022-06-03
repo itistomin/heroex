@@ -39,9 +39,7 @@ const Portfolio = ({ searchBy }) => {
     }
     useEffect(updateAll, [isAuthenticated])
 
-    const display = searchBy === '' ? footballers : footballers.filter((item) => (
-        item.name.toLowerCase().includes(searchBy.toLowerCase()) 
-    ))
+    const display = footballers;
 
     const accumulateTokens = (accumulator, item) => accumulator + item.amount;
     const accumulateCost = (accumulator, item) => accumulator + item.cost;

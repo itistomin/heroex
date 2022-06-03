@@ -38,7 +38,7 @@ const MatchPoints = ({searchBy}) => {
         })
     }
 
-    const displayKeys = searchBy === '' ? Object.keys(footballers) : Object.keys(footballers).filter((key) => key.toLowerCase().includes(searchBy.toLowerCase()));
+    const displayKeys = Object.keys(footballers);
     useEffect(updateAll, [isAuthenticated]);
 
     return (
