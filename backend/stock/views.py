@@ -197,13 +197,22 @@ class UserTokenSellView(APIView):
         user_footballer.amount -= data['tokens']
         user.balance += decimal.Decimal(footballer_data.sell_price * data['tokens'])
 
-        trade_log = UserTradeLog.objects.filter(user=user, footballer=user_footballer.footballer).order_by('week__number').last()
-        trade_log.amount -= data['tokens']
+        tokens = data['tokens']
+        trade_log = UserTradeLog.objects.filter(user=user, footballer=user_footballer.footballer).order_by('-week__number').all()
+        for log in trade_log:
+            log_amount = log.amount
+
+            if log_amount <= tokens:
+                tokens -= log_amount
+                log.delete()
+            else:
+                log.amount -= tokens
+                log.save()
+                break
 
         with transaction.atomic():
             user_footballer.save()
             user.save()
-            trade_log.save()
         
         return Response({'detail': 'ok'}, 201)
 
