@@ -100,10 +100,10 @@ const Portfolio = ({ searchBy }) => {
                             </tr>
                         ))}
                         <tr>
-                            <td colSpan={3}>TOTAL</td>
+                            <td colSpan={2}>TOTAL</td>
                             <td>{footballers.reduce(accumulateTokens, 0)}</td>
                             <td>{totalReward} HIX</td>
-                            <td colSpan={1}></td>
+                            <td colSpan={2}></td>
                             <td>{footballers.reduce(accumulateCost, 0).toFixed(2)}</td>
                             <td>{footballers.reduce(accumulateValue, 0).toFixed(2)}</td>
                             <td className={`px-3 ${totalPnL > 0 ? 'green-11-color' : 'purple-color'}`}>{totalPnL}</td>
