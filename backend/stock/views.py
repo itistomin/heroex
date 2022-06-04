@@ -84,7 +84,8 @@ def get_or_save_game_results(user):
         results['total_rewards'] += get_user_reward(user, footballer_data.footballer)
     results['total_return'] = results['total_pnl'] + results['total_rewards']
 
-    return GameResultsLog(**results).save()
+    GameResultsLog(**results).save()
+    return results
 
 
 @extend_schema(tags=STOCK_TAGS)
@@ -314,7 +315,7 @@ class GameResultsView(APIView):
             .annotate(cpnl=Sum('total_pnl'))
             .order_by('creturn')
         )
-
+    
         data['rating'] = {
             'total': User.objects.count() - 1,
             'position': rating.filter(creturn__gte=data['total_return']).count()

@@ -16,7 +16,6 @@ from stock.models import GameWeek
 class GetTokenCreateUserView(TokenObtainPairView):
     
     def post(self, request, *args, **kwargs):
-        print('POST HANDLED')
         try:
             User.objects.create_user(
                 **{
@@ -35,7 +34,6 @@ class GetTokenCreateUserView(TokenObtainPairView):
         try:
             serializer.is_valid(raise_exception=True)
         except TokenError as e:
-            print('error (((')
             raise InvalidToken(e.args[0])
 
         return Response(serializer.validated_data, status=status.HTTP_200_OK)
