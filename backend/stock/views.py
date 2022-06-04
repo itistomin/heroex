@@ -1,13 +1,13 @@
 import decimal
 
 from django.db import transaction
-from django.db.models import F, OuterRef, Subquery, Sum
+from django.db.models import Sum
 from django.conf import settings
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 from drf_spectacular.utils import extend_schema
 
-from authentication.models import  UserFootballer, UserTradeLog
+from authentication.models import  GameResultsLog, UserFootballer, UserTradeLog, User
 from stock.models import (
     Footballer,
     FootballerWeeksData,
@@ -15,6 +15,7 @@ from stock.models import (
 )
 from stock.serializers import (
     BuyAndSellSerializer,
+    GameResultSerializer,
     MarketFootballerSerializer,
     TopWeekSerializer,
 )
@@ -42,13 +43,49 @@ def get_footballer_reward(week, footballer):
     data = list(FootballerWeeksData.objects.filter(week=week).order_by('-perfomance').values_list('footballer', flat=True)[:3])
     return  (5 - data.index(footballer.id)) / 10 if footballer.id in data else 0
 
+
 def get_user_reward(user, footballer):
-    
     return sum([
         get_footballer_reward(week, footballer) * log.amount
         for log in UserTradeLog.objects.filter(user=user, footballer=footballer)
         for week in GameWeek.objects.filter(number__gte=log.week.number, number__lte=user.week.number)
     ])
+
+
+def get_or_save_game_results(user):
+    week = user.week
+    footballers = FootballerWeeksData.objects.filter(week=week)
+
+    logs = GameResultsLog.objects.filter(user=user, game_number=user.game_number)
+    if logs.exists():
+        return logs.first()
+
+    results = {
+        'total_rewards': 0,
+        'total_pnl': 0,
+        'total_return': 0,
+        'game_number': user.game_number,
+        'user': user
+    }
+
+    trade_data = UserTradeLog.objects.filter(user=user)
+    for footballer_data in UserFootballer.objects.filter(amount__gt=0).filter(user=user):
+        trade_logs = trade_data.filter(footballer=footballer_data.footballer)
+
+        average_sum = 0
+        average_amount = 0
+        for trade in trade_logs:
+            average_sum += trade.buy_price * trade.amount
+            average_amount += trade.amount
+        average_buy_price = average_sum / average_amount
+
+        footballer_price = footballers.get(footballer=footballer_data.footballer)
+        results['total_pnl'] += average_amount * float(footballer_price.sell_price) - float(average_buy_price * average_amount)
+        results['total_rewards'] += get_user_reward(user, footballer_data.footballer)
+    results['total_return'] = results['total_pnl'] + results['total_rewards']
+
+    return GameResultsLog(**results).save()
+
 
 @extend_schema(tags=STOCK_TAGS)
 class FootballersView(APIView):
@@ -253,4 +290,33 @@ class MatchPointsView(APIView):
             }
 
         data = {k: v for k, v in sorted(data.items(), key=lambda item: item[1]['current_score'], reverse=True)}
+        return Response(data, 200)
+
+
+@extend_schema(tags=['Game results'])
+class GameResultsView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        user = request.user
+
+        if not user.week or user.week.number != 8:
+            return Response({'detail': 'You must end game to see results'})
+        
+        results = get_or_save_game_results(user)
+        data = GameResultSerializer(results).data
+        
+        rating = (
+            GameResultsLog.objects
+            .values('user')
+            .annotate(creturn=Sum('total_return'))
+            .annotate(crewards=Sum('total_rewards'))
+            .annotate(cpnl=Sum('total_pnl'))
+            .order_by('creturn')
+        )
+
+        data['rating'] = {
+            'total': User.objects.count() - 1,
+            'position': rating.filter(creturn__gte=data['total_return']).count()
+        }
         return Response(data, 200)

@@ -10,7 +10,6 @@ from django.db.models import (
 from django.conf import settings
 
 
-
 class GameWeek(Model):
     number = PositiveIntegerField(null=False)
 

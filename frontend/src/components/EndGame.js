@@ -8,7 +8,7 @@ const EndGame = ({ closeModal }) => {
     const { apiInstance, isAuthenticated  } = useContext(AuthContext);
 
     const fetchGameResults = () => {
-        // apiInstance.get(GAME_WEEK_RESULT_URL()).then((responce) => setData(responce.data));
+        apiInstance.get(GAME_WEEK_RESULT_URL()).then((responce) => setData(responce.data));
     }
 
     useEffect(fetchGameResults, [isAuthenticated]);
@@ -31,16 +31,16 @@ const EndGame = ({ closeModal }) => {
                 </div>
                 <div className="row my-2">
                     <div className="col-6 my-2">Total P&amp;L</div>
-                    <div className="col-6 my-2"></div>
+                    <div className="col-6 my-2">{data?.total_pnl}</div>
                     
                     <div className="col-6 my-2">Total Rewards:</div>
-                    <div className="col-6 my-2"></div>
+                    <div className="col-6 my-2">{data?.crewards}</div>
 
                     <div className="col-6 my-2">Total Return:</div>
-                    <div className="col-6 my-2"></div>
+                    <div className="col-6 my-2">{data?.total_return}</div>
 
                     <div className="col-6 my-2">Leaderboard:</div>
-                    <div className="col-6 my-2">Your score ranked 0 out of 0</div>
+                    <div className="col-6 my-2">Your score ranked {data?.rating?.position} out of {data?.rating?.total}</div>
                 </div>
                 <div className="col-12 d-flex justify-content-center my-2">
                     <p className="m-0 cornflower-blue-color bigger-text">Thank you for the play</p>

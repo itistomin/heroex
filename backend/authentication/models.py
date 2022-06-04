@@ -22,6 +22,7 @@ class User(AbstractUser):
     balance = DecimalField(max_digits=50, decimal_places=2, default=500.00)
     footballers = ManyToManyField(to=Footballer, through='UserFootballer')
     week = ForeignKey(to=GameWeek, on_delete=SET_NULL, null=True)
+    game_number = PositiveIntegerField(null=False, default=1)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -66,3 +67,14 @@ class UserTradeLog(Model):
 
     class Meta:
         unique_together = ('user', 'footballer', 'week')
+
+
+class GameResultsLog(Model):
+    user = ForeignKey(to='User', on_delete=CASCADE)
+    game_number = PositiveIntegerField(null=False)
+    total_pnl = DecimalField(max_digits=10, decimal_places=2, null=True)
+    total_rewards = DecimalField(max_digits=10, decimal_places=2, null=True)
+    total_return = DecimalField(max_digits=10, decimal_places=2, null=True)
+
+    def str(self):
+        return f'{self.user} | {self.total_return}'

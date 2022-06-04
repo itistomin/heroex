@@ -7,6 +7,7 @@ from stock.views import (
     UserTokenView,
     UserTokenBuyView,
     UserTokenSellView,
+    GameResultsView,
 )
 
 
@@ -14,6 +15,7 @@ stock_urlpatterns = [
     path('', FootballersView.as_view(), name='footballers'),
     path('topweek/', TopOfWeekView.as_view(), name='top_of_week'),
     path('match/', MatchPointsView.as_view(), name='match_points'),
+    path('endgame/', GameResultsView.as_view(), name='endgame'),
 ]
 
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from authentication.models import User, UserFootballer, UserTradeLog
+from authentication.models import User, UserFootballer, UserTradeLog, GameResultsLog
 
 
 @admin.register(User)
@@ -16,3 +16,8 @@ class UserFootballerAdmin(admin.ModelAdmin):
 @admin.register(UserTradeLog)
 class UserTradeLogAdmin(admin.ModelAdmin):
     list_display = ('user', 'footballer', 'week', 'amount', 'buy_price', 'reward',)
+
+
+@admin.register(GameResultsLog)
+class GameResultsLogAdmin(admin.ModelAdmin):
+    list_display = ('user', 'total_pnl', 'total_rewards', 'total_return', 'game_number',)

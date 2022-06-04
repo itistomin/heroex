@@ -7,7 +7,7 @@ from rest_framework.serializers import (
     Serializer,
 )
 
-from authentication.models import UserFootballer
+from authentication.models import UserFootballer, GameResultsLog
 from stock.models import (
     Footballer, 
     FootballerPosition, 
@@ -70,3 +70,10 @@ class PortfolioSerializer(ModelSerializer):
     class Meta:
         model = UserFootballer
         fields = ('footballer', 'amount', 'reward', 'buy_price', 'sell_price',  'cost', 'value', 'pnl', 'trade_price',)
+
+
+class GameResultSerializer(ModelSerializer):
+    
+    class Meta:
+        model = GameResultsLog
+        fields = ('total_return', 'total_pnl', 'total_rewards',)
