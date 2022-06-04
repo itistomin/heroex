@@ -8,9 +8,8 @@ import BuySellModal from "./BuySellModal";
 
 
 const Portfolio = ({ searchBy }) => {
-    const { apiInstance, isAuthenticated } = useContext(AuthContext);
+    const { apiInstance, isAuthenticated, user } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
-    // const [reward, setTopWeekReward] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
     const [modalData, openModal] = useState([]);
 
@@ -86,12 +85,12 @@ const Portfolio = ({ searchBy }) => {
                                 <td>{item.value.toFixed(2)}</td>
                                 <td className={`px-3 ${item.pnl > 0 ? 'green-11-color' : 'purple-color'}`}>{item.pnl.toFixed(2)}</td>
                                 <td className="text-end">
-                                    <button className="btn purple-bg text-white small-text" onClick={() => processSell({ name: item.name, price: item.sell_price })}>
+                                    <button className={`btn purple-bg text-white small-text ${user?.week?.number === 8 && 'disabled'}`} onClick={() => processSell({ name: item.name, price: item.sell_price })}>
                                         {item.sell_price.toFixed(2)}<br />SELL
                                     </button>
                                 </td>
                                 <td className="text-end">
-                                    <button className="btn green-11-bg text-white small-text" onClick={() => processBuy({ name: item.name, price: item.buy_price })}>
+                                    <button className={`btn green-11-bg text-white small-text ${user?.week?.number === 8 && 'disabled'}`} onClick={() => processBuy({ name: item.name, price: item.buy_price })}>
                                         {item.buy_price.toFixed(2)}<br />BUY
                                     </button>
                                 </td>

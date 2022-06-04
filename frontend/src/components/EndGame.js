@@ -34,7 +34,7 @@ const EndGame = ({ closeModal }) => {
                     <div className="col-6 my-2">{data?.total_pnl}</div>
                     
                     <div className="col-6 my-2">Total Rewards:</div>
-                    <div className="col-6 my-2">{data?.crewards}</div>
+                    <div className="col-6 my-2">{data?.total_rewards}</div>
 
                     <div className="col-6 my-2">Total Return:</div>
                     <div className="col-6 my-2">{data?.total_return}</div>

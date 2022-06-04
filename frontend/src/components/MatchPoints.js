@@ -8,7 +8,7 @@ import BuySellModal from "./BuySellModal";
 
 
 const MatchPoints = ({searchBy}) => {
-    const { apiInstance, isAuthenticated } = useContext(AuthContext);
+    const { apiInstance, isAuthenticated, user } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
     const [modalData, openModal] = useState([]);
@@ -66,12 +66,12 @@ const MatchPoints = ({searchBy}) => {
                                 <td>{footballers[key].previous_score}</td>
                                 <td>{footballers[key].current_score}</td>
                                 <td className="text-end">
-                                    <button className="btn purple-bg text-white small-text" onClick={() => processSell({ name: key, price: footballers[key].sell_price })}>
+                                    <button className={`btn purple-bg text-white small-text ${user?.week?.number === 8 && 'disabled'}`} onClick={() => processSell({ name: key, price: footballers[key].sell_price })}>
                                         {footballers[key].sell_price.toFixed(2)}<br />SELL
                                     </button>
                                 </td>
                                 <td className="text-end">
-                                    <button className="btn green-11-bg text-white small-text" onClick={() => processBuy({ name: key, price: footballers[key].buy_price })}>
+                                    <button className={`${user?.week?.number === 8 && 'disabled'} btn green-11-bg text-white small-text`} onClick={() => processBuy({ name: key, price: footballers[key].buy_price })}>
                                         {footballers[key].buy_price.toFixed(2)}<br />BUY
                                     </button>
                                 </td>

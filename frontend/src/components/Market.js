@@ -8,7 +8,7 @@ import BuySellModal from "./BuySellModal";
 
 
 const Market = ({ searchBy }) => {
-    const { apiInstance, isAuthenticated } = useContext(AuthContext);
+    const { apiInstance, isAuthenticated, user } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
     const [modalData, openModal] = useState({});
@@ -67,7 +67,7 @@ const Market = ({ searchBy }) => {
                                 <td className={item.footballer.price_dynamic > 0 ? 'dynamic-positive' : 'dynamic-negative'}>{item.footballer.price_dynamic} ({(item.footballer.price_dynamic * 100 / item.buy_price).toFixed(2)} %)</td>
                                 <td className="text-end">
                                     <button 
-                                        className={`btn purple-bg text-white small-text ${isAuthenticated ? '' : 'd-none'}`}
+                                        className={`${user?.week?.number === 8 && 'disabled'} btn purple-bg text-white small-text ${isAuthenticated ? '' : 'd-none'}`}
                                         onClick={() => processSell({name: item.footballer.name, price: item.sell_price})}
                                     >
                                             {item.sell_price.toFixed(2)}<br />SELL
@@ -75,7 +75,7 @@ const Market = ({ searchBy }) => {
                                 </td>
                                 <td className="text-end">
                                     <button
-                                        className={`btn green-11-bg text-white small-text ${isAuthenticated ? '' : 'd-none'}`}
+                                        className={`${user?.week?.number === 8 && 'disabled'} btn green-11-bg text-white small-text ${isAuthenticated ? '' : 'd-none'}`}
                                         onClick={() => processBuy({name: item.footballer.name, price: item.buy_price})}
                                     >
                                             {item.buy_price.toFixed(2)}<br />BUY
