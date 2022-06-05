@@ -45,6 +45,7 @@ const Portfolio = ({ searchBy }) => {
     const accumulateValue = (accumulator, item) => accumulator + item.sell_price * item.amount;
 
     const totalPnL = footballers.reduce((accumulator, item) => accumulator + item.pnl, 0).toFixed(2)
+    const totalCost = footballers.reduce(accumulateCost, 0).toFixed(2);
     const totalReward = footballers.reduce((accumulator, item) => accumulator + item._total_reward, 0).toFixed(2)
 
     return (
@@ -83,7 +84,7 @@ const Portfolio = ({ searchBy }) => {
 
                                 <td>{item.cost.toFixed(2)}</td>
                                 <td>{item.value.toFixed(2)}</td>
-                                <td className={`px-3 ${item.pnl > 0 ? 'green-11-color' : 'purple-color'}`}>{item.pnl.toFixed(2)}</td>
+                                <td className={`px-3 ${item.pnl > 0 ? 'green-11-color' : 'purple-color'}`}>{item.pnl.toFixed(2)} ({(item.pnl / item.cost * 100).toFixed(2)}%)</td>
                                 <td className="text-end">
                                     <button className={`btn purple-bg text-white small-text ${user?.week?.number === 8 && 'disabled'}`} onClick={() => processSell({ name: item.name, price: item.sell_price })}>
                                         {item.sell_price.toFixed(2)}<br />SELL
@@ -101,9 +102,9 @@ const Portfolio = ({ searchBy }) => {
                             <td>{footballers.reduce(accumulateTokens, 0)}</td>
                             <td>{totalReward} HIX</td>
                             <td colSpan={2}></td>
-                            <td>{footballers.reduce(accumulateCost, 0).toFixed(2)}</td>
+                            <td>{totalCost}</td>
                             <td>{footballers.reduce(accumulateValue, 0).toFixed(2)}</td>
-                            <td className={`px-3 ${totalPnL > 0 ? 'green-11-color' : 'purple-color'}`}>{totalPnL}</td>
+                            <td className={`px-3 ${totalPnL > 0 ? 'green-11-color' : 'purple-color'}`}>{totalPnL} ({(totalPnL / totalCost * 100 || 0).toFixed(2)}%)</td>
                             <td colSpan={2}></td>
                         </tr>
                     </tbody>
