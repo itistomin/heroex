@@ -37,7 +37,7 @@ const EndGame = ({ closeModal }) => {
                     <div className="col-6 my-2">{data?.total_rewards}</div>
 
                     <div className="col-6 my-2">Total Return:</div>
-                    <div className="col-6 my-2">{data?.total_return} <span className={`${(data?.total_return / 500 * 100) > 0 ? 'cornflower-blue-color' : 'green-11-color'}`}>{data?.total_return / 500 * 100}</span></div>
+                    <div className="col-6 my-2">{data?.total_return} <span className={`${(data?.total_return / 500 * 100) > 0 ? 'green-11-color' : 'purple-color'}`}>({(data?.total_return / 500 * 100).toFixed()}%)</span></div>
 
                     <div className="col-6 my-2">Leaderboard:</div>
                     <div className="col-6 my-2">Your score ranked {data?.rating?.position} out of {data?.rating?.total}</div>

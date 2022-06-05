@@ -50,8 +50,8 @@ const Market = ({ searchBy }) => {
                         <tr className="text-center">
                             <td scope="col">Rank</td>
                             <td scope="col"></td>
-                            <td scope="col">Name</td>
-                            <td scope="col">Team</td>
+                            <td scope="col" className="text-start">Name</td>
+                            <td scope="col" className="text-start">Team</td>
                             <td scope="col">Position</td>
                             <td scope="col">7Day</td>
                             <td scope="col"></td>
@@ -61,8 +61,8 @@ const Market = ({ searchBy }) => {
                             <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{item.rank}</td>
                                 <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
-                                <td data-toggle="tooltip" data-placement="bottom" title="Links to Player Profile Page with stats, biog, price and performance charts">{item.footballer.name}</td>
-                                <td>{item.footballer.team.name}</td>
+                                <td data-toggle="tooltip" data-placement="bottom" title="Links to Player Profile Page with stats, biog, price and performance charts" className="text-start">{item.footballer.name}</td>
+                                <td className="text-start">{item.footballer.team.name}</td>
                                 <td>{item.footballer.position.name.toUpperCase()}</td>
                                 <td className={item.footballer.price_dynamic > 0 ? 'dynamic-positive' : 'dynamic-negative'}>{item.footballer.price_dynamic} ({(item.footballer.price_dynamic * 100 / item.buy_price).toFixed(2)} %)</td>
                                 <td className="text-end">

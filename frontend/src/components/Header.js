@@ -22,17 +22,21 @@ const Header = ({ setSearchBy }) => {
                 <div className="col-12 col-md-3">
                     <h1><img src="/static/img/logo.png" alt="logo" height={"50px"} width={"auto"} /></h1>
                 </div>
-                <div class="col-12 col-md-4 d-flex align-items-center">
+                <div class="col-12 col-md-3 d-flex align-items-center">
                     <form onSubmit={formik.handleSubmit} className="d-flex">
                         <input type="text" name="search" className="form-control" placeholder="Search footballer" value={formik.values.search} onChange={formik.handleChange} data-toggle="tooltip" data-placement="bottom" title="Intuitive search of all Players by name or team" />
                         <button class="btn btn-light" onClick={applySearch} ><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
-                <div className={`col-12 col-md-5 d-flex align-items-center justify-content-end ${!isAuthenticated ? 'd-none' : ''}`}>
+                <div className={`col-12 col-md-6 d-flex align-items-center justify-content-end ${!isAuthenticated ? 'd-none' : ''}`}>
                     <div className="row">
+                        <div className='col'>
+                            <p className="m-0">Hero100</p>
+                            <p className="m-0">864&nbsp;|&nbsp;<span className="green-11-color">+23</span></p>
+                        </div>
                         <div className="col">
                             <p className="m-0">HIX Price: </p>
-                            <p>1 $HIX = 1 $ USDC</p>
+                            <p>1$HIX&nbsp;=&nbsp;1$USDC</p>
                         </div>
                         <div className="col">
                             <p className="m-0">Balance: </p>    
