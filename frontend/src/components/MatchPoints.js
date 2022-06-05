@@ -48,9 +48,9 @@ const MatchPoints = ({searchBy}) => {
                 <table className="table table-sm text-white text-center">
                     <tbody>
                         <tr>
-                            <td scope="col">Price rank</td>
+                            <td scope="col">Rank</td>
                             <td scope="col"></td>
-                            <td scope="col">Name</td>
+                            <td scope="col" className="text-start">Name</td>
                             <td scope="col">Total Points</td>
                             <td scope="col">Previous week</td>
                             <td scope="col">Current week</td>
@@ -61,7 +61,7 @@ const MatchPoints = ({searchBy}) => {
                             <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{footballers[key].rank}</td>
                                 <td><img src="/static/img/icon.png" alt="icon" width={"40px"} height={"40px"} /></td>
-                                <td>{key}</td>
+                                <td className="text-start">{key}</td>
                                 <td>{footballers[key].total_score}</td>
                                 <td>{footballers[key].previous_score}</td>
                                 <td>{footballers[key].current_score}</td>
