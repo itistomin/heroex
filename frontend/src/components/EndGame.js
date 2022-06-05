@@ -30,21 +30,21 @@ const EndGame = ({ closeModal }) => {
                     </div>
                 </div>
                 <div className="row my-2">
-                    <div className="col-6 my-2">Total P&amp;L</div>
+                    <div className="col-6 my-2">Total P&amp;L:</div>
                     <div className="col-6 my-2">{data?.total_pnl}</div>
                     
                     <div className="col-6 my-2">Total Rewards:</div>
                     <div className="col-6 my-2">{data?.total_rewards}</div>
 
                     <div className="col-6 my-2">Total Return:</div>
-                    <div className="col-6 my-2">{data?.total_return}</div>
+                    <div className="col-6 my-2">{data?.total_return} <span className={`${(data?.total_return / 500 * 100) > 0 ? 'cornflower-blue-color' : 'green-11-color'}`}>{data?.total_return / 500 * 100}</span></div>
 
                     <div className="col-6 my-2">Leaderboard:</div>
                     <div className="col-6 my-2">Your score ranked {data?.rating?.position} out of {data?.rating?.total}</div>
                 </div>
                 <div className="col-12 d-flex justify-content-center my-2">
                     <p className="m-0 cornflower-blue-color bigger-text">Thank you for the play</p>
-                    <button type="submit" className='btn cornflower-blue-bg text-white mx-2' onClick={() => closeModal(false)}>Ok</button>
+                    <button type="submit" className='btn cornflower-blue-bg text-white mx-2' onClick={() => closeModal(false)}>OK</button>
                 </div>
             </div>
         </div>

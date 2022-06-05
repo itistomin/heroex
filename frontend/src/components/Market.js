@@ -48,7 +48,7 @@ const Market = ({ searchBy }) => {
                 <table className="table table-sm text-white text-center">
                     <tbody>
                         <tr className="text-center">
-                            <td scope="col">Price rank</td>
+                            <td scope="col">Rank</td>
                             <td scope="col"></td>
                             <td scope="col">Name</td>
                             <td scope="col">Team</td>
