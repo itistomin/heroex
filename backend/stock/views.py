@@ -306,18 +306,9 @@ class GameResultsView(APIView):
         
         results = get_or_save_game_results(user)
         data = GameResultSerializer(results).data
-        
-        rating = (
-            GameResultsLog.objects
-            .values('user')
-            .annotate(creturn=Sum('total_return'))
-            .annotate(crewards=Sum('total_rewards'))
-            .annotate(cpnl=Sum('total_pnl'))
-            .order_by('creturn')
-        )
     
         data['rating'] = {
-            'total': User.objects.count() - 1,
-            'position': rating.filter(creturn__gte=data['total_return']).count()
+            'position': GameResultsLog.objects.filter(total_return__gte=data['total_return']).count(),
+            'total': GameResultsLog.objects.count() - 1,
         }
         return Response(data, 200)
