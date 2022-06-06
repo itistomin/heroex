@@ -14,7 +14,7 @@ poetry run python manage.py createsuperuser --noinput
 
 echo ""
 echo "Uploading dump data"
-poetry run python manage.py loaddata dumps/dump_30_05_2022.json
+poetry run python manage.py loaddata dumps/dump_06_06_22.json
 
 echo ""
 echo "Server start up"
