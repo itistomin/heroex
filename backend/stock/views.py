@@ -1,4 +1,5 @@
 import decimal
+import re
 
 from django.db import transaction
 from django.db.models import Sum
@@ -73,8 +74,9 @@ def get_or_save_game_results(user):
         average_buy_price = average_sum / average_amount
 
         footballer_price = footballers.get(footballer=footballer_data.footballer)
-        results['total_pnl'] += average_amount * float(footballer_price.sell_price) - float(average_buy_price * average_amount)
+        results['total_pnl'] += average_amount * float(footballer_price.sell_price)
         results['total_rewards'] += float(user.reward)
+    results['total_pnl'] += (float(user.balance) - 500)
     results['total_return'] = results['total_pnl'] + results['total_rewards']
 
     GameResultsLog(**results).save()
