@@ -137,7 +137,6 @@ class UserTokenView(APIView):
                 'name': footballer_data.footballer.name,
                 'amount': footballer_data.amount,
                 'reward': ((5 - data.index(footballer_data.footballer.id)) / 10 if footballer_data.footballer.id in data else 0) * footballer_data.amount,
-                '_total_reward': get_user_reward(user, footballer_data.footballer),
                 'trade_price': average_buy_price,
                 'cost': average_amount * average_buy_price,
                 'value': average_amount * footballer_price.sell_price,
@@ -193,9 +192,11 @@ class UserTokenBuyView(APIView):
             defaults={'amount': data['tokens'], 'buy_price': footballer.buy_price, 'reward': get_footballer_reward(user.week, footballer.footballer) }
         )
 
+        user.reward = get_footballer_reward(user.week, footballer.footballer) * data['tokens']
         if not created:
             logs.amount += data['tokens']
             logs.save()
+            user.save()
 
         return Response({'detail': 'ok'}, 201)
 

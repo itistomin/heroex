@@ -23,6 +23,7 @@ class User(AbstractUser):
     footballers = ManyToManyField(to=Footballer, through='UserFootballer')
     week = ForeignKey(to=GameWeek, on_delete=SET_NULL, null=True)
     game_number = PositiveIntegerField(null=False, default=1)
+    reward = DecimalField(max_digits=10, decimal_places=2, null=True, default=0)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
