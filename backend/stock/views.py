@@ -71,7 +71,6 @@ def get_or_save_game_results(user):
         for trade in trade_logs:
             average_sum += trade.buy_price * trade.amount
             average_amount += trade.amount
-        average_buy_price = average_sum / average_amount
 
         footballer_price = footballers.get(footballer=footballer_data.footballer)
         results['total_pnl'] += average_amount * float(footballer_price.sell_price)
