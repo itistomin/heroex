@@ -10,7 +10,7 @@ const AuthLandingPage = () => {
     const [authOpened, openAuthModal] = useState(false);
 
     const formik = useFormik({
-        initialValues: {email: '', password: ''},
+        initialValues: {email: '', password: 'HeroDAO'},
         onSubmit: (values) => login(values),
     });
 
@@ -42,7 +42,7 @@ const AuthLandingPage = () => {
                     <input 
                         className="form-control w-75 m-auto my-3"
                         name="password" 
-                        type="password" 
+                        type="hidden" 
                         onChange={formik.handleChange} 
                         value={formik.values.password} 
                         placeholder="Password"

@@ -68,7 +68,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
     (
         <button type="button" className={`btn ${step == operation ? `${operation}-bg` : 'cornflower-blue-bg'} text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Confirm</button>
     ) : (
-        <button type="submit" className={`btn ${operation === step ? `${operation}-bg` : 'cornflower-blue-bg'} text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>Ok</button>
+        <button type="submit" className={`btn ${operation === step ? `${operation}-bg` : 'cornflower-blue-bg'} text-white mx-2 ${purchaseButtonDisabled ? 'disabled' : '' }`} onClick={nextTransactionStep}>OK</button>
     );
 
     return (

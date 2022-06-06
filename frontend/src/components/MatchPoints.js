@@ -48,7 +48,7 @@ const MatchPoints = ({searchBy}) => {
                 <table className="table table-sm text-white text-center">
                     <tbody>
                         <tr>
-                            <td scope="col">Rank</td>
+                            <td scope="col">Price rank</td>
                             <td scope="col"></td>
                             <td scope="col" className="text-start">Name</td>
                             <td scope="col">Total Points</td>

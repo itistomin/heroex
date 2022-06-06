@@ -37,7 +37,7 @@ const GameWeeks = ({callable}) => {
             <p>You have 500 HIX to spend buying footballers. When you have your players click the button below to play</p>
             <div className="d-flex justify-content-around">
                 <h4 className="m-1">Week { user?.week?.number || 0}</h4>
-                {user?.week?.number !== 8 ? <button className="btn cornflower-blue-bg text-white" onClick={goToNextWeek}>Next week <i className="fa-solid fa-angles-right"></i></button> : <button className="btn cornflower-blue-bg text-white p-1" onClick={() => setModalData(true)}>Finish Game<br />See Result</button>}
+                {user?.week?.number !== 8 ? <button className="btn cornflower-blue-bg text-white" onClick={goToNextWeek}>Next week <i className="fa-solid fa-angles-right"></i></button> : <button className="btn cornflower-blue-bg text-white p-1" onClick={() => setModalData(true)}>Finish&nbsp;Game&nbsp;See&nbsp;Result</button>}
             </div>
             <p>Each time you click it advances the game on one ‘Play Week’. There are 8 Play weeks.</p>
             <p>See if you can maximise your gains over the 8 Play Weeks!</p>

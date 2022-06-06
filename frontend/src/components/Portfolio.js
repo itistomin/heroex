@@ -55,9 +55,9 @@ const Portfolio = ({ searchBy }) => {
                 <table className="table table-sm text-white text-center">
                     <tbody>
                         <tr>
-                            <td scope="col">Price rank</td>
+                            <td scope="col">Rank</td>
 
-                            <td scope="col">Name</td>
+                            <td scope="col" className="text-start">Name</td>
                             <td scope="col">Tokens</td>
                             <td scope="col">Rewards</td>
 
@@ -75,7 +75,7 @@ const Portfolio = ({ searchBy }) => {
                             <tr className="table-row align-middle" key={`${index}-row`}>
                                 <td>{item.rank}</td>
 
-                                <td>{item.name}</td>
+                                <td className="text-start">{item.name}</td>
                                 <td>{item.amount}</td>
                                 <td>{item.reward.toFixed(2)}</td>
 
