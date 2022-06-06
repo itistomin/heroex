@@ -7,7 +7,7 @@ import TopWeek from "./TopWeek";
 import BuySellModal from "./BuySellModal";
 
 
-const MatchPoints = ({searchBy}) => {
+const MatchPoints = ({searchBy, updateIndex}) => {
     const { apiInstance, isAuthenticated, user } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
@@ -17,6 +17,7 @@ const MatchPoints = ({searchBy}) => {
         if (!isAuthenticated) return;
         apiInstance.get(MATCH_POINTS_URL()).then((response) => setFootballers(response.data));
         apiInstance.get(TOP_OF_WEEK_URL()).then((response) => setTopWeek(response.data));
+        apiInstance.get('/api/stock/weekindex/').then((response) => updateIndex(response.data))
     }
 
     const transaction = {

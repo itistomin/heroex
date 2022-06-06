@@ -6,6 +6,7 @@ from stock.models import (
     FootballerTeam,
     FootballerPosition,
     FootballerWeeksData,
+    WeekIndexModel,
 )
 
 
@@ -33,3 +34,8 @@ class FootballerPositionAdmin(admin.ModelAdmin):
 @admin.register(FootballerTeam)
 class FootballerTeamAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
+
+@admin.register(WeekIndexModel,)
+class WIA(admin.ModelAdmin):
+    list_display = ('week', 'index',)

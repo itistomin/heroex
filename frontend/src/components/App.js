@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Routes,
   Route,
@@ -18,20 +18,25 @@ import '../styles/body.css';
 
 
 const App = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, apiInstance } = useContext(AuthContext);
   const [searchBy, setSearchBy] = useState('');
-  const location = useLocation();
+  const [index, updateIndex] = useState(0)
+  
+  const setIndex = () => {
+      apiInstance.get('/api/stock/weekindex/').then((response) => updateIndex(response.data))
+  }
+  useEffect(setIndex, [isAuthenticated]);
 
   return (
     <div className="container">
-      <Header {...{setSearchBy}} />
+      <Header {...{setSearchBy, index}} />
       <Navigation />
       {!isAuthenticated && <AuthLandingPage />}
       <Routes>
           <Route path="/" element={<Navigate to='/market' />} />
-          <Route path="/market" element={<Market {...{searchBy}} />} />
-          <Route path="/points" element={<MatchPoints {...{searchBy}} />} />
-          <Route path="/portfolio" element={<Portfolio {...{searchBy}} />} />
+          <Route path="/market" element={<Market {...{searchBy, updateIndex}} />} />
+          <Route path="/points" element={<MatchPoints {...{searchBy, updateIndex}} />} />
+          <Route path="/portfolio" element={<Portfolio {...{searchBy, updateIndex}} />} />
       </Routes>
     </div>
   );

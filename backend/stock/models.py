@@ -61,3 +61,7 @@ class Footballer(Model):
 
     def __str__(self):
         return self.name
+
+class WeekIndexModel(Model):
+    week = ForeignKey(to=GameWeek, on_delete=CASCADE)
+    index = DecimalField(max_digits=10, decimal_places=2, null=False)

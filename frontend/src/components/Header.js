@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useFormik } from 'formik';
 
 
-const Header = ({ setSearchBy }) => {
-    const { user, isAuthenticated, logout } = useContext(AuthContext);
+const Header = ({ setSearchBy, index }) => {
+    const { user, isAuthenticated, logout, apiInstance } = useContext(AuthContext);
     const formik = useFormik({
         initialValues: {search: ''},
         onSubmit: (values) => {
@@ -12,9 +12,15 @@ const Header = ({ setSearchBy }) => {
         }
     })
 
+    const updateIndex = () => {
+        apiInstance.get('/api/stock/weekindex/').then((response) => setIndex(response.data))
+    }
+
     const applySearch = () => {
         setSearchBy(formik.values.search)
     }
+
+    useEffect(updateIndex, [isAuthenticated]);
 
     return (
         <div className="container text-white py-3">
@@ -32,7 +38,7 @@ const Header = ({ setSearchBy }) => {
                     <div className="row">
                         <div className='col'>
                             <p className="m-0">Hero100</p>
-                            <p className="m-0">864&nbsp;|&nbsp;<span className="green-11-color">+23</span></p>
+                            <p className="m-0">{index}&nbsp;<span className="green-11-color"></span></p>
                         </div>
                         <div className="col">
                             <p className="m-0">HIX Price: </p>

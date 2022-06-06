@@ -7,7 +7,7 @@ import TopWeek from "./TopWeek";
 import BuySellModal from "./BuySellModal";
 
 
-const Market = ({ searchBy }) => {
+const Market = ({ searchBy, updateIndex }) => {
     const { apiInstance, isAuthenticated, user } = useContext(AuthContext);
     const [footballers, setFootballers] = useState([]);
     const [topWeek, setTopWeek] = useState([]);
@@ -16,6 +16,7 @@ const Market = ({ searchBy }) => {
     const updateAll = () => {
         apiInstance.get(MARKET_URL()).then((response) => setFootballers(response.data));
         apiInstance.get(TOP_OF_WEEK_URL()).then((response) => setTopWeek(response.data));
+        apiInstance.get('/api/stock/weekindex/').then((response) => updateIndex(response.data));
     }
 
     const transaction = {

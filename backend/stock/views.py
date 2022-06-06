@@ -11,7 +11,8 @@ from authentication.models import  GameResultsLog, UserFootballer, UserTradeLog,
 from stock.models import (
     Footballer,
     FootballerWeeksData,
-    GameWeek
+    GameWeek,
+    WeekIndexModel,
 )
 from stock.serializers import (
     BuyAndSellSerializer,
@@ -73,7 +74,7 @@ def get_or_save_game_results(user):
 
         footballer_price = footballers.get(footballer=footballer_data.footballer)
         results['total_pnl'] += average_amount * float(footballer_price.sell_price) - float(average_buy_price * average_amount)
-        results['total_rewards'] += user.reward
+        results['total_rewards'] += float(user.reward)
     results['total_return'] = results['total_pnl'] + results['total_rewards']
 
     GameResultsLog(**results).save()
@@ -306,3 +307,9 @@ class GameResultsView(APIView):
             'total': GameResultsLog.objects.count() - 1,
         }
         return Response(data, 200)
+
+class WeekIndex(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        return Response(WeekIndexModel.objects.get(week=request.user.week).index, 200)
