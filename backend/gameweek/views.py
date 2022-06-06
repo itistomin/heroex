@@ -36,6 +36,7 @@ class ResetWeekView(APIView):
         user.week = GameWeek.objects.get(number=0)
         user.balance = 500
         user.game_number += 1
+        user.reward = 0
         user.save()
         
         return Response({'detail': 'ok'}, 200)

@@ -44,14 +44,6 @@ def get_footballer_reward(week, footballer):
     return  (5 - data.index(footballer.id)) / 10 if footballer.id in data else 0
 
 
-def get_user_reward(user, footballer):
-    return sum([
-        get_footballer_reward(week, footballer) * log.amount
-        for log in UserTradeLog.objects.filter(user=user, footballer=footballer)
-        for week in GameWeek.objects.filter(number__gte=log.week.number, number__lte=user.week.number)
-    ])
-
-
 def get_or_save_game_results(user):
     week = user.week
     footballers = FootballerWeeksData.objects.filter(week=week)
@@ -81,7 +73,7 @@ def get_or_save_game_results(user):
 
         footballer_price = footballers.get(footballer=footballer_data.footballer)
         results['total_pnl'] += average_amount * float(footballer_price.sell_price) - float(average_buy_price * average_amount)
-        results['total_rewards'] += get_user_reward(user, footballer_data.footballer)
+        results['total_rewards'] += user.reward
     results['total_return'] = results['total_pnl'] + results['total_rewards']
 
     GameResultsLog(**results).save()
@@ -189,14 +181,15 @@ class UserTokenBuyView(APIView):
             user=user,
             week=user.week,
             footballer=user_footballer.footballer,
-            defaults={'amount': data['tokens'], 'buy_price': footballer.buy_price, 'reward': get_footballer_reward(user.week, footballer.footballer) }
+            defaults={'amount': data['tokens'], 'buy_price': footballer.buy_price, 'reward': 0 }
         )
 
-        user.reward = get_footballer_reward(user.week, footballer.footballer) * data['tokens']
         if not created:
             logs.amount += data['tokens']
             logs.save()
-            user.save()
+        
+        user.reward += decimal.Decimal(get_footballer_reward(user.week, user_footballer.footballer) * data['tokens'])
+        user.save()
 
         return Response({'detail': 'ok'}, 201)
 
