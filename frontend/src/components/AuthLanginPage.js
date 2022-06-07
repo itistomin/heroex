@@ -10,7 +10,7 @@ const AuthLandingPage = () => {
     const [authOpened, openAuthModal] = useState(false);
 
     const formik = useFormik({
-        initialValues: {email: '', password: 'HeroDAO'},
+        initialValues: {email: '', password: ''},
         onSubmit: (values) => login(values),
     });
 
