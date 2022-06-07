@@ -62,7 +62,6 @@ const Portfolio = ({ searchBy, updateIndex }) => {
                             <td scope="col">Rewards</td>
 
                             <td scope="col">Trade Price</td>
-                            <td scope="col">Buy Price</td>
                             
                             <td scope="col">Cost</td>
                             <td scope="col">Value</td>
@@ -80,7 +79,6 @@ const Portfolio = ({ searchBy, updateIndex }) => {
                                 <td>{item.reward.toFixed(2)}</td>
 
                                 <td>{item.trade_price.toFixed(2)}</td>
-                                <td>{item.buy_price.toFixed(2)}</td>
 
                                 <td>{item.cost.toFixed(2)}</td>
                                 <td>{item.value.toFixed(2)}</td>
@@ -101,7 +99,7 @@ const Portfolio = ({ searchBy, updateIndex }) => {
                             <td colSpan={2}>TOTAL</td>
                             <td>{footballers.reduce(accumulateTokens, 0)}</td>
                             <td>{user?.reward} HIX</td>
-                            <td colSpan={2}></td>
+                            <td colSpan={1}></td>
                             <td>{totalCost}</td>
                             <td>{footballers.reduce(accumulateValue, 0).toFixed(2)}</td>
                             <td className={`px-3 ${totalPnL > 0 ? 'green-11-color' : 'purple-color'}`}>{totalPnL} ({(totalPnL / totalCost * 100 || 0).toFixed(2)}%)</td>
