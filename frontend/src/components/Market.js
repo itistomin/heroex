@@ -54,7 +54,7 @@ const Market = ({ searchBy, updateIndex }) => {
                             <td scope="col" className="text-start">Name</td>
                             <td scope="col" className="text-start">Team</td>
                             <td scope="col">Position</td>
-                            <td scope="col">7Day</td>
+                            <td scope="col">7 Day</td>
                             <td scope="col"></td>
                             <td scope="col"></td>
                         </tr>

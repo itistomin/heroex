@@ -61,14 +61,14 @@ const Portfolio = ({ searchBy, updateIndex }) => {
                             <td scope="col">Tokens</td>
                             <td scope="col">Rewards</td>
 
-                            <td scope="col">Trade price</td>
-                            <td scope="col">Buy price</td>
+                            <td scope="col">Trade Price</td>
+                            <td scope="col">Buy Price</td>
                             
                             <td scope="col">Cost</td>
                             <td scope="col">Value</td>
                             <td scope="col">P/L</td>
                             
-                            <th scope="col" colSpan={2}>Price</th>
+                            <td scope="col" colSpan={2}>Price</td>
                         </tr>
                         {!display.length && <tr className="my-2 text-center"><td colSpan="11" className="py-3">Your portfolio is empty!</td></tr>}
                         {display.map((item, index) => (
