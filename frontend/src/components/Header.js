@@ -34,22 +34,23 @@ const Header = ({ setSearchBy, index }) => {
                         <button class="btn btn-light" onClick={applySearch} ><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
-                <div className={`col-12 col-md-6 d-flex align-items-center justify-content-end ${!isAuthenticated ? 'd-none' : ''}`}>
+                <div className={`col-12 col-md-6 ${!isAuthenticated ? 'd-none' : ''}`}>
                     <div className="row">
-                        <div className='col'>
+                        <div className='col-3'>
                             <p className="m-0">Hero100</p>
                             <p className="m-0">{index}&nbsp;<span className="green-11-color"></span></p>
                         </div>
-                        <div className="col">
+                        <div className="col-3">
                             <p className="m-0">HIX Price: </p>
                             <p>1$HIX&nbsp;=&nbsp;1$USDC</p>
                         </div>
-                        <div className="col">
+                        <div className="col-3">
                             <p className="m-0">Balance: </p>    
                             <p>{user?.balance} HIX</p>
                         </div>
-                        <div className="col">
-                            <a href="#" className="custom-link mx-3">Hi, Joe</a>
+                        <div className="col-3">
+                            <a href="#" className="custom-link mx-3">Hi,&nbsp;Joe</a>
+                            <br />
                             <a href="#" className="custom-link mx-3" onClick={logout}>Logout</a>
                         </div>
                     </div>
