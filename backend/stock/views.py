@@ -74,7 +74,8 @@ def get_or_save_game_results(user):
 
         footballer_price = footballers.get(footballer=footballer_data.footballer)
         results['total_pnl'] += average_amount * float(footballer_price.sell_price)
-        results['total_rewards'] += float(user.reward)
+
+    results['total_rewards'] = float(user.reward)
     results['total_pnl'] += (float(user.balance) - 500)
     results['total_return'] = results['total_pnl'] + results['total_rewards']
 
