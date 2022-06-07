@@ -29,7 +29,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
     def __str__(self):
-        return self.username or self.email
+        return self.email
 
 
 class UserFootballer(Model):

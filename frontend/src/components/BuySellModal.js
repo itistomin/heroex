@@ -98,7 +98,7 @@ const BuySellModal = ({operation, name, price, closeModal, callable}) => {
                         <div className="col-6 my-2">Tokens to {operation === 'buy' ? 'purchase:' : 'sell:'}</div>
                         {TokenInfo}
 
-                        <div className="col-6 my-2">Total {operation === 'buy' ? "cost" : "revenue"}:</div>
+                        <div className="col-6 my-2">Total {operation === 'buy' ? "Cost" : "Value"}:</div>
                         <div className="col-6 my-2">{(formik.values.tokens * price).toFixed(2)} HIX</div>
 
                         {step === TRANSACTION_FLOW[2] ? <div className="col-12"><h2 className='cornflower-blue-color text-white text-center'>TRANSACTION CONFIRMED</h2></div> : ''}
