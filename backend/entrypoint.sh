@@ -13,6 +13,10 @@ echo "Creating superuser"
 poetry run python manage.py createsuperuser --noinput
 
 echo ""
+echo "Collect static files"
+poetry run python manage.py collectstatic --noinput
+
+echo ""
 echo "Uploading dump data"
 poetry run python manage.py loaddata dumps/dump_06_06_22.json
 
