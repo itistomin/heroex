@@ -13,7 +13,7 @@ WORKDIR /app/frontend/
 RUN npm i
 RUN npm run build
 WORKDIR /app/
-RUN cp ./frontend/dist/main.js ./authentication/static/js
+RUN cp ./frontend/dist/main.js ./authentication/static/js/main.js
 
 RUN pip install poetry 
 RUN poetry install

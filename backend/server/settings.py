@@ -6,7 +6,6 @@ from datetime import timedelta
 from os import getenv
 from pathlib import Path
 import decimal
-import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -71,22 +70,12 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if getenv('DATABASE_URL'):
-    DATABASES = {
-        'default': dj_database_url.config()
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': getenv('POSTGRES_NAME'),
-            'USER': getenv('POSTGRES_USER'),
-            'PASSWORD': getenv('POSTGRES_PASSWORD'),
-            'HOST': getenv('POSTGRES_HOST'),
-            'PORT': getenv('POSTGRES_PORT'),
-        }
-    }
-
+}
 
 
 # Password validation

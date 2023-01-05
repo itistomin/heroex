@@ -8,20 +8,8 @@ services:
       context: .
     volumes:
       - ./backend:/app
-      - ./frontend/dist/main.js:/app/authentication/static/js/main.js
-    depends_on:
-      - db
+      - ./frontend/dist:/app/authentication/static/js
     env_file:
       - .env
     ports:
       - 8000:8000
-
-  db:
-    image: postgres
-    container_name: heroex-db
-    volumes:
-      - ./data/:/var/lib/postgresql
-    env_file:
-      - .env
-    ports:
-      - $POSTGRES_PORT:$POSTGRES_PORT
